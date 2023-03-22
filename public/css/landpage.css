@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-1: #29271f;
+  --color-2: #387e37;
+  --color-3: #db8a1b;
+  --color-4: #f4e7d5;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: var(--color-4);
+}
+
+header,
+footer {
+  background-color: var(--color-1);
+  color: White;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+
+  height: 85px;
+  padding: 5px 10px;
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+  transition: all 0.3s;
+}
+
+.logo span {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.logo img:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.logo.user-icon img {
+  height: 35px;
+}
+
+main .logo.user-icon img {
+  height: 70px;
+  padding-bottom: 70px;
+}
+
+.logo.search-icon img,
+.logo.hamburguer img {
+  height: 20px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.nav-links li,
+.nav-links a {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-links li:hover {
+  transform: scale(1.1);
+}
+
+.nav-links a {
+  color: White;
+  text-decoration: none;
+}
+
+.nav-links li a:hover {
+  color: var(--color-3);
+}
+
+.left-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 27px;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: White;
+  border: 1px solid Black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 50px;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer h2 {
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+}
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

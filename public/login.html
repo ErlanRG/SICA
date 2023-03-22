@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SICA - Iniciar Sesion</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type=""
+      href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+    />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/login.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <img
+          src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+          alt="Logo ProveGuard"
+        />
+      </div>
+      <div class="welcome-title">
+        <h1>Sistema de Control de Inventario de ProveGuard</h1>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">Ayuda</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="login-container">
+        <div class="form">
+          <h2>Iniciar Sesion</h2>
+          <div class="inputs success">
+            <label for="txtUser">Usuario</label>
+            <input type="text" id="txtUser" />
+          </div>
+          <div class="inputs error">
+            <label for="txtPass">Contraseña</label>
+            <input type="password" id="txtPass" />
+          </div>
+          <div class="forgot-pass"><a href="#">Olvide mi contraseña</a></div>
+          <button type="button" id="btnInicioSesion" onclick="IniciarSesion()">
+            Iniciar
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="copyright">
+        <h2>BotWeb Team</h2>
+        <h2>ProveGuard &copy;2023</h2>
+      </div>
+    </footer>
+  </body>
+</html>
