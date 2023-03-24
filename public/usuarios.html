@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SICA - Usuarios</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type=""
+      href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+    />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/usuarios.css" rel="stylesheet" />
+    <link href="css/general.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo" title="Inicio">
+        <img
+          src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+          alt="Logo ProveGuard"
+        /><span id="rol">Rol: Admin</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Registro / Edición de activos</a></li>
+          <li><a href="#">Traslados</a></li>
+          <li><a href="#">Bitácora</a></li>
+          <li><a href="#">Reportes</a></li>
+          <li><a href="#">Manejo de usuarios</a></li>
+        </ul>
+      </nav>
+      <div class="left-nav">
+        <div class="logo user-icon" title="Perfil">
+          <img src="img/user-icon.png" alt="user-icon" />
+        </div>
+        <div class="logo search-icon" title="Buscar">
+          <img src="img/search-interface-symbol.png" alt="user-icon" />
+        </div>
+        <div class="logo hamburguer">
+          <img src="img/icons8-hamburger-menu-24.png" alt="user-icon" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <h2 class="subtitles">Administración de Usuarios</h2>
+      <div class="page-buttons">
+        <div class="inputs">
+          <button type="button" class="buttons">Agregar Usuario</button>
+          <button type="button" class="buttons">Eliminar Usuario</button>
+        </div>
+        <div class="inputs">
+          <button type="button" class="buttons">Aceptar</button>
+          <button type="button" class="buttons">Cancelar</button>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Seleccionar</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Rol</th>
+            <th>Email</th>
+            <th>Estatus</th>
+            <th>Super Usuario</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </main>
+
+    <footer class="footer">
+      <div class="company-name">
+        <h2>ProveGuard &copy;2023</h2>
+      </div>
+      <div class="copyright">
+        <h2>SICA - Sistema de Control de Activos</h2>
+        <h2>BotWeb Team</h2>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Sedes</a></li>
+        <li><a href="#">Ayuda</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>

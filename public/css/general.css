@@ -35,7 +35,7 @@ footer {
 }
 
 .header .logo img {
-  height: 35px;
+  height: 75px;
   width: auto;
   transition: all 0.3s;
 }
@@ -70,6 +70,26 @@ footer {
 
 .nav-links li a:hover {
   color: var(--color-3);
+}
+
+.logo.user-icon{
+}
+
+.logo.search-icon img,
+.logo.hamburguer img {
+  height: 20px;
+}
+
+.left-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 27px;
+}
+
+.left-nav .logo.user-icon img {
+  height: 30px;
 }
 
 .buttons {
