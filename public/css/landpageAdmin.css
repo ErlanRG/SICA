@@ -1,0 +1,55 @@
+.logo span {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+main .logo.user-icon img {
+  height: 70px;
+  padding-bottom: 70px;
+}
+
+.logo.search-icon img,
+.logo.hamburguer img {
+  height: 20px;
+}
+
+.left-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 27px;
+}
+
+.center-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: White;
+  border: 1px solid Black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 50px;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer h2 {
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+}
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

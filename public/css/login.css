@@ -1,82 +1,6 @@
-/* Template */
-* {
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --color-1: #29271f;
-  --color-2: #387e37;
-  --color-3: #db8a1b;
-  --color-4: #f4e7d5;
-}
-
-body {
-  font-family: "Raleway", sans-serif;
-  background-color: var(--color-4);
-}
-
-header,
-footer {
-  background-color: var(--color-1);
-  color: White;
-
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-
-  height: 85px;
-  padding: 5px 10px;
-}
-
-.header .logo img {
-  height: 70px;
-  width: auto;
-  transition: all 0.3s;
-}
-
-.header .logo img:hover {
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
 .header .welcome-title h1 {
   font-weight: bold;
   text-transform: uppercase;
-}
-
-.header .nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 50px;
-}
-
-.header .nav-links li,
-.header .nav-links a {
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.header .nav-links li:hover {
-  transform: scale(1.1);
-}
-
-.header .nav-links a {
-  color: White;
-  text-decoration: none;
-}
-
-.header .nav-links li a:hover {
-  color: var(--color-3);
-}
-
-footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
 }
 
 .footer h2 {
@@ -106,51 +30,10 @@ footer {
 
 .form h2 {
   margin-bottom: 50px;
-  color: Black;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
 }
 
-.inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.inputs label {
-  color: Black;
-  font-weight: bold;
-}
-
-.inputs input {
-  font-size: 1.2rem;
-  padding: 0.3rem;
-  background-color: rgba(192, 192, 192, 0.3);
-  border: none;
-  outline: none;
-  border-radius: 0.25rem;
-  color: Black;
-  font-weight: thin;
-}
-
-.inputs input:focus {
-  background-color: rgba(192, 192, 192, 0.8);
-}
-
-button {
-  padding: 0.5rem 1em;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: Black;
-  background-color: var(--color-3);
-  border: 1px solid Black;
-  border-radius: 0.25rem;
-  outline: none;
-  cursor: pointer;
-}
-button:hover,
-button:focus {
-  background-color: rgba(219, 138, 27, 0.9);
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

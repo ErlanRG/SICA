@@ -11,6 +11,7 @@
     />
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/login.css" rel="stylesheet" />
+    <link href="css/general.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -35,7 +36,7 @@
     <main>
       <div class="login-container">
         <div class="form">
-          <h2>Iniciar Sesion</h2>
+          <h2 class="subtitles">Iniciar Sesión</h2>
           <div class="inputs success">
             <label for="txtUser">Usuario</label>
             <input type="text" id="txtUser" />
@@ -44,8 +45,13 @@
             <label for="txtPass">Contraseña</label>
             <input type="password" id="txtPass" />
           </div>
-          <div class="forgot-pass"><a href="#">Olvide mi contraseña</a></div>
-          <button type="button" id="btnInicioSesion" onclick="IniciarSesion()">
+          <div class="forgot-pass"><a href="#">Olvidé mi contraseña</a></div>
+          <button
+            class="buttons"
+            type="button"
+            id="btnInicioSesion"
+            onclick="IniciarSesion()"
+          >
             Iniciar
           </button>
         </div>

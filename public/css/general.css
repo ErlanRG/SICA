@@ -1,0 +1,141 @@
+/* Este CSS contiene todos los estilos estandar utilizados */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-1: #29271f;
+  --color-2: #387e37;
+  --color-3: #db8a1b;
+  --color-4: #f4e7d5;
+}
+
+/* BODY */
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: var(--color-4);
+  height: 100%;
+}
+
+/* HEADER */
+header,
+footer {
+  background-color: var(--color-1);
+  color: White;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+
+  height: 85px;
+  padding: 5px 10px;
+}
+
+.header .logo img {
+  height: 35px;
+  width: auto;
+  transition: all 0.3s;
+}
+
+.header .logo img:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.nav-links li,
+.nav-links a {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-links li:hover {
+  transform: scale(1.1);
+}
+
+.nav-links a {
+  color: White;
+  text-decoration: none;
+}
+
+.nav-links li a:hover {
+  color: var(--color-3);
+}
+
+.buttons {
+  background-color: #387e37;
+  border: none;
+  color: #f4e7d5;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+select {
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: #db8a1b;
+  cursor: pointer;
+}
+
+main {
+  /* Calcula el tamaño del main */
+  /* Vertical height - la suma de los tamaños del header y footer */
+  min-height: calc(100vh-170px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.subtitles {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #29271f;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}

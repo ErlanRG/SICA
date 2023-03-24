@@ -1,0 +1,67 @@
+.logo img {
+  height: 70px;
+  width: auto;
+  transition: all 0.3s;
+}
+
+.logo span {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.logo img:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.logo.user-icon img {
+  height: 35px;
+}
+
+.logo.search-icon img,
+.logo.hamburguer img {
+  height: 20px;
+}
+
+.left-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 27px;
+}
+
+/* BEGIN MAIN EDIT */
+
+main .logo.user-icon img {
+  height: 150px;
+}
+
+.container {
+  width: 80%;
+  background-color: White;
+  border: 1px solid Black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+/* ENDS MAIN EDIT */
+
+footer {
+  width: 100%;
+}
+
+.footer h2 {
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+}
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
