@@ -36,6 +36,27 @@ main .logo.user-icon img {
   padding: 50px;
 }
 
+#welcome-message {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+#welcome-message h1 {
+  color: #333;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#welcome-message p {
+  color: #555;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
 footer {
   width: 100%;
   position: absolute;

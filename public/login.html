@@ -45,13 +45,10 @@
             <label for="txtPass">Contraseña</label>
             <input type="password" id="txtPass" />
           </div>
-          <div class="forgot-pass"><a href="#">Olvidé mi contraseña</a></div>
-          <button
-            class="buttons"
-            type="button"
-            id="btnInicioSesion"
-            onclick="IniciarSesion()"
-          >
+          <div class="forgot-pass">
+            <a href="#" id="forgot-link">Olvidé mi contraseña</a>
+          </div>
+          <button type="button" class="buttons" onclick="IniciarSesion()">
             Iniciar
           </button>
         </div>
@@ -64,5 +61,11 @@
         <h2>ProveGuard &copy;2023</h2>
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/Services/sessionService.js"></script>
+    <script src="js/Services/loginService.js"></script>
+    <script src="js/Controllers/loginController.js"></script>
   </body>
 </html>

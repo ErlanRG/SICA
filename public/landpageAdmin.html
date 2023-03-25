@@ -20,7 +20,7 @@
         <img
           src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
           alt="Logo ProveGuard"
-        /><span id="rol">Rol: Admin</span>
+        /><span id="rol"></span>
       </div>
       <nav>
         <ul class="nav-links">
@@ -49,7 +49,7 @@
         <div class="logo user-icon" title="Perfil">
           <img src="img/user-icon-black.png" alt="user-icon" />
         </div>
-        <div class="message">BIENVENIDO <span>nombre de usuario</span></div>
+        <div id="welcome-message"></div>
       </div>
     </main>
 
@@ -67,5 +67,10 @@
         <li><a href="#">Ayuda</a></li>
       </ul>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/Services/sessionService.js"></script>
+    <script src="js/Controllers/sessionController.js"></script>
+    <script src="js/utils.js"></script>
   </body>
 </html>
