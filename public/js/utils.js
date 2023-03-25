@@ -83,3 +83,25 @@ function ValidatePasswords(pPass) {
 
   return true;
 }
+
+let proveLogo = document.getElementById("prove-logo");
+let profile = document.getElementById("user-icon");
+
+proveLogo.addEventListener("click", RedirectHome);
+profile.addEventListener("click", RedirectEditProfile);
+
+function RedirectHome() {
+  if (location.href.includes("login.html")) {
+    return;
+  }
+
+  location.href = "landpageAdmin.html";
+}
+
+function RedirectEditProfile() {
+  if (profile == null) {
+    return;
+  }
+
+  location.href = "editProfile.html";
+}

@@ -1,7 +1,6 @@
 "use strict";
 IdentifyLoggedUser();
 
-// @@@ NOT WORKING
 function IdentifyLoggedUser() {
   let result = GetActiveSession();
 
@@ -18,7 +17,6 @@ function IdentifyLoggedUser() {
     rol.innerHTML = "ROL: " + result.Rol;
   }
 }
-// @@@
 
 function Logout() {
   ClearActiveSession();
