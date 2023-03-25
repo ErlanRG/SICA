@@ -38,9 +38,9 @@
         <div class="logo search-icon" title="Buscar">
           <img src="img/search-interface-symbol.png" alt="user-icon" />
         </div>
-        <div class="logo hamburguer">
-          <img src="img/icons8-hamburger-menu-24.png" alt="user-icon" />
-        </div>
+        <button type="button" class="buttons" onclick="Logout()">
+          Cerrar Sesión
+        </button>
       </div>
     </header>
 
@@ -87,5 +87,9 @@
         <li><a href="#">Ayuda</a></li>
       </ul>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/Services/sessionService.js"></script>
+    <script src="js/Controllers/sessionController.js"></script>
+    <script src="js/utils.js"></script>
   </body>
 </html>
