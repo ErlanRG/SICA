@@ -4,6 +4,13 @@ let txtUser = document.getElementById("txtUser");
 let txtPass = document.getElementById("txtPass");
 let forgotPass = document.getElementById("forgot-link");
 
+// Iniciar sesion al presionar enter
+txtPass.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    IniciarSesion();
+  }
+});
+
 function IniciarSesion() {
   let user = txtUser.value;
   let pass = txtPass.value;

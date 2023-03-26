@@ -28,7 +28,7 @@
           <li><a href="#">Traslados</a></li>
           <li><a href="#">Bitácora</a></li>
           <li><a href="#">Reportes</a></li>
-          <li><a href="usuarios.html">Manejo de usuarios</a></li>
+          <li><a href="users.html">Manejo de usuarios</a></li>
         </ul>
       </nav>
       <div class="left-nav">
@@ -45,6 +45,11 @@
     </header>
 
     <main>
+      <div class="container edit-button">
+        <button type="button" class="buttons" onclick="EditProfile()">
+          Editar
+        </button>
+      </div>
       <div class="container profile-img">
         <h2 class="subtitles">Imagen de perfil</h2>
         <div
@@ -66,8 +71,8 @@
           <input type="password" id="txt-new-pass" />
         </div>
         <div class="inputs">
-          <button class="buttons" type="button">Aceptar</button>
-          <button class="buttons" type="button">Cancelar</button>
+          <button class="buttons disabled" type="button">Aceptar</button>
+          <button class="buttons disabled" type="button">Cancelar</button>
         </div>
       </div>
       <div class="container info">
@@ -99,8 +104,8 @@
           </select>
         </div>
         <div class="inputs">
-          <button class="buttons" type="button">Aceptar</button>
-          <button class="buttons" type="button">Cancelar</button>
+          <button class="buttons disabled" type="button">Aceptar</button>
+          <button class="buttons disabled" type="button">Cancelar</button>
         </div>
       </div>
     </main>
@@ -122,6 +127,7 @@
     <script src="js/utils.js"></script>
     <script src="js/Services/sessionService.js"></script>
     <script src="js/Controllers/sessionController.js"></script>
+    <script src="js/Controllers/editProfileController.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

@@ -106,6 +106,21 @@ footer {
   transition: background-color 0.3s ease;
 }
 
+.buttons.disabled {
+  background-color: #f0f0f0;
+  color: #bbb;
+  box-shadow: none;
+  border: 1px solid #bbb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.buttons.disabled:hover {
+  background-color: #f0f0f0;
+  color: #bbb;
+  box-shadow: none;
+}
+
 label {
   display: block;
   font-size: 16px;

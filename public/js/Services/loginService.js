@@ -8,6 +8,9 @@ let userTest = [
     User: "rangeler",
     Pass: "asdfzxcv",
     Rol: "Admin",
+    Email: "erangelg@ucenfotec.ac.cr",
+    Estatus: 1,
+    SuperUser: true,
   },
 ];
 

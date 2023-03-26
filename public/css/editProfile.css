@@ -49,6 +49,17 @@ main .logo.user-icon img {
   padding: 50px;
 }
 
+.container.edit-button {
+  background-color: var(--color-4);
+  box-shadow: none;
+  position: relative;
+}
+
+.container.edit-button button {
+  position: absolute;
+  right: 0;
+}
+
 /* ENDS MAIN EDIT */
 
 footer {

@@ -105,3 +105,13 @@ function RedirectEditProfile() {
 
   location.href = "editProfile.html";
 }
+
+function EnableButtons() {
+  const disabledButtons = document.querySelectorAll("button.buttons.disabled");
+
+  for (let i = 0; i < disabledButtons.length; i++) {
+    const button = disabledButtons[i];
+    button.classList.remove("disabled");
+    button.classList.add("buttons");
+  }
+}
