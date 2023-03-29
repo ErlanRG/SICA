@@ -31,6 +31,10 @@ th {
   justify-content: space-between;
 }
 
+#delete, #add, #accept, #cancel{
+  display: none;
+}
+
 footer {
   width: 100%;
   position: absolute;
