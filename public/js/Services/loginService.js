@@ -12,6 +12,17 @@ let userTest = [
     Estatus: 1,
     SuperUser: true,
   },
+  {
+    Nombre: "Limberth",
+    Apellido1: "Vazquez",
+    Apellido2: "",
+    User: "lvasquez",
+    Pass: "qwerasdf",
+    Rol: "Provee",
+    Email: "lvasquez@xyz.com",
+    Estatus: 1,
+    SuperUser: false,
+  },
 ];
 
 function AuthenticateUser(pUser, pPass) {

@@ -47,5 +47,7 @@ function RedirectUser(pUser) {
 
   if (rol == "Admin") {
     location.href = "landpageAdmin.html";
+  } else {
+    location.href = "landpageOthers.html";
   }
 }

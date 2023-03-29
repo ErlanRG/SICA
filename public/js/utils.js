@@ -95,7 +95,14 @@ function RedirectHome() {
     return;
   }
 
-  location.href = "landpageAdmin.html";
+  let user = GetActiveSession();
+  let rol = user.Rol;
+
+  if (rol == "Admin") {
+    location.href = "landpageAdmin.html";
+  } else {
+    location.href = "landpageOthers.html";
+  }
 }
 
 function RedirectEditProfile() {
