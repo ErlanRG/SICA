@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SICA - Editar perfil</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type=""
+      href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+    />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/general.css" rel="stylesheet" />
+    <link href="css/editProfile.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div id="prove-logo" class="logo" title="Inicio">
+        <img
+          src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+          alt="Logo ProveGuard"
+        /><span id="rol">Rol: Admin</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Registro / Edición de activos</a></li>
+          <li><a href="#">Traslados</a></li>
+          <li><a href="#">Bitácora</a></li>
+          <li><a href="#">Reportes</a></li>
+          <li><a href="users.html">Manejo de usuarios</a></li>
+        </ul>
+      </nav>
+      <div class="left-nav">
+        <div id="user-icon" class="logo user-icon" title="Perfil">
+          <img src="img/user-icon.png" alt="user-icon" />
+        </div>
+        <div class="logo search-icon" title="Buscar">
+          <img src="img/search-interface-symbol.png" alt="user-icon" />
+        </div>
+        <button type="button" class="buttons" onclick="Logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="container edit-button">
+        <button type="button" class="buttons" onclick="EditProfile()">
+          Editar
+        </button>
+      </div>
+      <div class="container profile-img">
+        <h2 class="subtitles">Imagen de perfil</h2>
+        <div
+          onclick="CambiarFoto()"
+          class="logo user-icon"
+          title="Editar imagen de perfil"
+        >
+          <img src="img/user-icon-black.png" alt="user-icon" />
+        </div>
+      </div>
+      <div class="container security">
+        <h2 class="subtitles">Seguridad</h2>
+        <div class="inputs">
+          <label for="txt-pass">Contraseña actual</label>
+          <input type="password" id="txt-pass" />
+        </div>
+        <div class="inputs">
+          <label for="txt-new-pass">Contraseña nueva</label>
+          <input type="password" id="txt-new-pass" />
+        </div>
+        <div class="inputs">
+          <button class="buttons disabled" type="button">Aceptar</button>
+          <button class="buttons disabled" type="button">Cancelar</button>
+        </div>
+      </div>
+      <div class="container info">
+        <h2 class="subtitles">Informacion del usuario</h2>
+        <div class="inputs">
+          <label for="txt-name">Nombre</label>
+          <input type="text" id="txt-nombre" />
+        </div>
+        <div class="inputs">
+          <label for="txt-lastname">Apellido</label>
+          <input type="text" id="txt-lastname" />
+        </div>
+        <div class="inputs">
+          <label for="txt-number">Telefono</label>
+          <input type="text" id="txt-number" />
+        </div>
+        <div class="inputs">
+          <label for="txt-birthday">Fecha de nacimiento</label>
+          <input type="date" id="txt-birthday" />
+        </div>
+        <div class="inputs">
+          <label for="txt-birthday">Unidad</label>
+          <select>
+            <option value="">--Seleccione una opcion--</option>
+            <option value="SJ">San Jose</option>
+            <option value="Alajuela">Alajuela</option>
+            <option value="Heredia">Heredia</option>
+            <option value="Cartago">Cartago</option>
+          </select>
+        </div>
+        <div class="inputs">
+          <button class="buttons disabled" type="button">Aceptar</button>
+          <button class="buttons disabled" type="button">Cancelar</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="company-name">
+        <h2>ProveGuard &copy;2023</h2>
+      </div>
+      <div class="copyright">
+        <h2>SICA - Sistema de Control de Activos</h2>
+        <h2>BotWeb Team</h2>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Sedes</a></li>
+        <li><a href="#">Ayuda</a></li>
+      </ul>
+    </footer>
+    <script src="js/utils.js"></script>
+    <script src="js/Services/sessionService.js"></script>
+    <script src="js/Controllers/sessionController.js"></script>
+    <script src="js/Controllers/editProfileController.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

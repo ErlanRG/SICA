@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SICA - Reportes de Bitacora</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type=""
+      href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+    />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/usuarios.css" rel="stylesheet" />
+    <link href="css/general.css" rel="stylesheet" />
+    <link href="css/reportes.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div id="prove-logo" class="logo" title="Inicio">
+        <img
+          src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+          alt="Logo ProveGuard"
+        /><span id="rol">Rol: Admin</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Registro / Edición de activos</a></li>
+          <li><a href="#">Traslados</a></li>
+          <li><a href="#">Bitácora</a></li>
+          <li><a href="reportes.html">Reportes</a></li>
+          <li><a href="users.html">Manejo de usuarios</a></li>
+        </ul>
+      </nav>
+      <div class="left-nav">
+        <div id="user-icon" class="logo user-icon" title="Perfil">
+          <img src="img/user-icon.png" alt="user-icon" />
+        </div>
+        <div class="logo search-icon" title="Buscar">
+          <img src="img/search-interface-symbol.png" alt="user-icon" />
+        </div>
+        <button type="button" class="buttons" onclick="Logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="historialBitacora.html" id="hBitacora">Historial de bitácora</a>
+        <a href="historialUsuario.html" id="hUsuario">Historial de usuario</a>
+        <a href="historialDonacion.html" id="hDonaciones">Historial de donaciones</a>
+        <a href="historialBodega.html" id="hBodega">Historial de bodega</a>
+        <a href="historialUnidad.html" id="hUnidades">Historial de unidades</a>
+      </div>
+
+
+      <main>
+        <h2 class="subtitles"><strong>Historial de Bitácora</strong></h2>
+        <div class="page-buttons">
+          <div class="inputs">
+            <button type="button" class="buttons">Refrescar</button>
+          </div>
+          <div class="topnav">
+            <input type="text" placeholder="Buscar...">
+          </div>
+        </div>
+    <div class="boardWrap">
+
+        <div class="boardListWrap">
+            <div class="boardList">
+                <div class="top">
+                    <div class="idFolio">ID de Folio</div>
+                    <div class="fecha">Fecha Registrado</div>
+                    <div class="idActivo">ID de Activo</div>
+                </div>
+                <div>
+                    <div class="idFolio">5</div>
+                    <div class="fecha">2/17/23</div>
+                    <div class="idActivo"><a href="#">000005</a></div>
+                </div>
+                <div>
+                    <div class="idFolio">4</div>
+                    <div class="fecha">4/18/22</div>
+                    <div class="idActivo"><a href="#">000004</a></div>
+                </div>
+                <div>
+                    <div class="idFolio">3</div>
+                    <div class="fecha">5/19/21</div>
+                    <div class="idActivo"><a href="#">000003</a></div>
+                </div>
+                <div>
+                    <div class="idFolio">2</div>
+                    <div class="fecha">7/17/22</div>
+                    <div class="idActivo"><a href="#">000002</a></div>
+                </div>
+                <div>
+                    <div class="idFolio">1</div>
+                    <div class="fecha">2/11/22</div>
+                    <div class="idActivo"><a href="#">000001</a></div>
+                </div>
+
+
+            </div>
+
+            <div class="boardPage">
+              <a href="#" class="bt first"><<</a>
+              <a href="#" class="bt prev"><</a>
+              <a href="#" class="bt num on">1</a>
+              <a href="#" class="bt num">2</a>
+              <a href="#" class="bt num">3</a>
+              <a href="#" class="bt num">4</a>
+              <a href="#" class="bt num">5</a>
+              <a href="#" class="bt next">></a>
+              <a href="#" class="bt last">>></a>
+
+            </div>
+        </div>
+      </div>
+    </div>
+      </main>
+
+
+ </body>
+    <footer class="footer">
+        <div class="company-name">
+          <h2>ProveGuard &copy;2023</h2>
+        </div>
+        <div class="copyright">
+          <h2>SICA - Sistema de Control de Activos</h2>
+          <h2>BotWeb Team</h2>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">Sedes</a></li>
+          <li><a href="#">Ayuda</a></li>
+        </ul>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="js/Services/sessionService.js"></script>
+      <script src="js/Controllers/sessionController.js"></script>
+      <script src="js/utils.js"></script>
+
+</html>
