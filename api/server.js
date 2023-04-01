@@ -1,22 +1,16 @@
 "use strict";
 
 const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+const mongoose = require("mongoose");
 
 require("dotenv").config();
 
 const app = express();
-app.use(express.static(__dirname + "/public"));
-
-// Enable cross-origin requests
 app.use(cors());
-
-// Parse incoming request bodies in JSON format
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
-
-// Parses incoming request bodies in a URL-encoded format
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
@@ -24,7 +18,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, Accept, Accept-Version, Content-Lenght, Content-MDS, Content-Type, Date, X-Api-Version, X-Response-Time, XPINGOTHER, X-CSRF-Token, Authorization"
+    "Origin, Accept, Accept-Version, Content-Length, Content-MDS, Content-Type, Date, X-Api-Version, X-Response-Time, XPINGOTHER, X-CSRF-Token, Authorization"
   );
   res.setHeader("Access-Control-Allow-Credentials", true);
   next();
@@ -51,3 +45,7 @@ function handleError(res, reason, message, code) {
   console.log("ERROR: ", reason);
   res.status(code || 500).json({ error: message });
 }
+
+//conexion a todas las rutas del backend
+const personas = require("./routes/personaRoute");
+app.use("/api", personas);
