@@ -6,38 +6,40 @@ const Persona = require("../models/personaModel");
 
 //CRUD: CREATE READ UPDATE DELETE
 
-router.post("/RegistrarPersona", async (req, res) => {
-  try {
-    let body = req.body;
-    let nuevaPersona = new Persona({
-      TipoIdentificacion: body.TipoIdentificacion,
-      Identificacion: body.Identificacion,
-      Nombre: body.Nombre,
-      Apellido1: body.Apellido1,
-      Apellido2: body.Apellido2,
-      Sexo: body.Sexo,
-      Nacimiento: body.Nacimiento,
-      Edad: body.Edad,
-      Estado: 1,
-      Email: body.Email,
-      Password: body.Password,
-      Rol: body.Rol,
-      FotoPerfil: body.FotoPerfil,
-    });
+router.post("/RegistrarPersona", (req, res) => {
+  let body = req.body;
+  let nuevaPersona = new Persona({
+    TipoIdentificacion: body.TipoIdentificacion,
+    Identificacion: body.Identificacion,
+    Nombre: body.Nombre,
+    Apellido1: body.Apellido1,
+    Apellido2: body.Apellido2,
+    Sexo: body.Sexo,
+    Nacimiento: body.Nacimiento,
+    Edad: body.Edad,
+    Estado: 1,
+    Email: body.Email,
+    Password: body.Password,
+    Rol: body.Rol,
+    FotoPerfil: body.FotoPerfil,
+  });
 
-    let personaDB = await nuevaPersona.save();
-    res.json({
-      resultado: true,
-      msj: "Registro realizado de manera correcta ",
-      personaDB,
+  nuevaPersona
+    .save()
+    .then((personaDB) => {
+      res.json({
+        resultado: true,
+        msj: "Registro realizado de manera correcta ",
+        personaDB,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        resultado: false,
+        msj: "No se pudo registrar la persona, ocurrio el siguiente error: ",
+        error,
+      });
     });
-  } catch (error) {
-    res.json({
-      resultado: false,
-      msj: "No se pudo registrar la persona, ocurrio el siguiente error: ",
-      error,
-    });
-  }
 });
 
 router.get("/ListarPersonas", (req, res) => {

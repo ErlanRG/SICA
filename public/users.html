@@ -1,115 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>SICA - Usuarios</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="icon"
-      type=""
-      href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
-    />
-    <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/users.css" rel="stylesheet" />
-    <link href="css/general.css" rel="stylesheet" />
-  </head>
 
-  <body>
-    <header class="header">
-      <div id="prove-logo" class="logo" title="Inicio">
-        <img
-          src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
-          alt="Logo ProveGuard"
-        /><span id="rol"></span>
+<head>
+  <title>SICA - Usuarios</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="" href="img/proveguard-low-resolution-logo-color-on-transparent-background.png" />
+  <link href="css/reset.css" rel="stylesheet" />
+  <link href="css/users.css" rel="stylesheet" />
+  <link href="css/general.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header">
+    <div id="prove-logo" class="logo" title="Inicio">
+      <img src="img/proveguard-low-resolution-logo-color-on-transparent-background.png" alt="Logo ProveGuard" /><span
+        id="rol"></span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Registro / Edición de activos</a></li>
+        <li><a href="#">Traslados</a></li>
+        <li><a href="#">Bitácora</a></li>
+        <li><a href="reportes.html">Reportes</a></li>
+        <li><a href="users.html">Manejo de usuarios</a></li>
+      </ul>
+    </nav>
+    <div class="left-nav">
+      <div id="user-icon" class="logo user-icon" title="Perfil">
+        <img src="img/user-icon.png" alt="user-icon" />
       </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#">Registro / Edición de activos</a></li>
-          <li><a href="#">Traslados</a></li>
-          <li><a href="#">Bitácora</a></li>
-          <li><a href="reportes.html">Reportes</a></li>
-          <li><a href="users.html">Manejo de usuarios</a></li>
-        </ul>
-      </nav>
-      <div class="left-nav">
-        <div id="user-icon" class="logo user-icon" title="Perfil">
-          <img src="img/user-icon.png" alt="user-icon" />
-        </div>
-        <div class="logo search-icon" title="Buscar">
-          <img src="img/search-interface-symbol.png" alt="user-icon" />
-        </div>
-        <button type="button" class="buttons" onclick="Logout()">
-          Cerrar Sesión
+      <div class="logo search-icon" title="Buscar">
+        <img src="img/search-interface-symbol.png" alt="user-icon" />
+      </div>
+      <button type="button" class="buttons" onclick="Logout()">
+        Cerrar Sesión
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="subtitles">Administración de Usuarios</h2>
+    <div class="page-buttons">
+      <div class="inputs">
+        <button type="button" id="edit" class="buttons">Editar</button>
+        <button type="button" id="add" class="buttons">
+          Agregar Usuario
+        </button>
+        <button type="button" id="delete" class="buttons">
+          Eliminar Usuario
         </button>
       </div>
-    </header>
-
-    <main>
-      <h2 class="subtitles">Administración de Usuarios</h2>
-      <div class="page-buttons">
-        <div class="inputs">
-          <button type="button" id="edit" class="buttons">Editar</button>
-          <button type="button" id="add" class="buttons">
-            Agregar Usuario
-          </button>
-          <button type="button" id="delete" class="buttons">
-            Eliminar Usuario
-          </button>
-        </div>
-        <div class="inputs">
-          <button type="button" id="accept" class="buttons">Aceptar</button>
-          <button type="button" id="cancel" class="buttons">Cancelar</button>
-        </div>
+      <div class="inputs">
+        <button type="button" id="accept" class="buttons">Aceptar</button>
+        <button type="button" id="cancel" class="buttons">Cancelar</button>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Seleccionar</th>
-            <th>Usuario</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Rol</th>
-            <th>Email</th>
-            <th>Estatus</th>
-            <th>Super Usuario</th>
-          </tr>
-        </thead>
-        <tbody id="table-body"></tbody>
-      </table>
-      <div id="popup" class="popup">
-        <div class="add-user-form">
-          <div class="popup-header">
-            <h2>TEST</h2>
-            <button class="close-button" onclick="closePopup()">&#10006</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Seleccionar</th>
+          <th>Usuario</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Rol</th>
+          <th>Email</th>
+          <th>Estatus</th>
+          <th>Super Usuario</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <div id="popup" class="popup">
+      <form class="add-user-form">
+        <div class="popup-header">
+          <h2 class="subtitles">Agregar usuario</h2>
+          <button class="close-button" onclick="closePopup()">&#10006</button>
+        </div>
+        <div class="popup-body">
+          <div class="inputs">
+            <label for="txtAddName">Nombre</label>
+            <input type="text" id="txtAddName" />
           </div>
-          <div class="popup-body">
-            <p>
-              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
-              sint cillum sint consectetur cupidatat.
-            </p>
+          <div class="inputs">
+            <label for="txtAddSurname">Apellido</label>
+            <input type="text" id="txtAddSurname" />
           </div>
+          <div class="inputs">
+            <label for="txtRol">Rol</label>
+            <select id="rol-dropdown">
+              <option value="">--Seleccione una opcion--</option>
+              <option value="Admin">Administrador</option>
+              <option value="Provee">Proveduría</option>
+              <option value="Bodega">Encargado de bodega</option>
+            </select>
+          </div>
+          <div class="inputs">
+            <label for="txtEmail">Email</label>
+            <input type="text" id="txtEmail" />
+          </div>
+          <div class="inputs superuser">
+            <label for="txtSudo">¿Superusuario?</label>
+            <input id="superuser" type="checkbox" name="" value="">
+          </div>
+          <button type="button" class="buttons" onclick="AddUser()">Agregar</button>
+          <button type="button" class="buttons" onclick="closePopup()">Cancelar</button>
         </div>
-      </div>
-    </main>
+      </form>
+    </div>
+  </main>
 
-    <footer class="footer">
-      <div class="company-name">
-        <h2>ProveGuard &copy;2023</h2>
-      </div>
-      <div class="copyright">
-        <h2>SICA - Sistema de Control de Activos</h2>
-        <h2>BotWeb Team</h2>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#">Contacto</a></li>
-        <li><a href="#">Sedes</a></li>
-        <li><a href="#">Ayuda</a></li>
-      </ul>
-    </footer>
-    <script src="js/utils.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/Services/sessionService.js"></script>
-    <script src="js/Controllers/sessionController.js"></script>
-    <script src="js/Controllers/usersController.js"></script>
-  </body>
+  <footer class="footer">
+    <div class="company-name">
+      <h2>ProveGuard &copy;2023</h2>
+    </div>
+    <div class="copyright">
+      <h2>SICA - Sistema de Control de Activos</h2>
+      <h2>BotWeb Team</h2>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Sedes</a></li>
+      <li><a href="#">Ayuda</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/Services/sessionService.js"></script>
+  <script src="js/Controllers/sessionController.js"></script>
+  <script src="js/Controllers/usersController.js"></script>
+</body>
+
 </html>

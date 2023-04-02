@@ -84,6 +84,15 @@ th {
   line-height: 1.4;
 }
 
+.inputs.superuser {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.inputs.superuser label{
+  padding-right: 20px;
+}
+
 footer {
   width: 100%;
   position: absolute;
