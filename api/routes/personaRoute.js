@@ -40,21 +40,22 @@ router.post("/RegistrarPersona", async (req, res) => {
   }
 });
 
-router.get("/ListarPersonas", async (req, res) => {
-  try {
-    const ListaPersonasDB = await Persona.find();
-    res.json({
-      resultado: true,
-      msj: "Los datos se obtuvieon de manera correcta ",
-      ListaPersonasDB,
+router.get("/ListarPersonas", (req, res) => {
+  Persona.find()
+    .then((ListaPersonaDB) => {
+      res.json({
+        resultado: true,
+        msj: "Registro realizado de manera correcta ",
+        ListaPersonaDB,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        resultado: false,
+        msj: "No se pudo registrar la persona, ocurrio el siguiente error: ",
+        error,
+      });
     });
-  } catch (err) {
-    res.json({
-      resultado: false,
-      msj: "No se pudo obtener la lista de personas: ",
-      err,
-    });
-  }
 });
 
 router.get("/BuscarPersonaIdentificacion", async (req, res) => {

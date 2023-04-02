@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SICA - Usuarios</title>
+    <title>SICA - Editar perfil</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -10,8 +10,8 @@
       href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
     />
     <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/users.css" rel="stylesheet" />
     <link href="css/general.css" rel="stylesheet" />
+    <link href="css/bitacora.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -45,50 +45,50 @@
     </header>
 
     <main>
-      <h2 class="subtitles">Administración de Usuarios</h2>
-      <div class="page-buttons">
+      <h2 class="subtitles">Bitacora</h2>
+      <h2 class="subtitles">Reporte de activos</h2>
+      <p>SICA - FOLIO: 001</p>
+      <div class="container">
         <div class="inputs">
-          <button type="button" id="edit" class="buttons">Editar</button>
-          <button type="button" id="add" class="buttons">
-            Agregar Usuario
-          </button>
-          <button type="button" id="delete" class="buttons">
-            Eliminar Usuario
-          </button>
+          <label for="nombre-empleado">Nombre del empleado</label>
+          <input type="text" id="nombre-empleado" />
         </div>
         <div class="inputs">
-          <button type="button" id="accept" class="buttons">Aceptar</button>
-          <button type="button" id="cancel" class="buttons">Cancelar</button>
+          <label for="localizacion">Localizacion</label>
+          <input type="text" id="localizacion" />
+        </div>
+        <div class="inputs">
+          <label for="id-activo">ID de activo</label>
+          <input type="text" id="id-activo" />
+        </div>
+        <div class="inputs">
+          <label for="fecha-traslado">Fecha de traslado</label>
+          <input type="date" id="fecha-traslado" />
+        </div>
+        <div class="inputs">
+          <label for="responsable">Responsable de aceptar o denegar</label>
+          <input type="text" id="responsable" />
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Seleccionar</th>
-            <th>Usuario</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Rol</th>
-            <th>Email</th>
-            <th>Estatus</th>
-            <th>Super Usuario</th>
-          </tr>
-        </thead>
-        <tbody id="table-body"></tbody>
-      </table>
-      <div id="popup" class="popup">
-        <div class="add-user-form">
-          <div class="popup-header">
-            <h2>TEST</h2>
-            <button class="close-button" onclick="closePopup()">&#10006</button>
-          </div>
-          <div class="popup-body">
-            <p>
-              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
-              sint cillum sint consectetur cupidatat.
-            </p>
-          </div>
+      <h2 class="subtitles">Extras del traslado</h2>
+      <div class="container">
+        <div class="inputs">
+          <label for="responsable">Extras del traslado</label>
+          <input type="text" id="extras" />
         </div>
+        <div class="inputs radioButtons">
+          <input type="radio" name="radioBtn" value="donacion" />
+          <label for="donado">Donado</label>
+          <input type="radio" name="radioBtn" value="almacenaje" />
+          <label for="almacenaje">Almacenaje</label>
+        </div>
+        <div class="inputs">
+          <label for="origen">Lugar de origen del activo</label>
+          <input type="text" id="origen" />
+        </div>
+        <button type="button" class="buttons" onclick="Validar()">
+          Subir activo
+        </button>
       </div>
     </main>
 
@@ -107,9 +107,9 @@
       </ul>
     </footer>
     <script src="js/utils.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/Services/sessionService.js"></script>
     <script src="js/Controllers/sessionController.js"></script>
-    <script src="js/Controllers/usersController.js"></script>
+    <script src="js/Controllers/bitacoraController.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
