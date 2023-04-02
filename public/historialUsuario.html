@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bienvenido a SICA</title>
+    <title>SICA - Reportes de Usuario</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -10,8 +10,9 @@
       href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
     />
     <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/landpageAdmin.css" rel="stylesheet" />
+    <link href="css/usuarios.css" rel="stylesheet" />
     <link href="css/general.css" rel="stylesheet" />
+    <link href="css/reportes.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -20,7 +21,7 @@
         <img
           src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
           alt="Logo ProveGuard"
-        /><span id="rol"></span>
+        /><span id="rol">Rol: Admin</span>
       </div>
       <nav>
         <ul class="nav-links">
@@ -43,34 +44,32 @@
         </button>
       </div>
     </header>
-
-    <main>
-      <div class="center-container">
-        <div class="logo user-icon" title="Perfil">
-          <img src="img/user-icon-black.png" alt="user-icon" />
-        </div>
-        <div id="welcome-message"></div>
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="company-name">
-        <h2>ProveGuard &copy;2023</h2>
-      </div>
-      <div class="copyright">
-        <h2>SICA - Sistema de Control de Activos</h2>
-        <h2>BotWeb Team</h2>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#">Contacto</a></li>
-        <li><a href="#">Sedes</a></li>
-        <li><a href="#">Ayuda</a></li>
-      </ul>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/Services/sessionService.js"></script>
-    <script src="js/Controllers/sessionController.js"></script>
-    <script src="js/utils.js"></script>
+    <div id="mySidenav" class="sidenav">
+      <a href="historialBitacora.html" id="hBitacora">Historial de bitácora</a>
+      <a href="historialUsuario.html" id="hUsuario">Historial de usuario</a>
+      <a href="historialDonacion.html" id="hDonaciones"
+        >Historial de donaciones</a
+      >
+      <a href="historialBodega.html" id="hBodega">Historial de bodega</a>
+      <a href="historialUnidad.html" id="hUnidades">Historial de unidades</a>
+    </div>
   </body>
+  <footer class="footer">
+    <div class="company-name">
+      <h2>ProveGuard &copy;2023</h2>
+    </div>
+    <div class="copyright">
+      <h2>SICA - Sistema de Control de Activos</h2>
+      <h2>BotWeb Team</h2>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Sedes</a></li>
+      <li><a href="#">Ayuda</a></li>
+    </ul>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/Services/sessionService.js"></script>
+  <script src="js/Controllers/sessionController.js"></script>
+  <script src="js/utils.js"></script>
 </html>
