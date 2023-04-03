@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SICA - Reportes de Donacion</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SICA-Registro / Edición de activos</title>
     <link
       rel="icon"
       type=""
       href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
     />
     <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/usuarios.css" rel="stylesheet" />
     <link href="css/general.css" rel="stylesheet" />
-    <link href="css/reportes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/ingresoRegistroActivosUsuario.css" />
   </head>
 
   <body>
@@ -21,12 +21,12 @@
         <img
           src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
           alt="Logo ProveGuard"
-        /><span id="rol">Rol: Admin</span>
+        /><span id="rol">Rol: Usuario</span>
       </div>
       <nav>
         <ul class="nav-links">
           <li>
-            <a href="registroDeActivosAdmin.html"
+            <a href="ingresoRegistroActivosUsuario.html"
               >Registro / Edición de activos</a
             >
           </li>
@@ -48,33 +48,38 @@
         </button>
       </div>
     </header>
-
-    <div id="mySidenav" class="sidenav">
-      <a href="historialBitacora.html" id="hBitacora">Historial de bitácora</a>
-      <a href="historialUsuario.html" id="hUsuario">Historial de usuario</a>
-      <a href="historialDonacion.html" id="hDonaciones"
-        >Historial de donaciones</a
-      >
-      <a href="historialBodega.html" id="hBodega">Historial de bodega</a>
-      <a href="historialUnidad.html" id="hUnidades">Historial de unidades</a>
-    </div>
+    <main>
+      <div class="subtitles">
+        <br /><br />
+        <h2>Registro / Edicion de activos</h2>
+        <br />
+        <div class="buttonContainer">
+          <button
+            onclick="window.location.href='registroDeActivosUsuario.html'"
+          >
+            Solicitud de Registro
+          </button>
+          <button
+            onclick="window.location.href='estadoDeSolicitudesUsuario.html'"
+          >
+            Estado de solicitud
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="company-name">
+        <h2>ProveGuard &copy;2023</h2>
+      </div>
+      <div class="copyright">
+        <h2>SICA - Sistema de Control de Activos</h2>
+        <h2>BotWeb Team</h2>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Sedes</a></li>
+        <li><a href="#">Ayuda</a></li>
+      </ul>
+    </footer>
   </body>
-  <footer class="footer">
-    <div class="company-name">
-      <h2>ProveGuard &copy;2023</h2>
-    </div>
-    <div class="copyright">
-      <h2>SICA - Sistema de Control de Activos</h2>
-      <h2>BotWeb Team</h2>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#">Contacto</a></li>
-      <li><a href="#">Sedes</a></li>
-      <li><a href="#">Ayuda</a></li>
-    </ul>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="js/Services/sessionService.js"></script>
-  <script src="js/Controllers/sessionController.js"></script>
-  <script src="js/utils.js"></script>
 </html>

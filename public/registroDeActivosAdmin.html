@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SICA-Registro de activos</title>
+    <link
+      rel="icon"
+      type=""
+      href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+    />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/general.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/registroDeActivosUsuario.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div id="prove-logo" class="logo" title="Inicio">
+        <img
+          src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+          alt="Logo ProveGuard"
+        /><span id="rol">Rol: Admin</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a href="ingresoRegistroActivosAdmin.html"
+              >Registro / Edición de activos</a
+            >
+          </li>
+          <li><a href="#">Traslados</a></li>
+          <li><a href="bitacora.html">Bitácora</a></li>
+          <li><a href="reportes.html">Reportes</a></li>
+          <li><a href="users.html">Manejo de usuarios</a></li>
+        </ul>
+      </nav>
+      <div class="left-nav">
+        <div id="user-icon" class="logo user-icon" title="Perfil">
+          <img src="img/user-icon.png" alt="user-icon" />
+        </div>
+        <div class="logo search-icon" title="Buscar">
+          <img src="img/search-interface-symbol.png" alt="user-icon" />
+        </div>
+        <button type="button" class="buttons" onclick="Logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </header>
+    <main>
+      <div class="formularioRegistroActivos">
+        <h2 class="subtitles">Registro de activos</h2>
+        <div
+          class="registrarActivos"
+          id="formularioRegistro"
+          onsubmit="validarRegistro(event)"
+        >
+          <form action="registrar">
+            <div class="inputNombreActivo">
+              <!-- <label for="nombreDeActivo"></label> -->
+              <input
+                type="text"
+                placeholder="Nombre del activo"
+                class="nombreDeActivo"
+              />
+            </div>
+            <div class="ubicacionActivo">
+              <!-- <label for="ubicacion"></label> -->
+              <input
+                type="text"
+                placeholder="Ubicacion del activo"
+                class="ubicacion"
+              />
+            </div>
+            <div class="inputIdActivo">
+              <!-- <label for="idActivo"></label> -->
+              <input
+                type="text"
+                maxlength="6"
+                placeholder="ID del activo"
+                name="idActivo"
+              />
+            </div>
+            <div class="selecSede">
+              <!-- <label for="seleccionarSede"></label> -->
+              <select name="seleccionarSede" id="seleccionarSede">
+                <option value="" disabled selected hidden>
+                  Seleccione la sede
+                </option>
+                <option value="sedeCentral">Sede Central</option>
+                <option value="sedeHeredia">Sede Heredia</option>
+                <option value="sedeAlajuela">Sede Alajuela</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="descripcion">
+          <!-- <label for="texto"></label> -->
+          <textarea
+            name="texto"
+            id="descripcionActivo"
+            cols="50"
+            rows="10"
+            placeholder=" Descripcion del activo que desea registrar"
+          ></textarea>
+        </div>
+        <button type="submit" class="buttons">Registrar</button>
+      </div>
+    </main>
+    <!-- <footer class="footer"> -->
+    <!--   <div class="company-name"> -->
+    <!--     <h2>ProveGuard &copy;2023</h2> -->
+    <!--   </div> -->
+    <!--   <div class="copyright"> -->
+    <!--     <h2>SICA - Sistema de Control de Activos</h2> -->
+    <!--     <h2>BotWeb Team</h2> -->
+    <!--   </div> -->
+    <!--   <ul class="nav-links"> -->
+    <!--     <li><a href="#">Contacto</a></li> -->
+    <!--     <li><a href="#">Sedes</a></li> -->
+    <!--     <li><a href="#">Ayuda</a></li> -->
+    <!--   </ul> -->
+    <!-- </footer> -->
+    <script src="js/utils.js"></script>
+    <script src="js/Services/sessionService.js"></script>
+    <script src="js/Controllers/sessionController.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/Controllers/registroDeActivosAdminController.js"></script>
+  </body>
+</html>
