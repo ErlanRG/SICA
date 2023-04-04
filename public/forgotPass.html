@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SICA - Iniciar Sesion</title>
+    <title>SICA - Olvide mi contraseña</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -36,20 +36,18 @@
     <main>
       <div class="login-container">
         <div class="form">
-          <h2 class="subtitles">Iniciar Sesión</h2>
+          <h2 class="subtitles">Olvidé mi contraseña</h2>
           <div class="inputs success">
-            <label for="txtUser">Usuario</label>
-            <input type="text" id="txtUser" />
-          </div>
-          <div class="inputs error">
-            <label for="txtPass">Contraseña</label>
-            <input type="password" id="txtPass" />
+            <label for="txtEmail">Email</label>
+            <input type="text" id="txtEmail" />
           </div>
           <div class="forgot-pass">
-            <a href="forgotPass.html" id="forgot-link">Olvidé mi contraseña</a>
+            <a href="login.html" id="forgot-link"
+              >&lt; Volver a inicio de sesión</a
+            >
           </div>
-          <button type="button" class="buttons" onclick="IniciarSesion()">
-            Iniciar
+          <button type="button" class="buttons" onclick="Enviar()">
+            Enviar
           </button>
         </div>
       </div>
@@ -67,6 +65,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/Services/sessionService.js"></script>
     <script src="js/Services/loginService.js"></script>
-    <script src="js/Controllers/loginController.js"></script>
+    <script src="js/Controllers/forgotPassController.js"></script>
   </body>
 </html>
