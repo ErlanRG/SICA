@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traslados - Solicitud de traslado de activo</title>
+  <link rel="icon" type="" href="img/proveguard-low-resolution-logo-color-on-transparent-background.png" />
+  <link href="css/reset.css" rel="stylesheet" />
+  <link href="css/general.css" rel="stylesheet" />
+  <link href="./css/formularioTraslados.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="header">
+    <div id="prove-logo" class="logo" title="Inicio">
+      <img src="img/proveguard-low-resolution-logo-color-on-transparent-background.png" alt="Logo ProveGuard" /><span
+        id="rol"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Registro / Edición de activos</a></li>
+      <li><a href="#">Traslados</a>
+        <ul class="submenu">
+          <li><a href="./formularioTraslados.html">Nueva solicitud de traslado</a></li>
+          <li><a href="./estadoTraslado.html">Estado de la solicitud</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Bitácora</a></li>
+      <li><a href="#">Reportes</a></li>
+      <li><a href="users.html">Manejo de usuarios</a></li>
+    </ul>
+    <div class="left-nav">
+      <div id="user-icon" class="logo user-icon" title="Perfil">
+        <img src="img/user-icon.png" alt="user-icon" />
+      </div>
+      <div class="logo search-icon" title="Buscar">
+        <img src="img/search-interface-symbol.png" alt="user-icon" />
+      </div>
+      <button type="button" class="buttons" onclick="Logout()">
+        Cerrar Sesión
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="center-container" />
+
+    <form action="">
+      <h3>SOLICITUD DE TRASLADO DE ACTIVO</h3>
+      <div class="row">
+        <div class="column">
+          <div>
+            <label for="txtName" id="lblName">Nombre del activo</label>
+            <input type="text" id="txtName">
+          </div>
+          <div>
+            <label for="txtIdActive" id="lblIdActive">ID del Activo</label>
+            <input type="text" id="txtIdActive">
+          </div>
+          <div>
+            <label for="txtCode" id="lblCode">Código del activo</label>
+            <input type="text" id="txtCode">
+          </div>
+
+          <div>
+            <fieldset id="txtReason">
+
+              <legend id="lblReason">Razón de traslado</legend>
+
+              <label for="rbtActivoDanado" class="container">Activo dañado
+                <input type="radio" id="rbtActivoDanado" value="ActivoDanado" name="rbtReason">
+                <span class="checkmark"></span>
+              </label>
+
+              <label for="rbtActivoDesuso" class="container">Activo en Desuso
+                <input type="radio" id="rbtActivoDesuso" value="ActivoDesuso" name="rbtReason">
+                <span class="checkmark"></span>
+              </label>
+
+              <label for="rbtOtro" class="container">Otro
+                <input type="radio" id="rbtOtro" value="Otro" name="rbtReason">
+                <span class="checkmark"></span>
+              </label>
+
+              <div>
+                <label for="txtOtro" id="lblOtro">Especifique Otro</label>
+                <input type="text" id="txtOtro">
+              </div>
+
+            </fieldset>
+          </div>
+
+
+        </div>
+        <div class="column">
+
+          <div>
+            <label for="txtCampus" id="lblCampus">Sede a trasladar</label>
+            <select name="" id="txtCampus">
+              <option value=""></option>
+              <option value="1">Sede de bodega</option>
+              <option value="2">Sede de donaciones</option>
+              <option value="3">Sede prinicpal</option>
+              <option value="4">Sede de Heredia</option>
+            </select>
+
+          </div>
+
+          <div>
+            <label for="txtDescription">Descripción actual del activo...</label>
+            <textarea id="txtDescription"></textarea>
+          </div>
+
+          <div class="AdjuntarFoto">
+            <!--<input type="file" multiple="multiple" id="foto" /> -->
+            <span class="adjuntar"> </span>
+          </div>
+
+          <label for="foto">Agregue dos fotos como mínimo del activo</label>
+        </div>
+      </div>
+      <div>
+      </div>
+      <button class="buttons" type="button" id="btnSubmit">Enviar</button>
+      <button class="buttons" type="button">Eliminar</button>
+      </div>
+
+    </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="company-name">
+      <h2>ProveGuard &copy;2023</h2>
+    </div>
+    <div class="copyright">
+      <h2>SICA - Sistema de Control de Activos</h2>
+      <h2>BotWeb Team</h2>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Sedes</a></li>
+      <li><a href="#">Ayuda</a></li>
+    </ul>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/Services/sessionService.js"></script>
+  <script src="js/Controllers/sessionController.js"></script>
+  <script src="js/Controllers/transfersController.js"></script>
+  <script src="js/utils.js"></script>
+</body>
+
+</html>

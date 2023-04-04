@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Estado de las solicitudes de traslado</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type=""
+      href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+    />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/users.css" rel="stylesheet" />
+    <link href="css/general.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div id="prove-logo" class="logo" title="Inicio">
+        <img
+          src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+          alt="Logo ProveGuard"
+        /><span id="rol"></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Registro / Edición de activos</a></li>
+        <li>
+          <a href="#">Traslados</a>
+          <ul class="submenu">
+            <li>
+              <a href="./formularioTraslados.html"
+                >Nueva solicitud de traslado</a
+              >
+            </li>
+            <li><a href="./estadoTraslado.html">Estado de la solicitud</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Bitácora</a></li>
+        <li><a href="#">Reportes</a></li>
+        <li><a href="users.html">Manejo de usuarios</a></li>
+      </ul>
+      <div class="left-nav">
+        <div id="user-icon" class="logo user-icon" title="Perfil">
+          <img src="img/user-icon.png" alt="user-icon" />
+        </div>
+        <div class="logo search-icon" title="Buscar">
+          <img src="img/search-interface-symbol.png" alt="user-icon" />
+        </div>
+        <button type="button" class="buttons" onclick="Logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <h2 class="subtitles">Estado de solicitudes de Traslado</h2>
+      <div class="row">
+        <div class="column">
+          <input type="text" class="buscador" placeholder="Nombre del activo" />
+          <button type="button" class="buttons">Buscar</button>
+        </div>
+      </div>
+
+      <table id="transfers">
+        <thead>
+          <tr>
+            <th>Nombre de la solicitud</th>
+            <th>ID del Activo</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th>Usuario</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </main>
+
+    <footer class="footer">
+      <div class="company-name">
+        <h2>ProveGuard &copy;2023</h2>
+      </div>
+      <div class="copyright">
+        <h2>SICA - Sistema de Control de Activos</h2>
+        <h2>BotWeb Team</h2>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Sedes</a></li>
+        <li><a href="#">Ayuda</a></li>
+      </ul>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/Services/sessionService.js"></script>
+    <script src="js/Controllers/sessionController.js"></script>
+    <script src="js/Controllers/transfersController.js"></script>
+    <script src="js/utils.js"></script>
+  </body>
+</html>
