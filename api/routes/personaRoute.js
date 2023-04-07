@@ -29,239 +29,199 @@ router.post("/RegistrarPersona", (req, res) => {
     .then((personaDB) => {
       res.json({
         resultado: true,
-        msj: "Registro realizado de manera correcta ",
+        msj: "Registro realizado de manera correcta",
         personaDB,
       });
     })
-    .catch((error) => {
+    .catch((err) => {
       res.json({
         resultado: false,
-        msj: "No se pudo registrar la persona, ocurrio el siguiente error: ",
-        error,
+        msj: "No se pudo registrar la persona.",
+        err,
       });
     });
 });
 
 router.get("/ListarPersonas", (req, res) => {
   Persona.find()
-    .then((ListaPersonaDB) => {
+    .then((ListaPersonasDB) => {
       res.json({
         resultado: true,
-        msj: "Registro realizado de manera correcta ",
-        ListaPersonaDB,
+        msj: "Los datos se obtuvieron de manera correcta: ",
+        ListaPersonasDB,
       });
     })
-    .catch((error) => {
+    .catch((err) => {
       res.json({
         resultado: false,
-        msj: "No se pudo registrar la persona, ocurrio el siguiente error: ",
-        error,
+        msj: "No se pudo obtener la lista de personas: ",
+        err,
       });
     });
 });
 
-router.get("/BuscarPersonaIdentificacion", async (req, res) => {
-  try {
-    let params = req.query;
-    let personaDB = await Persona.findOne({
-      Identificacion: params.Identificacion,
-    });
-    res.json({
-      resultado: true,
-      msj: "La persona se obtuvo de manera correcta ",
-      personaDB,
-    });
-  } catch (err) {
-    res.json({
-      resultado: false,
-      msj: "No se pudo obtener la persona",
-      err,
-    });
-  }
-});
-
-// BuscarPersonasId
-router.get("/BuscarPersonaId", async (req, res) => {
-  try {
-    let params = req.query;
-    let personaDB = await Persona.findOne({ _id: params._id });
-    res.json({
-      resultado: true,
-      msj: "Los datos se obtuvieron de manera correcta",
-      personaDB,
-    });
-  } catch (err) {
-    res.json({
-      resultado: false,
-      msj: "No se pudo obtner la persona",
-      err,
-    });
-  }
-});
-
-// Buscar por email y password (Autenticar Usuario)
-router.get("/AutenticarPersona", async (req, res) => {
-  try {
-    let params = req.query;
-    let personaDB = await Persona.findOne({
-      Email: params.Email,
-      Password: params.Password,
-    });
-
-    // Lo mismo que null. Incluye también undefined
-    if (!personaDB) {
-      res.json({
-        resultado: false,
-        msj: "Usuario y/o contraseña incorrectos",
-        personaDB,
-      });
-    } else if (Number(personaDB.Estado) == 0) {
-      res.json({
-        resultado: false,
-        msj: "Usuario inactivo, por favor comuniquese con el administrador",
-        personaDB,
-      });
-    } else {
+router.get("/BuscarPersonaIdentificacion", (req, res) => {
+  let params = req.query;
+  Persona.findOne({ Identificacion: params.Identificacion })
+    .then((personaDB) => {
       res.json({
         resultado: true,
-        msj: "Los datos se obtuvieron de manera correcta",
+        msj: "Persona encontrada",
         personaDB,
       });
-    }
-  } catch (err) {
-    res.json({
-      resultado: false,
-      msj: "No se pudo obtener la persona",
-      err,
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "No se encontro una persona con ese numero de identificacion",
+        err,
+      });
     });
-  }
 });
 
-router.put("/ModificarPersona", async (req, res) => {
-  try {
-    let body = req.body;
-    let info = await Persona.updateOne(
-      { _id: body._id },
-      {
-        $set: req.body,
-        // $set:{
-        //     Nombre: body.Nombre,
-        //     Edad: body.Edad
-        // }
-      }
-    );
-    res.json({
-      resultado: true,
-      msj: "Los datos se actualizaron de manera correcta",
-      info,
+router.get("/BuscarPersonaId", (req, res) => {
+  let params = req.query;
+  Persona.findOne({ _id: params._id })
+    .then((personaDB) => {
+      res.json({
+        resultado: true,
+        msj: "Persona encontrada",
+        personaDB,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "No se encontro una persona con ese id",
+        err,
+      });
     });
-  } catch (err) {
-    res.json({
-      resultado: false,
-      msj: "Ocurrio un error y no se pudieron actualizar los datos.",
-      err,
-    });
-  }
 });
 
-// EliminarPersona
-router.delete("/EliminarPersona", async (req, res) => {
-  try {
-    let body = req.body;
-    let result = await Persona.remove({ _id: body._id });
-
-    res.json({
-      resultado: true,
-      msj: "Los datos se eliminaron de manera correcta",
-      result,
-    });
-  } catch (err) {
-    res.json({
-      resultado: false,
-      msj: "No se pudo eliminar los datos",
-      err,
-    });
-  }
-});
-
-router.post("/InactivarPersona", (req, res) => {
-  let body = req.body;
-  Persona.updateOne(
-    { _id: body._id },
-    {
-      $set: {
-        Estado: 0,
-      },
-    },
-    (err, info) => {
-      if (err) {
+router.get("/AutenticarPersona", (req, res) => {
+  let params = req.query;
+  Persona.findOne({ Email: params.Email, Password: params.Password })
+    .then((personaDB) => {
+      if (!personaDB) {
         res.json({
           resultado: false,
-          msj: "Ocurrio un error y no se pudieron actualizar los datos.",
-          err,
+          msj: "Usuario y/o contraseña incorrectos",
+          personaDB,
+        });
+      } else if (Number(personaDB.Estado) == 0) {
+        res.json({
+          resultado: false,
+          msj: "Usuario inactivo. Comuniquese con el administrador",
+          personaDB,
         });
       } else {
         res.json({
           resultado: true,
-          msj: "Los datos se actualizaron de manera correcta",
-          info,
+          msj: "Usuario Autenticado",
+          personaDB,
         });
       }
-    }
-  );
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "Usuario no se encuentra en la base de datos",
+        err,
+      });
+    });
+});
+
+router.put("/ModificarPersona", (req, res) => {
+  let body = req.body;
+  Persona.updateOne({ _id: body._id }, { $set: req.body })
+    .then((info) => {
+      res.json({
+        resultado: true,
+        msj: "Los datos han sido actualizados",
+        info,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "No se pudieron actualizar los datos.",
+        err,
+      });
+    });
+});
+
+router.delete("/EliminarPersona", (req, res) => {
+  let body = req.body;
+  Persona.deleteOne({ _id: body._id })
+    .then((result) => {
+      res.json({
+        resultado: true,
+        msj: "Los datos se eliminaron de manera correcta",
+        result,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "No se pudieron eliminar los datos.",
+        err,
+      });
+    });
+});
+
+router.post("/InactivarPersona", (req, res) => {
+  let body = req.body;
+  Persona.updateOne({ _id: body._id }, { $set: { Estado: 0 } })
+    .then((info) => {
+      res.json({
+        resultado: true,
+        msj: "La persona ha sido desactivada",
+        info,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "No se pudo desactivar a la persona.",
+        err,
+      });
+    });
 });
 
 router.post("/RegistrarIntereses", (req, res) => {
   let body = req.body;
   let intereses = JSON.parse(body.Intereses);
-  let mi_id = body._id;
-  let error;
 
-  Persona.updateOne(
-    { _id: mi_id },
-    {
-      $set: {
-        InteresesPersonales: [],
-      },
-    },
-    (err) => {
-      if (err) {
-        error = err;
-      }
-    }
-  );
-  intereses.forEach((item) => {
-    setTimeout(() => {
-      Persona.updateOne(
-        { _id: mi_id },
-        {
-          $push: {
-            InteresesPersonales: {
-              Intereses: item,
+  Persona.updateOne({ _id: body._id }, { $set: { InteresesPersonales: [] } })
+    .then(() => {
+      let promises = intereses.map((item) => {
+        return Persona.updateOne(
+          { _id: mi_id },
+          {
+            $push: {
+              InteresesPersonales: {
+                Intereses: item,
+              },
             },
-          },
-        },
-        (err) => {
-          if (err) {
-            error = err;
           }
-        }
-      );
-    }, 5000);
-  });
+        );
+      });
 
-  if (error) {
-    res.json({
-      resultado: false,
-      msj: "Ocurrio un error inesperado y no se pudieron actualizar los intereses.",
-      error,
+      return Promise.all(promises);
+    })
+    .then(() => {
+      res.json({
+        resultado: true,
+        msj: "Los intereses se actualizaron de manera correcta.",
+      });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "Ocurrio un error inesperado y no se pudieron actualizar los intereses.",
+        error: err,
+      });
     });
-  } else {
-    res.json({
-      resultado: true,
-      msj: "Los intereses se actualizaron de manera correcta.",
-    });
-  }
 });
 
 router.post("/RegistrarTarjeta", (req, res) => {
@@ -273,27 +233,26 @@ router.post("/RegistrarTarjeta", (req, res) => {
         Tarjetas: {
           Nombre: body.Nombre,
           Apellido: body.Apellido,
-          NumeroTarjeta: body.NumeroTarjeta,
+          NumeroTajeta: body.NumeroTajeta,
           CVV: body.CVV,
         },
       },
-    },
-    (err, info) => {
-      if (err) {
-        res.json({
-          resultado: false,
-          msj: "Ocurrio un error y no se pudo registrar la tarjeta",
-          err,
-        });
-      } else {
-        res.json({
-          resultado: true,
-          msj: "Tarjeta registrada de manera correcta",
-          info,
-        });
-      }
     }
-  );
+  )
+    .then((info) => {
+      res.json({
+        resultado: true,
+        msj: "Tarjeta registrada correctamente",
+        info,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "No se pudo registrar la tarjeta.",
+        err,
+      });
+    });
 });
 
 router.post("/EliminarTarjetaPersona", (req, res) => {
@@ -304,23 +263,22 @@ router.post("/EliminarTarjetaPersona", (req, res) => {
       $pull: {
         Tarjetas: { _id: body._idTarjeta },
       },
-    },
-    (err, info) => {
-      if (err) {
-        res.json({
-          resultado: false,
-          msj: "No se pudo eliminar la tarjeta",
-          err,
-        });
-      } else {
-        res.json({
-          resultado: true,
-          msj: "Tarjeta eliminada de manera correcta",
-          info,
-        });
-      }
     }
-  );
+  )
+    .then((info) => {
+      res.json({
+        resultado: true,
+        msj: "Tarjeta eliminada.",
+        info,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "No se pude eliminar la tarjeta",
+        err,
+      });
+    });
 });
 
 module.exports = router;
