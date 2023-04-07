@@ -86,11 +86,15 @@ th {
 
 .inputs.superuser {
   display: flex;
-  margin-bottom: 20px;
+  margin: 20px 0 20px 0;
 }
 
-.inputs.superuser label{
+.inputs.superuser label {
   padding-right: 20px;
+}
+
+.inputs.profile-image {
+  margin: 20px 0 20px 0;
 }
 
 footer {

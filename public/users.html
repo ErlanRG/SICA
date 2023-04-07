@@ -79,29 +79,49 @@
         </div>
         <div class="popup-body">
           <div class="inputs">
+            <label for="txtIDType">Tipo de Identificación</label>
+            <select id="txtIDType">
+              <option value="">--Seleccione una opción--</option>
+              <option value="Fisica">Fisica</option>
+              <option value="Extranjera">Extranjeros</option>
+            </select>
+          </div>
+          <div class="inputs">
+            <label for="txtID">Identificación</label>
+            <input type="text" id="txtID" />
+          </div>
+          <div class="inputs">
             <label for="txtAddName">Nombre</label>
             <input type="text" id="txtAddName" />
           </div>
           <div class="inputs">
-            <label for="txtAddSurname">Apellido</label>
-            <input type="text" id="txtAddSurname" />
+            <label for="txtLastname1">Primer Apellido</label>
+            <input type="text" id="txtLastname1" />
           </div>
           <div class="inputs">
-            <label for="txtRol">Rol</label>
-            <select id="rol-dropdown">
-              <option value="">--Seleccione una opcion--</option>
-              <option value="Admin">Administrador</option>
-              <option value="Provee">Proveduría</option>
-              <option value="Bodega">Encargado de bodega</option>
-            </select>
+            <label for="txtLastname2">Segundo Apellido</label>
+            <input type="text" id="txtLastname2" />
+          </div>
+          <div class="inputs">
+            <label for="txtBirthdate">Fecha de nacimiento</label>
+            <input type="date" id="txtBirthdate" />
           </div>
           <div class="inputs">
             <label for="txtEmail">Email</label>
             <input type="text" id="txtEmail" />
           </div>
-          <div class="inputs superuser">
-            <label for="txtSudo">¿Superusuario?</label>
-            <input id="superuser" type="checkbox" name="" value="">
+          <div class="inputs">
+            <label for="txtRol">Rol</label>
+            <select id="rol-dropdown">
+              <option value="">--Seleccione una opción--</option>
+              <option value="Admin">Administrador</option>
+              <option value="Provee">Proveduría</option>
+              <option value="Bodega">Encargado de bodega</option>
+            </select>
+          </div>
+          <div class="inputs profile-image">
+            <label for="profilePic">Seleccionar imagen de perfil:</label>
+            <input type="file" id="profilePic">
           </div>
           <button type="button" class="buttons" onclick="AddUser()">Agregar</button>
           <button type="button" class="buttons" onclick="closePopup()">Cancelar</button>
@@ -116,7 +136,7 @@
     </div>
     <div class="copyright">
       <h2>SICA - Sistema de Control de Activos</h2>
-        <h2><a href="landpageEquipo.html">BotWeb Team</a></h2>
+      <h2><a href="landpageEquipo.html">BotWeb Team</a></h2>
     </div>
     <ul class="nav-links">
       <li><a href="#">Contacto</a></li>
