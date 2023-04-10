@@ -11,7 +11,7 @@ txtPass.addEventListener("keypress", (event) => {
   }
 });
 
-function IniciarSesion() {
+async function IniciarSesion() {
   let user = txtUser.value;
   let pass = txtPass.value;
 
@@ -19,12 +19,18 @@ function IniciarSesion() {
     return;
   }
 
-  let result = AuthenticateUser(user, pass);
+  let params = {
+    Email: user,
+    Password: pass,
+  };
 
-  if (result != null) {
-    RedirectUser(result);
+  let result = await ProcessGET("AutenticarPersona", params);
+
+  if (result != null && result.resultado == true && result.personaDB) {
+    RedirectUser(result.personaDB);
+    SetActiveSession(result.personaDB);
   } else {
-    PrintError("Usuario y/o contraseña incorrectos");
+    PrintError(result.msj);
   }
 }
 
@@ -45,9 +51,17 @@ function ValidateData(pUser, pPass) {
 function RedirectUser(pUser) {
   let rol = pUser.Rol;
 
-  if (rol == "Admin") {
-    location.href = "landpageAdmin.html";
-  } else {
-    location.href = "landpageOthers.html";
+  switch (rol) {
+    case 1:
+      location.href = "landpageAdmin.html";
+      break;
+
+    case 2:
+    case 3:
+      location.href = "landpageOthers.html";
+      break;
+
+    default:
+      break;
   }
 }

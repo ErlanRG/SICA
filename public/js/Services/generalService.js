@@ -1,5 +1,23 @@
 "use strict";
 
+async function ProcessGET(pRouterName, pParams) {
+  let result = null;
+  await axios({
+    method: "get",
+    url: apiUrl + pRouterName,
+    reponseType: "json",
+    params: pParams,
+  })
+    .then((res) => {
+      result = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return result;
+}
+
 function SetActiveSession(pUserData) {
   let jsonStringify = JSON.stringify(pUserData);
   localStorage.setItem("ActiveSessionData", jsonStringify);

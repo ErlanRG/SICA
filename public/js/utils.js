@@ -1,5 +1,7 @@
 "use strict";
 
+const apiUrl = "http://localhost:3000/api/";
+
 function PrintError(msj) {
   Swal.fire({
     title: "Error!",
@@ -98,10 +100,17 @@ function RedirectHome() {
   let user = GetActiveSession();
   let rol = user.Rol;
 
-  if (rol == "Admin") {
-    location.href = "landpageAdmin.html";
-  } else {
-    location.href = "landpageOthers.html";
+  switch (rol) {
+    case 1:
+      location.href = "landpageAdmin.html";
+      break;
+
+    case 2:
+      location.href = "landpageOthers.html";
+      break;
+
+    default:
+      break;
   }
 }
 
