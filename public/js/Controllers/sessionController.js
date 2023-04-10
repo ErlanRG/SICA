@@ -1,6 +1,30 @@
 "use strict";
 IdentifyLoggedUser();
 
+function printRol() {
+  let info = GetActiveSession();
+  let rol = null;
+
+  switch (info.Rol) {
+    case 1:
+      rol = "Admin";
+      break;
+
+    case 2:
+      rol = "Proveeduría";
+      break;
+
+    case 3:
+      rol = "Bodega";
+      break;
+
+    default:
+      break;
+  }
+
+  return rol;
+}
+
 function IdentifyLoggedUser() {
   let result = GetActiveSession();
 
@@ -14,7 +38,7 @@ function IdentifyLoggedUser() {
       " " +
       result.Apellido1 +
       "</p>";
-    rol.innerHTML = "ROL: " + result.Rol;
+    rol.innerHTML = "ROL: " + printRol();
   }
 }
 
