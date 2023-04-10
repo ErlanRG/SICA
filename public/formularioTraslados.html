@@ -48,7 +48,7 @@
     <div class="center-container" />
 
     <form action="">
-      <h3>SOLICITUD DE TRASLADO DE ACTIVO</h3>
+      <h3 class="subtitles">SOLICITUD DE TRASLADO DE ACTIVO</h3>
       <div class="row">
         <div class="column">
           <div>
@@ -56,8 +56,8 @@
             <input type="text" id="txtName">
           </div>
           <div>
-            <label for="txtIdActive" id="lblIdActive">ID del Activo</label>
-            <input type="text" id="txtIdActive">
+            <label for="txtIdAsset" id="lblIdAsset">ID del Activo</label>
+            <input type="text" id="txtIdAsset">
           </div>
           <div>
             <label for="txtCode" id="lblCode">Código del activo</label>
@@ -113,18 +113,24 @@
             <textarea id="txtDescription"></textarea>
           </div>
 
-          <div class="AdjuntarFoto">
-            <!--<input type="file" multiple="multiple" id="foto" /> -->
-            <span class="adjuntar"> </span>
+          <div class="image-container">
+            <div class="image-box" onclick="UploadImages()">
+              <img id="image1" src="" alt="">
+              <input type="file" id="file1">
+            </div>
+            <div class="image-box">
+              <img id="image2" src="" alt="">
+              <input type="file" id="file2">
+            </div>
           </div>
 
-          <label for="foto">Agregue dos fotos como mínimo del activo</label>
+          <label for="foto">*Agregue dos fotos como mínimo del activo</label>
         </div>
       </div>
       <div>
+        <button class="buttons" type="button" id="btnSubmit" onclick="Validate()">Enviar</button>
+        <button class="buttons" type="button">Eliminar</button>
       </div>
-      <button class="buttons" type="button" id="btnSubmit">Enviar</button>
-      <button class="buttons" type="button">Eliminar</button>
       </div>
 
     </form>
