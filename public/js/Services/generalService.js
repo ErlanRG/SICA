@@ -36,6 +36,11 @@ async function ProcessPOST(pRouterName, pData) {
   return result;
 }
 
+async function ProcessDELETE(pRouterName, pData) {
+  let result = await ProcessAction("delete", pRouterName, pData);
+  return result;
+}
+
 async function ProcessAction(pMethod, pRouterName, pData) {
   let result = null;
   await axios({

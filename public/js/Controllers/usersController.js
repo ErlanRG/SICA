@@ -19,7 +19,6 @@ let cancelBtn = document.getElementById("cancel");
 editBtn.addEventListener("click", EnableButtons);
 cancelBtn.addEventListener("click", DisableButtons);
 addBtn.addEventListener("click", EnableAddUser);
-deleteBtn.addEventListener("click", DeleteUsers);
 
 // Para filtrar
 let inputFiltro = document.getElementById("filter");
@@ -318,11 +317,4 @@ async function AddUser() {
       location.href = "users.html";
     });
   }
-
-  // console.log(data);
-  // PrintSuccess("Usuario registrado");
-}
-
-function DeleteUsers() {
-  // TODO
 }
