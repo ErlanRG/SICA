@@ -1,7 +1,7 @@
 "use strict";
 IdentifyLoggedUser();
 
-function printRol() {
+function PrintRol() {
   let info = GetActiveSession();
   let rol = null;
 
@@ -38,7 +38,7 @@ function IdentifyLoggedUser() {
       " " +
       result.Apellido1 +
       "</p>";
-    rol.innerHTML = "ROL: " + printRol();
+    rol.innerHTML = "ROL: " + PrintRol();
   }
 }
 

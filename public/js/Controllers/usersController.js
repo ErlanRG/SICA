@@ -13,20 +13,167 @@ let inputProfileImg = document.getElementById("profilePic");
 let editBtn = document.getElementById("edit");
 let addBtn = document.getElementById("add");
 let deleteBtn = document.getElementById("delete");
-let acceptBtn = document.getElementById("accept");
 let cancelBtn = document.getElementById("cancel");
 
-// To enable other buttons
+// Para habilitar botones
 editBtn.addEventListener("click", EnableButtons);
 cancelBtn.addEventListener("click", DisableButtons);
 addBtn.addEventListener("click", EnableAddUser);
 deleteBtn.addEventListener("click", DeleteUsers);
 
+// Para filtrar
+let inputFiltro = document.getElementById("filter");
+inputFiltro.addEventListener("keyup", ImprimirDatos);
+
+let listaPersonas = [];
+
+GetListaPersonas();
+
+async function GetListaPersonas() {
+  let result = await ProcessGET("ListarPersonas", null);
+  if (result != null && result.resultado == true) {
+    listaPersonas = result.ListaPersonasDB;
+    ImprimirDatos();
+  } else {
+    PrintError(result.msj);
+    return;
+  }
+}
+
+async function ImprimirDatos() {
+  let tbody = document.getElementById("table-body");
+  let filtro = inputFiltro.value;
+  tbody.innerHTML = "";
+
+  for (let i = 0; i < listaPersonas.length; i++) {
+    if (
+      listaPersonas[i].Nombre.toLowerCase().includes(filtro) ||
+      listaPersonas[i].Apellido1.toLowerCase().includes(filtro) ||
+      PrintRol(listaPersonas[i].Rol).toLowerCase().includes(filtro)
+    ) {
+      let fila = tbody.insertRow();
+      let celdaTipoIdentificacion = fila.insertCell();
+      let celdaIdentificacion = fila.insertCell();
+      let celdaNombre = fila.insertCell();
+      let celdaEmail = fila.insertCell();
+      // let celdaSexo = fila.insertCell();
+      let celdaNacimiento = fila.insertCell();
+      // let celdaEdad = fila.insertCell();
+      let celdaEstado = fila.insertCell();
+      let celdaRol = fila.insertCell();
+      let celdaAcciones = fila.insertCell();
+
+      celdaTipoIdentificacion.innerHTML = ObtenerTipoIdentificacion(
+        listaPersonas[i].TipoIdentificacion
+      );
+      celdaIdentificacion.innerHTML = listaPersonas[i].Identificacion;
+      celdaNombre.innerHTML =
+        listaPersonas[i].Nombre +
+        " " +
+        listaPersonas[i].Apellido1 +
+        " " +
+        listaPersonas[i].Apellido2;
+      celdaEmail.innerHTML = listaPersonas[i].Email;
+      // celdaSexo.innerHTML = listaPersonas[i].Sexo;
+      // celdaEdad.innerHTML = listaPersonas[i].Edad;
+      celdaEstado.innerHTML = ObtenerEstado(listaPersonas[i].Estado);
+      celdaRol.innerHTML = ObtenerRol(listaPersonas[i].Rol);
+
+      let fechaNac = new Date(listaPersonas[i].Nacimiento.replace("Z", ""));
+      celdaNacimiento.innerHTML =
+        fechaNac.getDate() +
+        "/" +
+        (fechaNac.getMonth() + 1) +
+        "/" +
+        fechaNac.getFullYear();
+
+      let btnEdit = document.createElement("button");
+      btnEdit.type = "button";
+      btnEdit.innerText = "✎";
+      btnEdit.title = "Editar";
+      btnEdit.classList.add("btnsTabla");
+      btnEdit.onclick = function () {
+        location.href =
+          "editProfile.html?_id=" +
+          listaPersonas[i]._id +
+          "&nombre=" +
+          listaPersonas[i].Nombre +
+          "&Rol=" +
+          listaPersonas[i].Rol;
+      };
+
+      let btnDelete = document.createElement("button");
+      btnDelete.type = "button";
+      btnDelete.innerText = "🗑️";
+      btnDelete.title = "Elimnar";
+      btnDelete.classList.add("btnsTabla");
+      btnDelete.onclick = async function () {
+        let confirmacion = false;
+        await Swal.fire({
+          title: "Desea eliminar el registro de " + listaPersonas[i].Nombre,
+          icon: "warning",
+          confirmButtonText: "Confirmar",
+          denyButtonText: "Cancelar",
+          showDenyButton: true,
+        }).then((res) => {
+          confirmacion = res.isConfirmed;
+        });
+        if (confirmacion == true) {
+          let data = {
+            _id: listaPersonas[i]._id,
+          };
+          let result = await ProcessDELETE("EliminarPersona", data);
+          if (result.resultado == true) {
+            PrintSuccess(result.msj);
+          } else {
+            PrintError(result.msj);
+          }
+          await GetListaPersonas();
+        }
+      };
+      let btnInactivar = document.createElement("button");
+      btnInactivar.type = "button";
+      btnInactivar.innerText = "Off";
+      btnInactivar.title = "Inactivar";
+      btnInactivar.classList.add("btnsTabla");
+      btnInactivar.onclick = async function () {
+        let confirmacion = false;
+        await Swal.fire({
+          title: "Desea inactivar el registro de " + listaPersonas[i].Nombre,
+          icon: "warning",
+          confirmButtonText: "Confirmar",
+          denyButtonText: "Cancelar",
+          showDenyButton: true,
+        }).then((res) => {
+          confirmacion = res.isConfirmed;
+        });
+        if (confirmacion == true) {
+          let data = {
+            _id: listaPersonas[i]._id,
+          };
+          let result = await ProcessPOST("InactivarPersona", data);
+          if (result.resultado == true) {
+            PrintSuccess(result.msj);
+          } else {
+            PrintError(result.msj);
+          }
+          await GetListaPersonas();
+        }
+      };
+
+      let divBtns = document.createElement("div");
+      divBtns.appendChild(btnEdit);
+      divBtns.appendChild(btnDelete);
+      divBtns.appendChild(btnInactivar);
+      celdaAcciones.appendChild(divBtns);
+    }
+  }
+}
+
 function EnableButtons() {
   editBtn.style.display = "none";
   addBtn.style.display = "inline";
   deleteBtn.style.display = "inline";
-  acceptBtn.style.display = "inline";
   cancelBtn.style.display = "inline";
 }
 
@@ -34,7 +181,6 @@ function DisableButtons() {
   editBtn.style.display = "inline";
   addBtn.style.display = "none";
   deleteBtn.style.display = "none";
-  acceptBtn.style.display = "none";
   cancelBtn.style.display = "none";
 }
 
@@ -117,6 +263,10 @@ function GenerateTempPass() {
     tempPass += charset.charAt(Math.floor(Math.random() * n));
   }
   return tempPass;
+}
+
+function PrintUserTable() {
+  // let tbody =
 }
 
 function AddUser() {

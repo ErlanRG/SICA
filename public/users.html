@@ -52,25 +52,28 @@
         </button>
       </div>
       <div class="inputs">
-        <button type="button" id="accept" class="buttons">Aceptar</button>
+        <label for="filter">Filtrar</label>
+        <input type="text" id="filter">
         <button type="button" id="cancel" class="buttons">Cancelar</button>
       </div>
     </div>
-    <table>
+    <table id="table-usuarios">
       <thead>
         <tr>
-          <th>Seleccionar</th>
-          <th>Usuario</th>
+          <th>Tipo de ID</th>
+          <th>Identificación</th>
           <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Rol</th>
           <th>Email</th>
-          <th>Estatus</th>
-          <th>Super Usuario</th>
+          <th>Fecha Nacimiento</th>
+          <th>Estado</th>
+          <th>Rol</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
+      <tfoot id="table-footer"></tfoot>
     </table>
+
     <div id="popup" class="popup">
       <form class="add-user-form">
         <div class="popup-header">
