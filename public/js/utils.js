@@ -131,3 +131,40 @@ function EnableButtons() {
     button.classList.add("buttons");
   }
 }
+
+function ObtenerTipoIdentificacion(pTipo) {
+  switch (pTipo) {
+    case 1:
+      return "Fisica";
+    case 2:
+      return "Juridica";
+    case 3:
+      return "Dimex";
+    case 4:
+      return "Pasaporte";
+    default:
+      return "Sin identificacion";
+  }
+}
+
+function ObtenerEstado(pEstado) {
+  switch (pEstado) {
+    case 1:
+      return "Activo";
+    default:
+      return "Inactivo";
+  }
+}
+
+function ObtenerRol(pRol) {
+  switch (pRol) {
+    case 1:
+      return "Administrador";
+    case 2:
+      return "Proveeduria";
+    case 3:
+      return "Encargado Bodega";
+    default:
+      return "Sin rol";
+  }
+}

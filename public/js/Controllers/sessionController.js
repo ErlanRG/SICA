@@ -1,7 +1,7 @@
 "use strict";
 IdentifyLoggedUser();
 
-function printRol() {
+function PrintRol() {
   let info = GetActiveSession();
   let rol = null;
 
@@ -31,14 +31,18 @@ function IdentifyLoggedUser() {
   if (result != null) {
     let message = document.getElementById("welcome-message");
     let rol = document.getElementById("rol");
-    message.innerHTML =
-      "<h1>Bievenid@ </h1>" +
-      "<p>" +
-      result.Nombre +
-      " " +
-      result.Apellido1 +
-      "</p>";
-    rol.innerHTML = "ROL: " + printRol();
+    if (!message) {
+      return;
+    } else {
+      message.innerHTML =
+        "<h1>Bievenid@ </h1>" +
+        "<p>" +
+        result.Nombre +
+        " " +
+        result.Apellido1 +
+        "</p>";
+      rol.innerHTML = "ROL: " + PrintRol();
+    }
   }
 }
 
