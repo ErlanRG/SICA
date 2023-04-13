@@ -12,7 +12,6 @@ let inputProfileImg = document.getElementById("profilePic");
 
 let editBtn = document.getElementById("edit");
 let addBtn = document.getElementById("add");
-let deleteBtn = document.getElementById("delete");
 let cancelBtn = document.getElementById("cancel");
 
 // Para habilitar botones
@@ -130,6 +129,7 @@ async function ImprimirDatos() {
           await GetListaPersonas();
         }
       };
+
       let btnInactivar = document.createElement("button");
       btnInactivar.type = "button";
       btnInactivar.innerText = "Off";
@@ -172,14 +172,12 @@ async function ImprimirDatos() {
 function EnableButtons() {
   editBtn.style.display = "none";
   addBtn.style.display = "inline";
-  deleteBtn.style.display = "inline";
   cancelBtn.style.display = "inline";
 }
 
 function DisableButtons() {
   editBtn.style.display = "inline";
   addBtn.style.display = "none";
-  deleteBtn.style.display = "none";
   cancelBtn.style.display = "none";
 }
 
