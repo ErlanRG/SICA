@@ -161,6 +161,10 @@ function ObtenerRol(pRol) {
     case 1:
       return "Administrador";
     case 2:
-      return "Cliente";
+      return "Proveeduria";
+    case 3:
+      return "Encargado Bodega";
+    default:
+      return "Sin rol";
   }
 }

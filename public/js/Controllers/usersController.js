@@ -204,6 +204,7 @@ function ValidateDate(pDate) {
   // mayor que el día actual.
   // Si alguna de estas condiciones se cumple, significa que el usuario aún no ha
   // cumplido años este año, por lo que su edad se reduce en 1
+  let today = new Date();
   let birthdate = new Date(pDate);
   let age = today.getFullYear() - birthdate.getFullYear();
   let month = today.getMonth() - birthdate.getMonth();
@@ -269,7 +270,7 @@ function PrintUserTable() {
   // let tbody =
 }
 
-function AddUser() {
+async function AddUser() {
   let idType = txtIDType.value;
   let idNumber = txtIDNumber.value;
   let name = txtAddName.value;
@@ -289,6 +290,7 @@ function AddUser() {
     return;
   }
 
+  let result = null;
   let data = {
     TipoIdentificacion: idType,
     Identificacion: idNumber,
@@ -303,12 +305,22 @@ function AddUser() {
     // FotoPerfil:
   };
 
-  //TODO: enviar data a funcion de agregar usuario
-  // let result
+  // @@@
+  result = await ProcessPOST("RegistrarPersona", data);
 
-  console.log(data);
-  PrintSuccess("Usuario registrado");
-  closePopup();
+  if (!result) {
+    PrintError("Ocurrio un error inesperado");
+  } else if (result.resultado == false) {
+    PrintError(result.msj);
+  } else {
+    PrintSuccess("Excelente").then((res) => {
+      closePopup();
+      location.href = "users.html";
+    });
+  }
+
+  // console.log(data);
+  // PrintSuccess("Usuario registrado");
 }
 
 function DeleteUsers() {
