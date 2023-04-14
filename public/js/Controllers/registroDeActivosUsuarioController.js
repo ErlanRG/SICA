@@ -64,16 +64,6 @@ function validarRegistro(event) {
   });
   return;
   }
-  // Validar que el campo ID del activo solo contenga números.
-  const idActivoNumber = parseInt(idActivo, 10);
-  if (isNaN(idActivoNumber)) {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "El ID del activo solo puede contener números",
-    });
-    return;
-  }
   // Enviar una solicitud POST al servidor utilizando la biblioteca axios para agregar un nuevo registro al sistema.
   axios
   .post("url_del_servidor/registro_de_activos", { 
