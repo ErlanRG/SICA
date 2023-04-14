@@ -1,4 +1,8 @@
 .solicitudRegActivos{
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
   height: 100%;
   border-radius: 10px;
   background-color: #f1f1f1;
