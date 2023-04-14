@@ -1,67 +1,99 @@
 function validarRegistro(event) {
   event.preventDefault();
-
-  const nombreActivo = document.querySelector(".nombreDeActivo");
-  const ubicacionActivo = document.querySelector(".ubicacion");
-  const idActivo = document.querySelector('input[name="idActivo"]');
-  const sedeSeleccionada = document.querySelector("#seleccionarSede");
-  const descripcionActivo = document.querySelector("#descripcionActivo");
-
-  let errores = "";
-
-  if (nombreActivo.value === "") {
-    errores += "Debe ingresar el nombre del activo.\n";
-    nombreActivo.placeholder = "Este campo es obligatorio";
-    nombreActivo.style.borderColor = "red";
-  } else {
-    nombreActivo.style.borderColor = "";
-  }
-
-  if (ubicacionActivo.value === "") {
-    errores += "Debe ingresar la ubicación del activo.\n";
-    ubicacionActivo.placeholder = "Este campo es obligatorio";
-    ubicacionActivo.style.borderColor = "red";
-  } else {
-    ubicacionActivo.style.borderColor = "";
-  }
-
-  if (idActivo.value === "") {
-    errores += "Debe ingresar el ID del activo.\n";
-    idActivo.placeholder = "Este campo es obligatorio";
-    idActivo.style.borderColor = "red";
-  } else if (!/^\d{6}$/.test(idActivo.value)) {
-    errores += "El ID del activo debe contener 6 dígitos numéricos.\n";
-    idActivo.style.borderColor = "red";
-  } else {
-    idActivo.style.borderColor = "";
-  }
-
-  if (sedeSeleccionada.value === "") {
-    errores += "Debe seleccionar una sede.\n";
-    sedeSeleccionada.style.borderColor = "red";
-  } else {
-    sedeSeleccionada.style.borderColor = "";
-  }
-
-  if (descripcionActivo.value === "") {
-    errores += "Debe ingresar una descripción del activo.\n";
-    descripcionActivo.placeholder = "Este campo es obligatorio";
-    descripcionActivo.style.borderColor = "red";
-  } else {
-    descripcionActivo.style.borderColor = "";
-  }
-
-  if (errores !== "") {
+  
+  // Obtener los valores de los campos de entrada del formulario.
+  const nombreActivo = document.querySelector("#txtNom").value;
+  const ubicacionActivo = document.querySelector("#txtUbActivo").value;
+  const idActivo = document.querySelector("#txtIdActivo").value;
+  const sedeSeleccionada = document.querySelector("#txtIDType").value;
+  const descripcionActivo = document.querySelector("#txtDescription").value;
+  
+  // Verificar que todos los campos estén completos.
+  if (!sedeSeleccionada.trim()) {
     Swal.fire({
       icon: "error",
-      title: "Error al registrar el activo",
-      text: errores,
+      title: "Error",
+      text: "El campo Sede del Activo es requerido",
     });
-  } else {
+    return;
+    }
+  
+  if (!nombreActivo.trim()) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "El campo Nombre del Activo es requerido",
+  });
+  return;
+  }
+  
+  if (!ubicacionActivo.trim()) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "El campo Ubicación del Activo es requerido",
+  });
+  return;
+  }
+  
+  if (!idActivo.trim()) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "El campo ID del Activo es requerido",
+  });
+  return;
+  }
+  
+  if (!descripcionActivo.trim()) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "El campo Descripción del Activo es requerido",
+  });
+  return;
+  }
+  
+  // Validar que el campo ID del activo solo contenga números y tenga una longitud de 6 dígitos.
+  const idActivoRegex = /^\d{6}$/;
+  if (!idActivoRegex.test(idActivo)) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "El ID del activo debe ser un número de 6 dígitos",
+  });
+  return;
+  }
+  // Enviar una solicitud POST al servidor utilizando la biblioteca axios para agregar un nuevo registro al sistema.
+  axios
+  .post("url_del_servidor/registro_de_activos", { 
+    nombre: nombreActivo,
+    ubicacion: ubicacionActivo,
+    id: idActivo,
+    sede: sedeSeleccionada,
+    descripcion: descripcionActivo,
+  })
+   // Mostrar un mensaje de éxito utilizando la biblioteca SweetAlert2.
+  .then((response) => {
     Swal.fire({
       icon: "success",
-      title: "Activo registrado exitosamente",
-    });
-    document.querySelector("#formularioRegistro").reset();
+      title: "Éxito",
+      text: "Registro realizado con exito",
+  });
+  // Limpiar los campos del formulario.
+  document.querySelector("#txtNom").value = "";
+  document.querySelector("#txtUbActivo").value = "";
+  document.querySelector("#txtIdActivo").value = "";
+  document.querySelector("#txtIDType").value = "";
+  document.querySelector("#txtDescription").value = "";
+  })
+  // Mostrar un mensaje de error utilizando la biblioteca SweetAlert2.
+  .catch((error) => {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Ha ocurrido un error al realizar el registro",
+  });
+  console.error(error);
+  });
   }
-}
