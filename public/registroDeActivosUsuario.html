@@ -49,65 +49,42 @@
       </div>
     </header>
     <main>
-      <div class="formularioRegistroActivos">
-        <h2 class="subtitles">Solicitud de registro de activo</h2>
-        <div class="registrarActivos">
-          <form
-            action="registrar"
-            id="formularioRegistro"
-            onsubmit="validarRegistro(event)"
-          >
-            <div class="inputNombreActivo">
-              <!-- <label for="nombreDeActivo"></label> -->
-              <input
-                type="text"
-                placeholder="Nombre del activo"
-                class="nombreDeActivo"
-              />
-            </div>
-            <div class="ubicacionActivo">
-              <!-- <label for="ubicacion"></label> -->
-              <input
-                type="text"
-                placeholder="Ubicacion del activo"
-                class="ubicacion"
-              />
-            </div>
-            <div class="inputIdActivo">
-              <!-- <label for="idActivo"></label> -->
-              <input
-                type="text"
-                maxlength="6"
-                placeholder="ID del activo"
-                name="idActivo"
-              />
-            </div>
-            <div class="selecSede">
-              <!-- <label for="seleccionarSede"></label> -->
-              <select name="seleccionarSede" id="seleccionarSede">
-                <option value="" disabled selected hidden>
-                  Seleccione la sede
-                </option>
-                <option value="sedeCentral">Sede Central</option>
-                <option value="sedeHeredia">Sede Heredia</option>
-                <option value="sedeAlajuela">Sede Alajuela</option>
+      <div>
+        <form class="solicitudRegActivos">
+          <div>
+            <h2 class="subtitles">Solicitud de registro de activo</h2>
+          </div>
+          <div>
+            <div class="inputs">
+              <label for="txtIDType">Seleccione la sede</label>
+              <select id="txtIDType">
+                <option value="">--Seleccione una opción--</option>
+                <option value="1">Central</option>
+                <option value="2">Heredia</option>
+                <option value="3">Alajuela</option>
+                <option value="4">Cartago</option>
               </select>
             </div>
-            <div class="button">
-              <button type="submit">Enviar solicitud</button>
+            <div class="inputs">
+              <label for="txtNom">Nombre del activo</label>
+              <input type="text" id="txtNom" />
             </div>
-          </form>
-        </div>
-        <div class="descripcion">
-          <!-- <label for="texto"></label> -->
-          <textarea
-            name="texto"
-            id="descripcionActivo"
-            cols="50"
-            rows="10"
-            placeholder=" Descripcion del activo que desea registrar"
-          ></textarea>
-        </div>
+            <div class="inputs">
+              <label for="txtUbActivo">Ubicacion del activo</label>
+              <input type="text" id="txtUbActivo" />
+            </div>
+            <div class="inputs">
+              <label for="txtIdActivo">ID del activo</label>
+              <input type="text" id="txtIdActivo" maxlength="6"/>
+            </div>
+            <div>
+              <label for="txtDescription">Descripción actual del activo...</label>
+              <textarea id="txtDescription"></textarea>
+            </div>
+            <button type="button" class="buttons" onclick="validarRegistro(event)">Enviar solicitud</button>
+            <button type="button" class="buttons" onclick= "window.location.href='ingresoRegistroActivosUsuario.html'">Cancelar</button>
+          </div>
+        </form>
       </div>
     </main>
     <footer class="footer">
@@ -127,7 +104,6 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="js/utils.js"></script>
     <script src="js/Services/generalService.js"></script>
     <script src="js/Controllers/sessionController.js"></script>

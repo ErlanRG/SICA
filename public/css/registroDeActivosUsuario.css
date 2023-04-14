@@ -1,67 +1,19 @@
-.formularioRegistroActivos {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  text-align: center;
+.solicitudRegActivos{
   height: 100%;
-  width: 75%;
-  margin: auto;
   border-radius: 10px;
-  background: #f2f2f2;
-  font-weight: bold;
-  color: #29271f;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  margin-top: 4%;
+  background-color: #f1f1f1;
+  padding: 4%;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  margin: auto;
 }
-.registrarActivos {
-  display: flex;
-  padding-top: 9%;
-  justify-content: center;
+main{
+  padding: 5px;
 }
-
-.inputNombreActivo,
-.inputIdActivo,
-.selecSede,
-.ubicacionActivo {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: space-evenly;
-  align-items: center;
-  padding-left: 100px;
-}
-.descripcion {
-  display: flex;
-  padding: 11%;
-  justify-content: center;
-}
-/* label{
-    display: block;
-    font-size: 16px;
-    margin-bottom: 5px;
-    color: #555;
-    padding-top: 2%;
-} */
-.subtitles {
-  position: absolute;
-  margin-bottom: 50px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #29271f;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  padding-top: 2%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-}
-textarea {
-  font-family: "Raleway Semibold", sans-serif;
-  font-weight: 600;
-}
-input {
+#txtDescripcion {
+  display: block;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -70,28 +22,17 @@ input {
   color: #555;
   margin-bottom: 10px;
   box-sizing: border-box;
-  display: flex;
 }
-.button {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+
+
+textarea{
   width: 100%;
-}
-button {
-  background-color: #387e37;
-  border: none;
-  color: #f4e7d5;
-  padding: 10px 20px;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 22px;
+  box-sizing: border-box;
 }
 footer {
   width: 100%;
@@ -108,3 +49,10 @@ footer {
   flex-direction: column;
   gap: 10px;
 }
+
+
+
+
+
+
+
