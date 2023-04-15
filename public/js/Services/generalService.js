@@ -18,6 +18,47 @@ async function ProcessGET(pRouterName, pParams) {
   return result;
 }
 
+async function ProcessPOST(pRouterName, pData) {
+  let result = await ProcessAction("post", pRouterName, pData);
+  if (pRouterName == "RegistrarPersona") {
+    if (result.resultado == false) {
+      switch (result.code) {
+        case 11000:
+          result.msj =
+            "No se pudo actualizar la persona, ya existe una persona con esa identificacion ";
+          console.log("No se pudo registrar codigo 11000");
+          break;
+        default:
+          break;
+      }
+    }
+  }
+  return result;
+}
+
+async function ProcessDELETE(pRouterName, pData) {
+  let result = await ProcessAction("delete", pRouterName, pData);
+  return result;
+}
+
+async function ProcessAction(pMethod, pRouterName, pData) {
+  let result = null;
+  await axios({
+    method: pMethod,
+    url: apiUrl + pRouterName,
+    responseType: "json",
+    data: pData,
+  })
+    .then(async (res) => {
+      result = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return result;
+}
+
 function SetActiveSession(pUserData) {
   let jsonStringify = JSON.stringify(pUserData);
   localStorage.setItem("ActiveSessionData", jsonStringify);
