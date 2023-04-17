@@ -1,67 +1,64 @@
-function validarRegistro(event) {
-  event.preventDefault();
+"use strict";
 
-  const nombreActivo = document.querySelector(".nombreDeActivo");
-  const ubicacionActivo = document.querySelector(".ubicacion");
-  const idActivo = document.querySelector('input[name="idActivo"]');
-  const sedeSeleccionada = document.querySelector("#seleccionarSede");
-  const descripcionActivo = document.querySelector("#descripcionActivo");
+let inputSede = document.getElementById("txtSede");
+let inputNomActivo = document.getElementById("txtNomActivo");
+let inputUbicActivo = document.getElementById("txtUbActivo");
+let inputIDActivo = document.getElementById("txtIdActivo");
+let inputDescrip = document.getElementById("txtDescription");
 
-  let errores = "";
+// TODO: el ID del activo es autogenerado y no es ingresado por el ususario
+// De momento se mantiene asi para ambiente de prueba
+function ValidateIDActivo(pIDActivo) {
+  let regex = /^\d{6}$/;
 
-  if (nombreActivo.value === "") {
-    errores += "Debe ingresar el nombre del activo.\n";
-    nombreActivo.placeholder = "Este campo es obligatorio";
-    nombreActivo.style.borderColor = "red";
-  } else {
-    nombreActivo.style.borderColor = "";
+  if (!pIDActivo || pIDActivo == "") {
+    PrintError("Debe ingresar el ID del activo.");
+    return false;
   }
 
-  if (ubicacionActivo.value === "") {
-    errores += "Debe ingresar la ubicación del activo.\n";
-    ubicacionActivo.placeholder = "Este campo es obligatorio";
-    ubicacionActivo.style.borderColor = "red";
-  } else {
-    ubicacionActivo.style.borderColor = "";
+  if (!regex.test(pIDActivo)) {
+    PrintError("El formato del ID del activo no es valido.");
+    return false;
   }
 
-  if (idActivo.value === "") {
-    errores += "Debe ingresar el ID del activo.\n";
-    idActivo.placeholder = "Este campo es obligatorio";
-    idActivo.style.borderColor = "red";
-  } else if (!/^\d{6}$/.test(idActivo.value)) {
-    errores += "El ID del activo debe contener 6 dígitos numéricos.\n";
-    idActivo.style.borderColor = "red";
-  } else {
-    idActivo.style.borderColor = "";
+  return true;
+}
+
+function ValidateInfo(pSede, pNombre, pUbicacion, pDescripcion) {
+  if (!pSede || pSede == "") {
+    PrintError("Debe ingresar la sede en donde desea registrar el activo.");
+    return false;
   }
 
-  if (sedeSeleccionada.value === "") {
-    errores += "Debe seleccionar una sede.\n";
-    sedeSeleccionada.style.borderColor = "red";
-  } else {
-    sedeSeleccionada.style.borderColor = "";
+  if (!pNombre || pNombre == "") {
+    PrintError("Debe ingresar el nombre del activo.");
+    return false;
   }
 
-  if (descripcionActivo.value === "") {
-    errores += "Debe ingresar una descripción del activo.\n";
-    descripcionActivo.placeholder = "Este campo es obligatorio";
-    descripcionActivo.style.borderColor = "red";
-  } else {
-    descripcionActivo.style.borderColor = "";
+  if (!pUbicacion || pUbicacion == "") {
+    PrintError("Debe ingresar la ubicacion del activo.");
+    return false;
   }
 
-  if (errores !== "") {
-    Swal.fire({
-      icon: "error",
-      title: "Error al registrar el activo",
-      text: errores,
-    });
-  } else {
-    Swal.fire({
-      icon: "success",
-      title: "Activo registrado exitosamente",
-    });
-    document.querySelector("#formularioRegistro").reset();
+  if (!pDescripcion || pDescripcion == "") {
+    PrintError("Debe ingresar la descripcion del activo.");
+    return false;
   }
+}
+
+function RegistrarActivo() {
+  let sede = inputSede.value;
+  let nombreActivo = inputNomActivo.value;
+  let ubicacionActivo = inputUbicActivo.value;
+  let idActivo = inputIDActivo.value;
+  let descripcion = inputDescrip.value;
+
+  if (
+    ValidateInfo(sede, nombreActivo, ubicacionActivo, descripcion) == false ||
+    ValidateIDActivo(idActivo) == false
+  ) {
+    return;
+  }
+
+  PrintSuccess("Yeah");
 }

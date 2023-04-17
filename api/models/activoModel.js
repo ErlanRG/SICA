@@ -11,3 +11,5 @@ const schemaActivo = mongoose.Schema({
 });
 
 module.exports = mongoose.model("Activo", schemaActivo, "Activos");
+
+// TODO: utilizar pre-save middleware para generar los ID de los activos
