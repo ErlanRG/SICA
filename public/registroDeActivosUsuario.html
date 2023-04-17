@@ -49,41 +49,49 @@
       </div>
     </header>
     <main>
-        <form class="solicitudRegActivos">
-          <div>
-            <h2 class="subtitles">Solicitud de registro de activo</h2>
+      <form class="solicitudRegActivos">
+        <div>
+          <h2 class="subtitles">Solicitud de registro de activo</h2>
+        </div>
+        <div>
+          <div class="inputs">
+            <label for="txtSede">Seleccione la sede</label>
+            <select id="txtSede">
+              <option value="">--Seleccione una opción--</option>
+              <option value="1">Central</option>
+              <option value="2">Heredia</option>
+              <option value="3">Alajuela</option>
+              <option value="4">Cartago</option>
+            </select>
+          </div>
+          <div class="inputs">
+            <label for="txtNomActivo">Nombre del activo</label>
+            <input type="text" id="txtNomActivo" />
+          </div>
+          <div class="inputs">
+            <label for="txtUbActivo">Ubicacion del activo</label>
+            <input type="text" id="txtUbActivo" />
+          </div>
+          <div class="inputs">
+            <label for="txtIdActivo">ID del activo</label>
+            <input type="text" id="txtIdActivo" maxlength="6" />
           </div>
           <div>
-            <div class="inputs">
-              <label for="txtIDType">Seleccione la sede</label>
-              <select id="txtIDType">
-                <option value="">--Seleccione una opción--</option>
-                <option value="1">Central</option>
-                <option value="2">Heredia</option>
-                <option value="3">Alajuela</option>
-                <option value="4">Cartago</option>
-              </select>
-            </div>
-            <div class="inputs">
-              <label for="txtNom">Nombre del activo</label>
-              <input type="text" id="txtNom" />
-            </div>
-            <div class="inputs">
-              <label for="txtUbActivo">Ubicacion del activo</label>
-              <input type="text" id="txtUbActivo" />
-            </div>
-            <div class="inputs">
-              <label for="txtIdActivo">ID del activo</label>
-              <input type="text" id="txtIdActivo" maxlength="6"/>
-            </div>
-            <div>
-              <label for="txtDescription">Descripción actual del activo...</label>
-              <textarea id="txtDescription"></textarea>
-            </div>
-            <button type="button" class="buttons" onclick="validarRegistro(event)">Enviar solicitud</button>
-            <button type="button" class="buttons" onclick= "window.location.href='ingresoRegistroActivosUsuario.html'">Cancelar</button>
+            <label for="txtDescription">Descripción actual del activo...</label>
+            <textarea id="txtDescription"></textarea>
           </div>
-        </form>
+          <button type="button" class="buttons" onclick="EnviarSolicitud()">
+            Enviar solicitud
+          </button>
+          <button
+            type="button"
+            class="buttons"
+            onclick="window.location.href='ingresoRegistroActivosUsuario.html'"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
     </main>
     <footer class="footer">
       <div class="company-name">

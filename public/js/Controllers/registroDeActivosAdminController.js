@@ -1,99 +1,64 @@
-function validarRegistro(event) {
-  event.preventDefault();
-  
-  // Obtener los valores de los campos de entrada del formulario.
-  const nombreActivo = document.querySelector("#txtNom").value;
-  const ubicacionActivo = document.querySelector("#txtUbActivo").value;
-  const idActivo = document.querySelector("#txtIdActivo").value;
-  const sedeSeleccionada = document.querySelector("#txtIDType").value;
-  const descripcionActivo = document.querySelector("#txtDescription").value;
-  
-  // Verificar que todos los campos estén completos.
-  if (!sedeSeleccionada.trim()) {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "El campo Sede del Activo es requerido",
-    });
+"use strict";
+
+let inputSede = document.getElementById("txtSede");
+let inputNomActivo = document.getElementById("txtNomActivo");
+let inputUbicActivo = document.getElementById("txtUbActivo");
+let inputIDActivo = document.getElementById("txtIdActivo");
+let inputDescrip = document.getElementById("txtDescription");
+
+// TODO: el ID del activo es autogenerado y no es ingresado por el ususario
+// De momento se mantiene asi para ambiente de prueba
+function ValidateIDActivo(pIDActivo) {
+  let regex = /^\d{6}$/;
+
+  if (!pIDActivo || pIDActivo == "") {
+    PrintError("Debe ingresar el ID del activo.");
+    return false;
+  }
+
+  if (!regex.test(pIDActivo)) {
+    PrintError("El formato del ID del activo no es valido.");
+    return false;
+  }
+
+  return true;
+}
+
+function ValidateInfo(pSede, pNombre, pUbicacion, pDescripcion) {
+  if (!pSede || pSede == "") {
+    PrintError("Debe ingresar la sede en donde desea registrar el activo.");
+    return false;
+  }
+
+  if (!pNombre || pNombre == "") {
+    PrintError("Debe ingresar el nombre del activo.");
+    return false;
+  }
+
+  if (!pUbicacion || pUbicacion == "") {
+    PrintError("Debe ingresar la ubicacion del activo.");
+    return false;
+  }
+
+  if (!pDescripcion || pDescripcion == "") {
+    PrintError("Debe ingresar la descripcion del activo.");
+    return false;
+  }
+}
+
+function RegistrarActivo() {
+  let sede = inputSede.value;
+  let nombreActivo = inputNomActivo.value;
+  let ubicacionActivo = inputUbicActivo.value;
+  let idActivo = inputIDActivo.value;
+  let descripcion = inputDescrip.value;
+
+  if (
+    ValidateInfo(sede, nombreActivo, ubicacionActivo, descripcion) == false ||
+    ValidateIDActivo(idActivo) == false
+  ) {
     return;
-    }
-  
-  if (!nombreActivo.trim()) {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "El campo Nombre del Activo es requerido",
-  });
-  return;
   }
-  
-  if (!ubicacionActivo.trim()) {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "El campo Ubicación del Activo es requerido",
-  });
-  return;
-  }
-  
-  if (!idActivo.trim()) {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "El campo ID del Activo es requerido",
-  });
-  return;
-  }
-  
-  if (!descripcionActivo.trim()) {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "El campo Descripción del Activo es requerido",
-  });
-  return;
-  }
-  
-  // Validar que el campo ID del activo solo contenga números y tenga una longitud de 6 dígitos.
-  const idActivoRegex = /^\d{6}$/;
-  if (!idActivoRegex.test(idActivo)) {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "El ID del activo debe ser un número de 6 dígitos",
-  });
-  return;
-  }
-  // Enviar una solicitud POST al servidor utilizando la biblioteca axios para agregar un nuevo registro al sistema.
-  axios
-  .post("url_del_servidor/registro_de_activos", { 
-    nombre: nombreActivo,
-    ubicacion: ubicacionActivo,
-    id: idActivo,
-    sede: sedeSeleccionada,
-    descripcion: descripcionActivo,
-  })
-   // Mostrar un mensaje de éxito utilizando la biblioteca SweetAlert2.
-  .then((response) => {
-    Swal.fire({
-      icon: "success",
-      title: "Éxito",
-      text: "Registro realizado con exito",
-  });
-  // Limpiar los campos del formulario.
-  document.querySelector("#txtNom").value = "";
-  document.querySelector("#txtUbActivo").value = "";
-  document.querySelector("#txtIdActivo").value = "";
-  document.querySelector("#txtIDType").value = "";
-  document.querySelector("#txtDescription").value = "";
-  })
-  // Mostrar un mensaje de error utilizando la biblioteca SweetAlert2.
-  .catch((error) => {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "Ha ocurrido un error al realizar el registro",
-  });
-  console.error(error);
-  });
-  }
+
+  PrintSuccess("Yeah");
+}
