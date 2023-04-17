@@ -26,11 +26,11 @@
       <nav>
         <ul class="nav-links">
           <li>
-            <a href="ingresoRegistroActivosAdmin.html"
+            <a href="ingresoRegistroActivosUsuario.html"
               >Registro / Edición de activos</a
             >
           </li>
-          <li><a href="estadoTraslado.html">Traslados</a></li>
+          <li><a href="transferIncome.html">Traslados</a></li>
           <li><a href="bitacora.html">Bitácora</a></li>
           <li><a href="reportes.html">Reportes</a></li>
           <li><a href="users.html">Manejo de usuarios</a></li>
@@ -49,24 +49,16 @@
       </div>
     </header>
     <main>
-      <div class="container">
-        <div class="subtitles">
-          <br /><br />
-          <h2>Estados de solicitudes</h2>
-          <br />
-          <div class="buscarActivos">
-            <input
-              type="search"
-              placeholder="Nombre o ID de activo"
-              id="buscarNombreActivo"
-            />
-          </div>
-          <div class="fecha">
-            <input type="date" id="buscarFecha" />
-          </div>
-          <div class="botonBuscar">
-            <button>Buscar</button>
-          </div>
+      <br/><br/>
+      <h2 class="subtitles">Estados de solicitudes</h2>
+      <br/>
+      <div>
+        <div class="inputs">
+          <label for="txtNombreActivo">Nombre o ID de activo</label>
+          <input type="text" class="buscador"id="txtNombreActivo"/>
+        </div>
+        <div class="botonBuscar">
+          <button type="button" class="buttons">Buscar</button>
         </div>
       </div>
       <table>
