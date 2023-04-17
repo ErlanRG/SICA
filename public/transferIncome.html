@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SICA-Registro / Edición de activos</title>
+    <title>Solicitud / Estado de Traslados</title>
     <link
       rel="icon"
       type=""
@@ -48,41 +48,42 @@
         </button>
       </div>
     </header>
+
     <main>
-      <div class="subtitles">
-        <br /><br />
-        <h2>Registro / Edicion de activos</h2>
-        <br />
-        <div>
-          <button type="button" class="buttons" onclick="window.location.href='registroDeActivosUsuario.html'">
-            Solicitud de Registro
-          </button>
-          <button type="button" class="buttons" onclick="window.location.href='estadoDeSolicitudesUsuario.html'">
-            Estado de solicitud
-          </button>
+        <div class="subtitles">
+            <br></br>
+            <h2> Solicitud / Estado de Traslados</h2>
+            </br>
+
+            <div class="buttonContainer">
+                <button onclick="window.location.href='formTransferUser.html'"> Solicitud de Traslado</button>
+              <button onclick="window.location.href='estadoTraslado.html'">Estado de solicitudes</button>
+            </div>
         </div>
-      </div>
+
     </main>
+
     <footer class="footer">
-      <div class="company-name">
-        <h2>ProveGuard &copy;2023</h2>
-      </div>
-      <div class="copyright">
-        <h2>SICA - Sistema de Control de Activos</h2>
-        <h2>BotWeb Team</h2>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#">Contacto</a></li>
-        <li><a href="#">Sedes</a></li>
-        <li><a href="#">Ayuda</a></li>
-      </ul>
-    </footer>
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script src="js/utils.js"></script>
-    <script src="js/Services/generalService.js"></script>
-    <script src="js/Controllers/sessionController.js"></script>
-  </body>
-</html>
+        <div class="company-name">
+          <h2>ProveGuard &copy;2023</h2>
+        </div>
+        <div class="copyright">
+          <h2>SICA - Sistema de Control de Activos</h2>
+          <h2>BotWeb Team</h2>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">Sedes</a></li>
+          <li><a href="#">Ayuda</a></li>
+        </ul>
+      </footer>
+  
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+      <script src="js/utils.js"></script>
+      <script src="js/Services/generalService.js"></script>
+      <script src="js/Controllers/sessionController.js"></script>
+    </body>
+  </html>
+  

@@ -9,7 +9,8 @@ h3 {
 
 .center-container {
   padding: auto;
-  background-color: rgba(255, 255, 255, 0.528);
+  background-color: #f1f1f1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .buttons:hover {
@@ -27,10 +28,10 @@ textarea,
 input [type="radio"] {
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 20px 0 20px 0;
   display: inline-block;
   border: 1px solid #ccc;
-  border-radius: 22px;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
@@ -64,11 +65,7 @@ input [type="button"] {
   margin-right: 5px;
 }
 
-footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
+/*Footer*/
 
 footer {
   width: 100%;
