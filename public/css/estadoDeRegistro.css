@@ -1,41 +1,12 @@
-.subtitles {
-  font-size: 24px;
-  font-weight: bold;
-  color: #29271f;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-.container {
+.botonBuscar {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
-
-button {
-  background-color: #387e37;
-  border: none;
-  color: #f4e7d5;
-  padding: 10px 20px;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-input[type="date"],
-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 table {
   border-collapse: collapse;

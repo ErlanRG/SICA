@@ -1,24 +1,3 @@
-.subtitles {
-  font-size: 24px;
-  font-weight: bold;
-  color: #29271f;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-button {
-  background-color: #387e37;
-  border: none;
-  color: #f4e7d5;
-  padding: 10px 20px;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
 footer {
   width: 100%;
   position: absolute;
