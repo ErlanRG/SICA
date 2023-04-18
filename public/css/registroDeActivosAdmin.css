@@ -12,6 +12,18 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 
 }
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 87vh;
+}
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #txtDescripcion {
   display: block;
