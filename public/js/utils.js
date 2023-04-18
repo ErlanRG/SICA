@@ -119,7 +119,9 @@ function RedirectEditProfile() {
     return;
   }
 
-  location.href = "editProfile.html";
+  let _id = GetActiveSession()._id;
+
+  location.href = "editProfile.html?_id=" + _id;
 }
 
 function EnableButtons() {
@@ -137,10 +139,6 @@ function ObtenerTipoIdentificacion(pTipo) {
     case 1:
       return "Fisica";
     case 2:
-      return "Juridica";
-    case 3:
-      return "Dimex";
-    case 4:
       return "Pasaporte";
     default:
       return "Sin identificacion";
@@ -167,4 +165,33 @@ function ObtenerRol(pRol) {
     default:
       return "Sin rol";
   }
+}
+
+function ValidateDate(pDate) {
+  if (!pDate || pDate == "") {
+    PrintError("Debe ingresar la fecha de nacimiento");
+    return false;
+  }
+
+  // Calcula la edad restando el año actual con el año ingresado
+  // También comprueba si el mes de nacimiento es mayor que el mes actual o si el
+  // mes de nacimiento es el mismo que el mes actual pero el día de nacimiento es
+  // mayor que el día actual.
+  // Si alguna de estas condiciones se cumple, significa que el usuario aún no ha
+  // cumplido años este año, por lo que su edad se reduce en 1
+  let today = new Date();
+  let birthdate = new Date(pDate);
+  let age = today.getFullYear() - birthdate.getFullYear();
+  let month = today.getMonth() - birthdate.getMonth();
+
+  if (month < 0 || (month === 0 && today.getDate() < birthdate.getDate())) {
+    age--;
+  }
+
+  if (age < 18) {
+    PrintError("La edad del usuario debe ser mayor a 18 años");
+    return false;
+  }
+
+  return true;
 }
