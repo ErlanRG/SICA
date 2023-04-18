@@ -1,6 +1,19 @@
 body form {
   width: fit-content;
   margin: auto;
+ 
+}
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 87vh;
+}
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h3 {
