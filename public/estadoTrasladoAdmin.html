@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>SICA-Estado de las solicitudes de traslado</title>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SICA-Registro / Edición de activos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="icon"
       type=""
       href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
     />
     <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/users.css" rel="stylesheet" />
     <link href="css/general.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/ingresoRegistroActivosAdmin.css" />
+    <link href="css/estadoTrasladoAdmin.css" rel="stylesheet"/>
   </head>
 
   <body>
@@ -23,19 +23,13 @@
           alt="Logo ProveGuard"
         /><span id="rol">Rol: Admin</span>
       </div>
-      <nav>
-        <ul class="nav-links">
-          <li>
-            <a href="ingresoRegistroActivosAdmin.html"
-              >Registro / Edición de activos</a
-            >
-          </li>
-          <li><a href="transferIncomeAdmin.html">Traslados</a></li>
-          <li><a href="bitacora.html">Bitácora</a></li>
-          <li><a href="reportes.html">Reportes</a></li>
-          <li><a href="users.html">Manejo de usuarios</a></li>
-        </ul>
-      </nav>
+      <ul class="nav-links">
+        <li><a href="ingresoRegistroActivosAdmin.html">Registro / Edición de activos</a></li>
+        <li><a href="transferIncomeAdmin.html">Traslados</a></li>
+        <li><a href="bitacora.html">Bitácora</a></li>
+        <li><a href="reportes.html">Reportes</a></li>
+        <li><a href="users.html">Manejo de usuarios</a></li>
+      </ul>
       <div class="left-nav">
         <div id="user-icon" class="logo user-icon" title="Perfil">
           <img src="img/user-icon.png" alt="user-icon" />
@@ -45,28 +39,43 @@
         </button>
       </div>
     </header>
+
     <main>
-      <div class="subtitles">
-        <br /><br />
-        <h2>Registro / Edicion de activos</h2>
-        <br />
-        <div>
-          <button type="button" class="buttons" onclick="window.location.href='registroDeActivosAdmin.html'">
-            Registrar activos
-          </button>
-          <button type="button" class="buttons" onclick="window.location.href='estadoDeRegistro.html'">
-            Solicitudes de registro
-          </button>
+      <br/><br/>
+      <h2 class="subtitles">Estado de solicitudes de Traslado</h2>
+      <br>
+      <div class="row">
+        <div class="inputs">
+          <label for="txtNombreActivo">Nombre o ID de activo</label>
+          <input type="text" class="buscador"id="txtNombreActivo"/>
+        </div>
+        <div class="botonBuscar">
+          <button type="button" class="buttons">Buscar</button>
         </div>
       </div>
+
+      <table id="transfers">
+        <thead>
+          <tr>
+            <th>Nombre de la solicitud</th>
+            <th>ID del Activo</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
     </main>
+
     <footer class="footer">
       <div class="company-name">
         <h2>ProveGuard &copy;2023</h2>
       </div>
       <div class="copyright">
         <h2>SICA - Sistema de Control de Activos</h2>
-        <h2>BotWeb Team</h2>
+        <h2><a href="landpageEquipo.html">BotWeb Team</a></h2>
       </div>
       <ul class="nav-links">
         <li><a href="#">Contacto</a></li>
@@ -74,11 +83,13 @@
         <li><a href="#">Ayuda</a></li>
       </ul>
     </footer>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="js/utils.js"></script>
     <script src="js/Services/generalService.js"></script>
     <script src="js/Controllers/sessionController.js"></script>
+    <script src="js/Controllers/transfersController.js"></script>
   </body>
 </html>
