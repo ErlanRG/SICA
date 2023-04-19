@@ -5,11 +5,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SICA - Solicitud / Estado de Traslados</title>
+  <title>SICA - Sedes</title>
   <link rel="icon" type="" href="img/proveguard-low-resolution-logo-color-on-transparent-background.png" />
   <link href="css/reset.css" rel="stylesheet" />
+  <link href="css/users.css" rel="stylesheet" />
   <link href="css/general.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/ingresoRegistroActivosUsuario.css" />
+  <link rel="stylesheet" href=" " />
 </head>
 
 <body>
@@ -45,14 +46,27 @@
   <main>
     <div class="subtitles">
       <br></br>
-      <h2> Solicitud / Estado de Traslados</h2>
+      <h2> Sedes de ProveGuard</h2>
       </br>
 
-      <div class="buttonContainer">
-        <button class="buttons" onclick="window.location.href='formTransferUser.html'"> Solicitud de Traslado</button>
-        <button class="buttons" onclick="window.location.href='estadoTraslado.html'">Estado de solicitudes</button>
+      <div class="inputs">
+        <button class="buttons" onclick="window.location.href= '#'">Editar/Agregar Sedes</button>
+        <input type="text" class="buscador" placeholder="Nombre de la sede" />
+        <button type="button" class="buttons">Buscar</button>
+
       </div>
     </div>
+
+
+    <table id="transfers">
+      <thead>
+        <tr>
+          <th>Nombre de la sede</th>
+          <th>Ubicación</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
 
   </main>
 
@@ -62,7 +76,7 @@
     </div>
     <div class="copyright">
       <h2>SICA - Sistema de Control de Activos</h2>
-      <h2> <a href="landpageBotweb.html">BotWeb Team</a></h2>
+      <h2><a href="landpageBotweb.html">BotWeb Team</a></h2>
     </div>
     <ul class="nav-links">
       <li><a href="landpageBotweb.html">Contacto</a></li>
