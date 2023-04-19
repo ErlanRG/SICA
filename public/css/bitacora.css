@@ -43,7 +43,6 @@ main .logo.user-icon img {
   height: 150px;
 }
 
-
 .container.edit-button {
   background-color: var(--color-4);
   box-shadow: none;
@@ -92,21 +91,21 @@ table {
 }
 th,
 td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
 }
 
 th {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 #table-body tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 #table-body tr:hover {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 .inputLabel {
   width: 80%;
@@ -146,7 +145,6 @@ th {
   display: flex;
   justify-content: center;
   font-size: 19px;
-
 }
 
 .titulos h3 {
@@ -175,11 +173,9 @@ th {
 
 /* Modal content */
 .modalContent {
-  background-color: #fefefe;
   margin: auto;
   padding: 20px;
   width: 80%;
-  border: 1px solid #888;
   max-height: calc(100vh -200px);
   overflow-y: auto;
 }
@@ -198,7 +194,6 @@ th {
   cursor: pointer;
 }
 
-
 body form {
   width: fit-content;
   margin: auto;
@@ -212,4 +207,3 @@ div {
   display: flex;
   justify-content: space-between;
 }
-

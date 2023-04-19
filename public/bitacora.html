@@ -3,11 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  public/users.html
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bitacora</title>
+  <title>SICA - Bitacora</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="" href="img/proveguard-low-resolution-logo-color-on-transparent-background.png" />
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/bitacora.css">
   <link rel="stylesheet" href="css/general.css">
@@ -46,38 +44,34 @@
       <div class="modalContent">
         <span class="close">&times;</span>
         <form action="">
-          <div class="column">
-            <div class="titulo">
-              <h2>Datos de Traslado</h2>
-            </div>
-            <div class="inputLabel">
-              <div class="empleado">
-                <label for="txtEmpleado" id="lblNombre">Nombre Del Empleado</label>
-                <input type="text" id="txtEmpleado"> <br>
-              </div>
-              <div class="localizacion">
-                <label for="txtLocalizacion" id="lblLocalizacion">Localización</label>
-                <input type="text" id="txtLocalizacion"><br>
-              </div>
-              <div class="activo">
-                <label for="txtActivo" id="lblActivo">ID de Activo</label>
-                <input type="text" id="txtActivo"><br>
-              </div>
-              <div class="fecha">
-                <label for="txtFecha" id="lblTraslado">Fecha del traslado</label>
-                <input type="date" id="txtFecha"><br>
-              </div>
-              <div class="respon">
-                <label for="txtRespon" id="lblRespon">Responsable de aceptar o denegar el
-                  traslado</label>
-                <input type="text" id="txtRespon"><br>
-              </div>
-            </div>
-          </div>
-          <div class="titulo">
-            <h2>Extras del traslado</h2>
-          </div>
           <div class="inputLabel">
+            <div class="titulo">
+              <h2 class="subtitles">Datos de Traslado</h2>
+            </div>
+            <div class="empleado">
+              <label for="txtEmpleado" id="lblNombre">Nombre Del Empleado</label>
+              <input type="text" id="txtEmpleado"> <br>
+            </div>
+            <div class="localizacion">
+              <label for="txtLocalizacion" id="lblLocalizacion">Localización</label>
+              <input type="text" id="txtLocalizacion"><br>
+            </div>
+            <div class="activo">
+              <label for="txtActivo" id="lblActivo">ID de Activo</label>
+              <input type="text" id="txtActivo"><br>
+            </div>
+            <div class="fecha">
+              <label for="txtFecha" id="lblTraslado">Fecha del traslado</label>
+              <input type="date" id="txtFecha"><br>
+            </div>
+            <div class="respon">
+              <label for="txtRespon" id="lblRespon">Responsable de aceptar o denegar el
+                traslado</label>
+              <input type="text" id="txtRespon"><br>
+            </div>
+            <div class="titulo">
+              <h2 class="subtitles">Extras del traslado</h2>
+            </div>
             <div class="extra">
               <label for="txtExtra" id="lblExtras">Extras del traslado</label>
               <input type="text" id="txtExtra"><br>
@@ -93,20 +87,15 @@
               <label for="txtOrigin" id="lblOrigen">lugar de origin del activo</label>
               <input type="text" id="txtOrigin"><br>
             </div>
+            <input type="button" id="btnRegistrar" value="Registrar" class="buttons" />
           </div>
-          <input type="button" id="btnRegistrar" value="Registrar" class="buttons" />
       </div>
     </div>
     </form>
 
 
-    <div class="proveBita">
-      <h1 class="prove">ProveGuard</h1>
-      <h1 class="bita">Bitacora</h1>
-    </div>
-    <div class="titulos">
-      <h3>Sistema de control de activos</h3>
-      <h3>FOLIO: 001</h3>
+    <div class="inputs">
+      <h1 class="subtitles">Bitacora</h1>
     </div>
     <div class="page-buttons">
       <button type="button" class="buttons" id="btnActivo" onclick="AbrirFormulario()">Registrar Bitacora</button>
