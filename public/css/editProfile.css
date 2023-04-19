@@ -31,6 +31,9 @@
   gap: 27px;
 }
 
+.inputs.hidden {
+  display: none;
+}
 /* BEGIN MAIN EDIT */
 
 main .logo.user-icon img {
@@ -58,6 +61,10 @@ main .logo.user-icon img {
 .container.edit-button button {
   position: absolute;
   right: 0;
+}
+
+.disabled {
+  display: none;
 }
 
 /* ENDS MAIN EDIT */
