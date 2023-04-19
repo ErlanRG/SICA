@@ -50,7 +50,7 @@
 
     <main>
       <div class="container edit-button">
-        <button type="button" class="buttons" onclick="EditProfile()">
+        <button type="button" class="buttons" onclick="EnableButtons()">
           Editar
         </button>
       </div>
@@ -69,6 +69,10 @@
       </div>
       <div class="container info">
         <h2 class="subtitles">Informacion del usuario</h2>
+        <div class="inputs hidden">
+          <label for="mongoId">_id</label>
+          <input type="text" id="mongoId" />
+        </div>
         <div class="inputs">
           <label for="txt-id">Identificación</label>
           <input type="text" id="txt-id" />
@@ -96,14 +100,6 @@
         <div class="inputs">
           <label for="txt-new-pass">Contraseña nueva</label>
           <input type="password" id="txt-new-pass" />
-        </div>
-        <div class="inputs">
-          <label for="txt-new-pass-confim">Confirmar Contraseña</label>
-          <input type="password" id="txt-new-pass-confim" />
-        </div>
-        <div class="inputs">
-          <label for="txt-number">Telefono</label>
-          <input type="text" id="txt-number" />
         </div>
         <div class="inputs">
           <label for="txt-birthday">Fecha de nacimiento</label>
