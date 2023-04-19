@@ -59,6 +59,10 @@ footer {
   text-transform: uppercase;
 }
 
+.copyright a{
+  text-decoration: none;
+  color: white;
+}
 .nav-links li:hover {
   transform: scale(1.1);
 }

@@ -3,3 +3,4 @@ api/package-lock.json
 api/node_modules/
 doc/*.odt
 .vscode/
+.DS_Store
