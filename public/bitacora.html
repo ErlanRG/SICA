@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
     <header class="header">
         <div id="prove-logo" class="logo" title="Inicio">
             <img src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
@@ -45,57 +44,58 @@
     <main>
         <div id="miModal" class="modal">
             <div class="modalContent">
-            <span class="close">&times;</span>
-        <form action="">
-            <div class="column">
-                <div class="titulo">
-                    <h2>Datos de Traslado</h2>
-                </div>
-                <div class="inputLabel">
-                    <div class="empleado">
-                        <label for="txtEmpleado" id="lblNombre">Nombre Del Empleado</label>
-                        <input type="text" id="txtEmpleado"> <br>
+                <span class="close">&times;</span>
+                <form action="">
+                    <div class="column">
+                        <div class="titulo">
+                            <h2>Datos de Traslado</h2>
+                        </div>
+                        <div class="inputLabel">
+                            <div class="empleado">
+                                <label for="txtEmpleado" id="lblNombre">Nombre Del Empleado</label>
+                                <input type="text" id="txtEmpleado"> <br>
+                            </div>
+                            <div class="localizacion">
+                                <label for="txtLocalizacion" id="lblLocalizacion">Localización</label>
+                                <input type="text" id="txtLocalizacion"><br>
+                            </div>
+                            <div class="activo">
+                                <label for="txtActivo" id="lblActivo">ID de Activo</label>
+                                <input type="text" id="txtActivo"><br>
+                            </div>
+                            <div class="fecha">
+                                <label for="txtFecha" id="lblTraslado">Fecha del traslado</label>
+                                <input type="date" id="txtFecha"><br>
+                            </div>
+                            <div class="respon">
+                                <label for="txtRespon" id="lblRespon">Responsable de aceptar o denegar el
+                                    traslado</label>
+                                <input type="text" id="txtRespon"><br>
+                            </div>
+                        </div>
                     </div>
-                    <div class="localizacion">
-                        <label for="txtLocalizacion" id="lblLocalizacion">Localización</label>
-                        <input type="text" id="txtLocalizacion"><br>
+                    <div class="titulo">
+                        <h2>Extras del traslado</h2>
                     </div>
-                    <div class="activo">
-                        <label for="txtActivo" id="lblActivo">ID de Activo</label>
-                        <input type="text" id="txtActivo"><br>
+                    <div class="inputLabel">
+                        <div class="extra">
+                            <label for="txtExtra" id="lblExtras">Extras del traslado</label>
+                            <input type="text" id="txtExtra"><br>
+                        </div>
+                        <div class="donalmacen">
+                            <label for="txtelec" id="lblElec">Sera almacenado o donado</label>
+                            <select name="" id="txtEstado">
+                                <option value="1" checked>Donación</option>
+                                <option value="0">almacenado</option>
+                            </select>
+                        </div>
+                        <div class="origen">
+                            <label for="txtOrigin" id="lblOrigen">lugar de origin del activo</label>
+                            <input type="text" id="txtOrigin"><br>
+                        </div>
                     </div>
-                    <div class="fecha">
-                        <label for="txtFecha" id="lblTraslado">Fecha del traslado</label>
-                        <input type="date" id="txtFecha"><br>
-                    </div>
-                    <div class="respon">
-                        <label for="txtRespon" id="lblRespon">Responsable de aceptar o denegar el traslado</label>
-                        <input type="text" id="txtRespon"><br>
-                    </div>
-                </div>
+                    <input type="button" id="btnRegistrar" value="Registrar" class="buttons" />
             </div>
-            <div class="titulo">
-                <h2>Extras del traslado</h2>
-            </div>
-            <div class="inputLabel">
-                <div class="extra">
-                    <label for="txtExtra" id="lblExtras">Extras del traslado</label>
-                    <input type="text" id="txtExtra"><br>
-                </div>
-                <div class="donalmacen">
-                    <label for="txtelec" id="lblElec">Sera almacenado o donado</label>
-                        <select name="" id="txtEstado">
-                            <option value="1" checked>Donación</option>
-                            <option value="0">almacenado</option>
-                        </select>
-                </div>
-                <div class="origen">
-                    <label for="txtOrigin" id="lblOrigen">lugar de origin del activo</label>
-                    <input type="text" id="txtOrigin"><br>
-                </div>
-            </div>
-            <input type="button" id="btnRegistrar"  value="Registrar" class="buttons" />
-        </div>
         </div>
         </form>
 
@@ -107,10 +107,13 @@
         <div class="titulos">
             <h3>Sistema de control de activos</h3>
             <h3>FOLIO: 001</h3>
-            <h3>Reporte de activos</h3>
         </div>
         <div class="page-buttons">
             <button type="button" class="buttons" id="btnActivo" onclick="AbrirFormulario()">Registrar Bitacora</button>
+        </div>
+        <div class="inputs">
+            <label for="txtFiltrar">Filtrar</label>
+            <input type="text" id="txtFiltrar">
         </div>
         <table>
             <thead>
@@ -141,9 +144,8 @@
     </footer>
 
     <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/utilsBitacora.js"></script>
-    <script src="js/Services/serviceBitacora.js"></script>
-    <script src="js/Controllers/controllerBitacora.js"></script>
+    <script src="js/Services/generalService.js"></script>
+    <script src="js/Controllers/bitacoraController.js"></script>
     <script src="js/utils.js"></script>
 </body>
 
