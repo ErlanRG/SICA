@@ -1,0 +1,16 @@
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+  .footer h2 {
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+  }
+  .copyright {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  

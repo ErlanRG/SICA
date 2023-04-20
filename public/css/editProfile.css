@@ -84,3 +84,17 @@ footer {
   flex-direction: column;
   gap: 10px;
 }
+.btnSubirFoto {
+  background-color: #387e37;
+  border: none;
+  color: #f4e7d5;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+

@@ -12,6 +12,7 @@
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/users.css" rel="stylesheet" />
     <link href="css/general.css" rel="stylesheet" />
+    <link href="css/estadoTraslado.css" rel="stylesheet"/>
   </head>
 
   <body>
@@ -20,7 +21,7 @@
         <img
           src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
           alt="Logo ProveGuard"
-        /><span id="rol"></span>
+        /><span id="rol">Rol: Usuario</span>
       </div>
       <ul class="nav-links">
         <li>
@@ -31,14 +32,10 @@
         <li><a href="transferIncome.html">Traslados</a></li>
         <li><a href="bitacora.html">Bitácora</a></li>
         <li><a href="reportes.html">Reportes</a></li>
-        <li><a href="users.html">Manejo de usuarios</a></li>
       </ul>
       <div class="left-nav">
         <div id="user-icon" class="logo user-icon" title="Perfil">
           <img src="img/user-icon.png" alt="user-icon" />
-        </div>
-        <div class="logo search-icon" title="Buscar">
-          <img src="img/search-interface-symbol.png" alt="user-icon" />
         </div>
         <button type="button" class="buttons" onclick="Logout()">
           Cerrar Sesión
@@ -47,10 +44,15 @@
     </header>
 
     <main>
+      <br/><br/>
       <h2 class="subtitles">Estado de solicitudes de Traslado</h2>
+      <br>
       <div class="row">
-        <div class="column">
-          <input type="text" class="buscador" placeholder="Nombre del activo" />
+        <div class="inputs">
+          <label for="txtNombreActivo">Nombre o ID de activo</label>
+          <input type="text" class="buscador"id="txtNombreActivo"/>
+        </div>
+        <div class="botonBuscar">
           <button type="button" class="buttons">Buscar</button>
         </div>
       </div>
