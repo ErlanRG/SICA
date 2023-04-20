@@ -7,7 +7,6 @@ const Activo = require("../models/activoModel");
 router.post("/RegistrarActivo", (req, res) => {
   let body = req.body;
   let nuevoActivo = new Activo({
-    ID_activo: body.ID_activo,
     Nombre: body.Nombre,
     Descripcion: body.Descripcion,
     Unidad: body.Unidad,
