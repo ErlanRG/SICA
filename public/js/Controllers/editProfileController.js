@@ -10,6 +10,7 @@ let inputPass = document.getElementById("txt-pass");
 let inputNewPass = document.getElementById("txt-new-pass");
 let inputBirthday = document.getElementById("txt-birthday");
 let inputRol = document.getElementById("txt-rol");
+let inputImg = document.getElementById("imgUser");
 let btnAccept = document.getElementById("btnAccept");
 let btnCancel = document.getElementById("btnCancel");
 
@@ -44,6 +45,7 @@ async function CargarDatos() {
   inputEmail.value = persona.personaDB.Email;
   inputPass.value = persona.personaDB.Password;
   inputRol.value = persona.personaDB.Rol;
+  inputImg.src = persona.personaDB.FotoPerfil;
 
   let date = new Date(persona.personaDB.Nacimiento);
   let day = date.getDate();
@@ -109,6 +111,7 @@ async function RegistrarDatos() {
   let newPass = inputNewPass.value;
   let birthday = inputBirthday.value;
   let rol = inputRol.value;
+  let img = inputImg.getAttribute("src");
 
   if (
     !ValidateInfo(name, last1, rol) ||
@@ -132,7 +135,7 @@ async function RegistrarDatos() {
     Email: email,
     Password: pass,
     Rol: rol,
-    FotoPerfil: "foto",
+    FotoPerfil: img,
   };
 
   result = await ProcessPUT("ModificarPersona", data);
