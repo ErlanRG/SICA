@@ -47,6 +47,8 @@ async function RegistrarActivo() {
     Unidad: sedeActivo,
     Ubicacion: ubicacionActivo,
     CodigoUbic: genCodUbicacion(sedeActivo, ubicacionActivo),
+    Usuario: GetActiveSession().Email,
+    FechaCreacion: setDate(),
   };
 
   result = await ProcessPOST("RegistrarActivo", data);
@@ -66,4 +68,10 @@ function genCodUbicacion(pSede, pUbic) {
   let uni = "Unidad" + pSede;
   let code = "ProveGuard" + "_" + uni + "_" + pUbic;
   return code;
+}
+
+function setDate() {
+  const today = new Date();
+  const dateString = today.toISOString().substring(0, 10);
+  return dateString;
 }

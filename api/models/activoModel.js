@@ -8,6 +8,9 @@ const schemaActivo = mongoose.Schema({
   Unidad: { type: String, required: false, unique: false },
   Ubicacion: { type: String, required: true, unique: false },
   CodigoUbic: { type: String, required: true, unique: false },
+  Usuario: { type: String, required: true, unique: false },
+  FechaCreacion: { type: Date, required: true, unique: false },
+  Estado: { type: Number, required: true, unique: false },
 });
 
 // Pre-save middleware (o funcion)  que genera automaticamente el ID_activo
