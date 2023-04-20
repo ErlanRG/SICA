@@ -46,7 +46,7 @@ async function RegistrarActivo() {
     Descripcion: descripcion,
     Unidad: sedeActivo,
     Ubicacion: ubicacionActivo,
-    CodigoUbic: "1234",
+    CodigoUbic: genCodUbicacion(sedeActivo, ubicacionActivo),
   };
 
   result = await ProcessPOST("RegistrarActivo", data);
@@ -60,4 +60,10 @@ async function RegistrarActivo() {
       location.href = "estadoDeRegistro.html";
     });
   }
+}
+
+function genCodUbicacion(pSede, pUbic) {
+  let uni = "Unidad" + pSede;
+  let code = "ProveGuard" + "_" + uni + "_" + pUbic;
+  return code;
 }
