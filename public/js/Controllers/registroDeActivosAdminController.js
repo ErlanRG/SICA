@@ -3,26 +3,7 @@
 let inputSede = document.getElementById("txtSede");
 let inputNomActivo = document.getElementById("txtNomActivo");
 let inputUbicActivo = document.getElementById("txtUbActivo");
-let inputIDActivo = document.getElementById("txtIdActivo");
 let inputDescrip = document.getElementById("txtDescription");
-
-// TODO: el ID del activo es autogenerado y no es ingresado por el ususario
-// De momento se mantiene asi para ambiente de prueba
-function ValidateIDActivo(pIDActivo) {
-  let regex = /^\d{6}$/;
-
-  if (!pIDActivo || pIDActivo == "") {
-    PrintError("Debe ingresar el ID del activo.");
-    return false;
-  }
-
-  if (!regex.test(pIDActivo)) {
-    PrintError("El formato del ID del activo no es valido.");
-    return false;
-  }
-
-  return true;
-}
 
 function ValidateInfo(pSede, pNombre, pUbicacion, pDescripcion) {
   if (!pSede || pSede == "") {
@@ -46,19 +27,37 @@ function ValidateInfo(pSede, pNombre, pUbicacion, pDescripcion) {
   }
 }
 
-function RegistrarActivo() {
-  let sede = inputSede.value;
+async function RegistrarActivo() {
   let nombreActivo = inputNomActivo.value;
+  let sedeActivo = inputSede.value;
   let ubicacionActivo = inputUbicActivo.value;
-  let idActivo = inputIDActivo.value;
   let descripcion = inputDescrip.value;
 
   if (
-    ValidateInfo(sede, nombreActivo, ubicacionActivo, descripcion) == false ||
-    ValidateIDActivo(idActivo) == false
+    ValidateInfo(sedeActivo, nombreActivo, ubicacionActivo, descripcion) ==
+    false
   ) {
     return;
   }
 
-  PrintSuccess("Yeah");
+  let result = null;
+  let data = {
+    Nombre: nombreActivo,
+    Descripcion: descripcion,
+    Unidad: sedeActivo,
+    Ubicacion: ubicacionActivo,
+    CodigoUbic: "1234",
+  };
+
+  result = await ProcessPOST("RegistrarActivo", data);
+
+  if (!result) {
+    PrintError("Ocurrio un error inesperado");
+  } else if (result.resultado == false) {
+    PrintError(result.msj);
+  } else {
+    PrintSuccess("Excelente").then((res) => {
+      location.href = "estadoDeRegistro.html";
+    });
+  }
 }
