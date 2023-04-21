@@ -58,15 +58,18 @@
           <button type="button" class="buttons">Buscar</button>
         </div>
       </div>
-      <table>
+      <table id="tableSolicActivos">
         <thead>
           <tr>
-            <th>Nombre de la solicitud</th>
             <th>ID del activo</th>
-            <th>Estado</th>
+            <th>Nombre</th>
+            <th>Unidad</th>
+            <th>Ubicacion</th>
+            <th>Codigo Ubicacion</th>
+            <th>Descripcion</th>
+            <th>Usuario solicitante</th>
             <th>Fecha</th>
-            <th>Usuario</th>
-            <th>Codigo</th>
+            <th>Estado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -92,6 +95,7 @@
 
     <script src="js/utils.js"></script>
     <script src="js/Services/generalService.js"></script>
+    <script src="js/Controllers/estadoDeRegistro.js"></script>
     <script src="js/Controllers/sessionController.js"></script>
   </body>
 </html>

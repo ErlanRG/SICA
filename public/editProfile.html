@@ -55,14 +55,14 @@
         <h2 class="subtitles">Imagen de perfil</h2>
         <div>
           <img id="imgUser" class="avatar" />
-          <button
-            type="button"
-            class="btnSubirFoto"
-            onclick="AbrirCloudinary('imgUser')"
-          >
-            Subir Foto
-          </button>
         </div>
+        <button
+          type="button"
+          class="buttons"
+          onclick="AbrirCloudinary('imgUser')"
+        >
+          Subir Foto
+        </button>
       </div>
       <div class="container info">
         <h2 class="subtitles">Informacion del usuario</h2>
@@ -148,6 +148,7 @@
 
     <script src="js/utils.js"></script>
     <script src="js/Services/generalService.js"></script>
+    <script src="js/Services/imgService.js"></script>
     <script src="js/Controllers/sessionController.js"></script>
     <script src="js/Controllers/editProfileController.js"></script>
   </body>
