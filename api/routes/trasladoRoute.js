@@ -7,6 +7,7 @@ const Traslado = require("../models/trasladoModel");
 router.post("/RegistrarTraslado", (req, res) => {
   let body = req.body;
   let nuevoTraslado = new Traslado({
+    ActivoAfectado: body.ActivoAfectado,
     Razon: body.Razon,
     Imagen1: body.Imagen1,
     Imagen2: body.Imagen2,

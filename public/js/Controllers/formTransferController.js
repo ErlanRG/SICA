@@ -83,7 +83,7 @@ function ValidateRbt() {
   return true;
 }
 
-function Trasladar() {
+async function Trasladar() {
   let idActivo = inputIDActivo.value;
   let nombreActivo = inputNombre.value;
   let codActivo = inputActivoCode.value;
@@ -106,10 +106,27 @@ function Trasladar() {
   ) {
     return;
   }
-  console.log(razonTraslado);
 
-  PrintSuccess();
+  let data = {
+    ActivoAfectado: idActivo,
+    Razon: razonTraslado,
+    Imagen1: img1,
+    Imagen2: img2,
+  };
+
+  let result = await ProcessPOST("RegistrarTraslado", data);
+
+  if (!result) {
+    PrintError("Ocurrio un error inesperado");
+  } else if (result.resultado == false) {
+    PrintError(result.msj);
+  } else {
+    PrintSuccess("Traslado solicitado.").then((res) => {
+      location.href = "estadoTrasladoAdmin.html";
+    });
+  }
 }
+
 function getReason() {
   let selectedReason = "";
   for (let i = 0; i < rbtReasons.length; i++) {

@@ -3,6 +3,7 @@
 const mongoose = require("mongoose");
 const schemaTraslado = mongoose.Schema({
   ID_Traslado: { type: String, unique: true },
+  ActivoAfectado: { type: String, unique: true },
   Razon: { type: String, required: true, unique: false },
   Imagen1: { type: String, required: true, unique: false },
   Imagen2: { type: String, required: false, unique: false },
