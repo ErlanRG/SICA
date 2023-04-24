@@ -109,6 +109,8 @@ async function Trasladar() {
 
   let data = {
     ActivoAfectado: idActivo,
+    Solicitante: GetActiveSession().Email,
+    Estado: 0,
     Razon: razonTraslado,
     Imagen1: img1,
     Imagen2: img2,
