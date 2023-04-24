@@ -32,7 +32,7 @@ router.post("/RegistrarPersona", (req, res) => {
         personaDB,
       });
 
-      mailer.EnviarEmail(personaDB.Nombre, personaDB.Email);
+      mailer.EnviarEmail(personaDB.Nombre, personaDB.Email, personaDB.Password);
     })
     .catch((err) => {
       res.json({
