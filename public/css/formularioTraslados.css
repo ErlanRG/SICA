@@ -131,7 +131,6 @@ footer {
 }
 
 .image-box::before {
-  content: "Subir imagen";
   display: block;
   position: absolute;
   top: 50%;

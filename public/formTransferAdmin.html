@@ -44,74 +44,65 @@
       <div class="row">
         <div class="column">
           <div>
-            <label for="txtName" id="lblName">Nombre del activo</label>
-            <input type="text" id="txtName">
-          </div>
-          <div>
             <label for="txtIdAsset" id="lblIdAsset">ID del Activo</label>
             <input type="text" id="txtIdAsset">
+          </div>
+          <div>
+            <label for="txtName" id="lblName">Nombre del activo</label>
+            <input type="text" id="txtName">
           </div>
           <div>
             <label for="txtCode" id="lblCode">Código del activo</label>
             <input type="text" id="txtCode">
           </div>
-
           <div>
             <fieldset id="txtReason">
-
               <legend id="lblReason">Razón de traslado</legend>
-
               <label for="rbtActivoDanado" class="container">Activo dañado
-                <input type="radio" id="rbtActivoDanado" value="ActivoDanado" name="rbtReason">
+                <input type="radio" id="rbtActivoDanado" value="Activo dañado" name="rbtReason">
                 <span class="checkmark"></span>
               </label>
-
               <label for="rbtActivoDesuso" class="container">Activo en Desuso
-                <input type="radio" id="rbtActivoDesuso" value="ActivoDesuso" name="rbtReason">
+                <input type="radio" id="rbtActivoDesuso" value="Activo en desuso" name="rbtReason">
                 <span class="checkmark"></span>
               </label>
-
               <label for="rbtOtro" class="container">Otro
                 <input type="radio" id="rbtOtro" value="Otro" name="rbtReason">
                 <span class="checkmark"></span>
               </label>
-
               <div>
                 <label for="txtOtro" id="lblOtro">Especifique Otro</label>
                 <input type="text" id="txtOtro">
               </div>
-
             </fieldset>
           </div>
-
-
         </div>
         <div class="column">
-
           <div>
             <label for="txtCampus" id="lblCampus">Sede a trasladar</label>
             <select name="" id="txtCampus">
-              <option value=""></option>
               <option value="">--Seleccione una opción--</option>
-              <option value="1">Sede de bodega</option>
-              <option value="2">Sede de donaciones</option>
-              <option value="3">Sede prinicpal</option>
-              <option value="4">Sede de Heredia</option>
+              <option value="Bodega">Bodega</option>
+              <option value="Donaciones">Sede de donaciones</option>
+              <option value="Central">Central</option>
+              <option value="Heredia">Heredia</option>
+              <option value="Alajuela">Alajuela</option>
+              <option value="Cartago">Cartago</option>
             </select>
 
           </div>
 
           <div>
-            <label for="txtDescription">Descripción actual del activo...</label>
+            <label for="txtDescription">Especifique las razones del traslado.</label>
             <textarea id="txtDescription"></textarea>
           </div>
 
           <div class="image-container">
-            <div class="image-box" onclick="UploadImages()">
+            <div class="image-box" onclick="AbrirCloudinary('image1')">
               <img id="image1" src="" alt="">
               <input type="file" id="file1">
             </div>
-            <div class="image-box">
+            <div class="image-box" onclick="AbrirCloudinary('image2')">
               <img id="image2" src="" alt="">
               <input type="file" id="file2">
             </div>
@@ -121,7 +112,7 @@
         </div>
       </div>
       <div>
-        <button class="buttons" type="button" id="btnSubmit" onclick="Validate()">Realizar Traslado</button>
+        <button class="buttons" type="button" id="btnSubmit" onclick="Trasladar()">Realizar Traslado</button>
         <button class="buttons" type="button">Eliminar</button>
       </div>
       </div>
@@ -147,10 +138,13 @@
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://upload-widget.cloudinary.com/2.4.17/global/all.js"></script>
 
   <script src="js/utils.js"></script>
   <script src="js/Services/generalService.js"></script>
+  <script src="js/Services/imgService.js"></script>
   <script src="js/Controllers/sessionController.js"></script>
+  <script src="js/Controllers/formTransferController.js"></script>
 </body>
 
 </html>

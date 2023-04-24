@@ -50,7 +50,9 @@ function handleError(res, reason, message, code) {
 const personas = require("./routes/personaRoute");
 const activos = require("./routes/activoRoute");
 const sede = require("./routes/sedeRoute");
+const traslado = require("./routes/trasladoRoute");
 
 app.use("/api", personas);
 app.use("/api", activos);
 app.use("/api", sede);
+app.use("/api", traslado);

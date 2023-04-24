@@ -12,7 +12,7 @@
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/users.css" rel="stylesheet" />
     <link href="css/general.css" rel="stylesheet" />
-    <link href="css/estadoTrasladoAdmin.css" rel="stylesheet"/>
+    <link href="css/estadoTrasladoAdmin.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -24,7 +24,11 @@
         /><span id="rol">Rol: Admin</span>
       </div>
       <ul class="nav-links">
-        <li><a href="ingresoRegistroActivosAdmin.html">Registro / Edición de activos</a></li>
+        <li>
+          <a href="ingresoRegistroActivosAdmin.html"
+            >Registro / Edición de activos</a
+          >
+        </li>
         <li><a href="transferIncomeAdmin.html">Traslados</a></li>
         <li><a href="bitacora.html">Bitácora</a></li>
         <li><a href="reportes.html">Reportes</a></li>
@@ -41,13 +45,13 @@
     </header>
 
     <main>
-      <br/><br/>
+      <br /><br />
       <h2 class="subtitles">Estado de solicitudes de Traslado</h2>
-      <br>
+      <br />
       <div class="row">
         <div class="inputs">
           <label for="txtNombreActivo">Nombre o ID de activo</label>
-          <input type="text" class="buscador"id="txtNombreActivo"/>
+          <input type="text" class="buscador" id="txtNombreActivo" />
         </div>
         <div class="botonBuscar">
           <button type="button" class="buttons">Buscar</button>
@@ -57,11 +61,13 @@
       <table id="transfers">
         <thead>
           <tr>
-            <th>Nombre de la solicitud</th>
-            <th>ID del Activo</th>
-            <th>Estado</th>
-            <th>Fecha</th>
-            <th>Usuario</th>
+            <th>ID de la solicitud</th>
+            <th>ID del Activo afectado</th>
+            <th>Razon de traslado</th>
+            <th>Imagenes</th>
+            <th>Fecha de creacion</th>
+            <th>Solicitante</th>
+            <th>Estado de solicitud</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -90,6 +96,6 @@
     <script src="js/utils.js"></script>
     <script src="js/Services/generalService.js"></script>
     <script src="js/Controllers/sessionController.js"></script>
-    <script src="js/Controllers/transfersController.js"></script>
+    <script src="js/Controllers/estadoTraslado.js"></script>
   </body>
 </html>
