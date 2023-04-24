@@ -53,21 +53,18 @@ router.get("/ListarTraslados", (req, res) => {
 
 router.put("/ActualizarEstadoTraslado", (req, res) => {
   let body = req.body;
-  Traslado.updateOne(
-    { ID_Traslado: body.ID_Traslado },
-    { $set: { Estado: body.Estado } }
-  )
-    .then((trasladoDB) => {
+  Traslado.updateOne({ _id: body._id }, { $set: req.body })
+    .then((info) => {
       res.json({
         resultado: true,
-        msj: "El estado del traslado se actualizó de manera correcta.",
-        trasladoDB,
+        msj: "Los datos han sido actualizados",
+        info,
       });
     })
     .catch((err) => {
       res.json({
         resultado: false,
-        msj: "No se pudo actualizar el estado del traslado.",
+        msj: "No se pudieron actualizar los datos.",
         err,
       });
     });

@@ -49,38 +49,77 @@ function ImprimirTraslados() {
       celdaSolicitante.innerHTML = listaTraslados[i].Solicitante;
       celdaEstado.innerHTML = getEstadoTraslado(listaTraslados[i].Estado);
 
-      // let btnAceptar = document.createElement("button");
-      // btnAceptar.innerHTML = "Aceptar";
-      // btnAceptar.classList.add("btn");
-      // btnAceptar.classList.add("btn-success");
-      // btnAceptar.classList.add("btn-sm");
-      // btnAceptar.addEventListener("click", async () => {
-      //   let id = listaTraslados[i].ID_Traslado;
-      //   let estado = 1;
-      //   let data = {
-      //     id,
-      //     estado,
-      //   };
-      //   await ProcessPOST("ActualizarEstadoTraslado", data);
-      // });
-      //
-      // let btnRechazar = document.createElement("button");
-      // btnRechazar.innerHTML = "Rechazar";
-      // btnRechazar.classList.add("btn");
-      // btnRechazar.classList.add("btn-success");
-      // btnRechazar.classList.add("btn-sm");
-      // btnRechazar.addEventListener("click", async () => {
-      //   let id = listaTraslados[i].ID_Traslado;
-      //   let estado = 2;
-      //   let data = {
-      //     id,
-      //     estado,
-      //   };
-      //   await ProcessPOST("ActualizarEstadoTraslado", data);
-      // });
-      //
-      // celdaAcciones.appendChild(btnAceptar);
-      // celdaAcciones.appendChild(btnRechazar);
+      // @@@ arreglar las funciones de los botones
+      let btnAprobar = document.createElement("button");
+      btnAprobar.type = "button";
+      btnAprobar.innerText = "Aprobar";
+      btnAprobar.title = "Aprobar";
+      btnAprobar.classList.add("btnsTabla");
+      btnAprobar.onclick = async function () {
+        let confirmacion = false;
+        await Swal.fire({
+          title: "Desea aprobar el traslado de " + listaTraslados[i].ID_activo,
+          icon: "warning",
+          confirmButtonText: "Confirmar",
+          denyButtonText: "Cancelar",
+          showDenyButton: true,
+        }).then((res) => {
+          confirmacion = res.isConfirmed;
+        });
+        if (confirmacion == true) {
+          let data = {
+            _id: listaTraslados[i]._id,
+            Estado: 1,
+          };
+          let result = await ProcessPUT("ActualizarEstadoTraslado", data);
+          if (result.resultado == true) {
+            PrintSuccess(result.msj);
+            location.href = "estadoTrasladoAdmin.html";
+          } else {
+            PrintError(result.msj);
+          }
+          await GetListaTraslados();
+        }
+      };
+
+      let btnRechazar = document.createElement("button");
+      btnRechazar.type = "button";
+      btnRechazar.innerText = "Rechazar";
+      btnRechazar.title = "Rechazar";
+      btnRechazar.classList.add("btnsTabla");
+      btnRechazar.onclick = async function () {
+        let confirmacion = false;
+        await Swal.fire({
+          title: "Desea rechazar el traslado de " + listaTraslados[i].ID_activo,
+          icon: "warning",
+          confirmButtonText: "Confirmar",
+          denyButtonText: "Cancelar",
+          showDenyButton: true,
+        }).then((res) => {
+          confirmacion = res.isConfirmed;
+        });
+        if (confirmacion == true) {
+          let data = {
+            _id: listaTraslados[i]._id,
+            Estado: 2,
+          };
+          let result = await ProcessPUT("ActualizarEstadoTraslado", data);
+          if (result.resultado == true) {
+            PrintSuccess(result.msj);
+            location.href = "estadoTrasladoAdmin.html";
+          } else {
+            PrintError(result.msj);
+          }
+          await GetListaTraslados();
+        }
+      };
+
+      let divBtns = document.createElement("div");
+      if (listaTraslados[i].Estado == 0) {
+        divBtns.appendChild(btnAprobar);
+        // divBtns.appendChild(btnRechazar);
+      }
+      celdaAcciones.appendChild(divBtns);
     }
   }
 }
