@@ -3,6 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const Persona = require("../models/personaModel");
+const mailer = require("../templates/registroTemplate");
 
 //CRUD: CREATE READ UPDATE DELETE
 
@@ -30,6 +31,8 @@ router.post("/RegistrarPersona", (req, res) => {
         msj: "Registro realizado de manera correcta",
         personaDB,
       });
+
+      mailer.EnviarEmail(personaDB.Nombre, personaDB.Email);
     })
     .catch((err) => {
       res.json({
