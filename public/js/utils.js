@@ -195,3 +195,13 @@ function ValidateDate(pDate) {
 
   return true;
 }
+
+function GenerateTempPass() {
+  let length = 5,
+    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+    tempPass = "";
+  for (let i = 0, n = charset.length; i < length; ++i) {
+    tempPass += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return tempPass;
+}

@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const Persona = require("../models/personaModel");
 const mailer = require("../templates/registroTemplate");
+const passMailer = require("../templates/passTemplate");
 
 //CRUD: CREATE READ UPDATE DELETE
 
@@ -80,6 +81,25 @@ router.get("/BuscarPersonaIdentificacion", (req, res) => {
     });
 });
 
+router.get("/BuscarPersonaEmail", (req, res) => {
+  let params = req.query;
+  Persona.findOne({ Email: params.Email })
+    .then((personaDB) => {
+      res.json({
+        resultado: true,
+        msj: "Persona encontrada",
+        personaDB,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "El correo electronico no se encuentra regitrado.",
+        err,
+      });
+    });
+});
+
 router.get("/BuscarPersonaId", (req, res) => {
   let params = req.query;
   Persona.findOne({ _id: params._id })
@@ -141,6 +161,26 @@ router.put("/ModificarPersona", (req, res) => {
         msj: "Los datos han sido actualizados",
         info,
       });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "No se pudieron actualizar los datos.",
+        err,
+      });
+    });
+});
+
+router.put("/RecuperarPass", (req, res) => {
+  let body = req.body;
+  Persona.updateOne({ _id: body._id }, { $set: { Password: body.Password } })
+    .then((info) => {
+      res.json({
+        resultado: true,
+        msj: "Los datos han sido actualizados",
+        info,
+      });
+      passMailer.EnviarEmail(body.Nombre, body.Email, body.Password);
     })
     .catch((err) => {
       res.json({
