@@ -34,6 +34,7 @@ footer {
   padding: 5px 10px;
 }
 
+
 .header .logo img {
   height: 75px;
   width: auto;
@@ -178,3 +179,4 @@ main {
   letter-spacing: 2px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
+
