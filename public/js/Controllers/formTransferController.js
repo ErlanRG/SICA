@@ -121,6 +121,7 @@ async function Trasladar() {
   if (!result) {
     PrintError("Ocurrio un error inesperado");
   } else if (result.resultado == false) {
+    console.log(result.err);
     PrintError(result.msj);
   } else {
     PrintSuccess("Traslado solicitado.").then((res) => {

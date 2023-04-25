@@ -56,9 +56,9 @@ async function RegistrarActivo() {
   if (!result) {
     PrintError("Ocurrio un error inesperado");
   } else if (result.resultado == false) {
-    PrintError(result.msj);
+    PrintError(result.err);
   } else {
-    PrintSuccess("Excelente").then((res) => {
+    PrintSuccess("Activo registrado con éxito.").then((res) => {
       location.href = "estadoDeRegistro.html";
     });
   }
