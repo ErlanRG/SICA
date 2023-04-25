@@ -1,67 +1,77 @@
-function validarRegistro(event) {
-  event.preventDefault();
+"use strict";
 
-  const nombreActivo = document.querySelector(".nombreDeActivo");
-  const ubicacionActivo = document.querySelector(".ubicacion");
-  const idActivo = document.querySelector('input[name="idActivo"]');
-  const sedeSeleccionada = document.querySelector("#seleccionarSede");
-  const descripcionActivo = document.querySelector("#descripcionActivo");
+let inputSede = document.getElementById("txtSede");
+let inputNomActivo = document.getElementById("txtNomActivo");
+let inputUbicActivo = document.getElementById("txtUbActivo");
+let inputDescrip = document.getElementById("txtDescription");
 
-  let errores = "";
-
-  if (nombreActivo.value === "") {
-    errores += "Debe ingresar el nombre del activo.\n";
-    nombreActivo.placeholder = "Este campo es obligatorio";
-    nombreActivo.style.borderColor = "red";
-  } else {
-    nombreActivo.style.borderColor = "";
+function ValidateInfo(pSede, pNombre, pUbicacion, pDescripcion) {
+  if (!pSede || pSede == "") {
+    PrintError("Debe ingresar la sede en donde desea registrar el activo.");
+    return false;
   }
 
-  if (ubicacionActivo.value === "") {
-    errores += "Debe ingresar la ubicación del activo.\n";
-    ubicacionActivo.placeholder = "Este campo es obligatorio";
-    ubicacionActivo.style.borderColor = "red";
-  } else {
-    ubicacionActivo.style.borderColor = "";
+  if (!pNombre || pNombre == "") {
+    PrintError("Debe ingresar el nombre del activo.");
+    return false;
   }
 
-  if (idActivo.value === "") {
-    errores += "Debe ingresar el ID del activo.\n";
-    idActivo.placeholder = "Este campo es obligatorio";
-    idActivo.style.borderColor = "red";
-  } else if (!/^\d{6}$/.test(idActivo.value)) {
-    errores += "El ID del activo debe contener 6 dígitos numéricos.\n";
-    idActivo.style.borderColor = "red";
-  } else {
-    idActivo.style.borderColor = "";
+  if (!pUbicacion || pUbicacion == "") {
+    PrintError("Debe ingresar la ubicacion del activo.");
+    return false;
   }
 
-  if (sedeSeleccionada.value === "") {
-    errores += "Debe seleccionar una sede.\n";
-    sedeSeleccionada.style.borderColor = "red";
-  } else {
-    sedeSeleccionada.style.borderColor = "";
+  if (!pDescripcion || pDescripcion == "") {
+    PrintError("Debe ingresar la descripcion del activo.");
+    return false;
+  }
+}
+
+async function RegistrarActivo() {
+  let nombreActivo = inputNomActivo.value;
+  let sedeActivo = inputSede.value;
+  let ubicacionActivo = inputUbicActivo.value;
+  let descripcion = inputDescrip.value;
+
+  if (
+    ValidateInfo(sedeActivo, nombreActivo, ubicacionActivo, descripcion) ==
+    false
+  ) {
+    return;
   }
 
-  if (descripcionActivo.value === "") {
-    errores += "Debe ingresar una descripción del activo.\n";
-    descripcionActivo.placeholder = "Este campo es obligatorio";
-    descripcionActivo.style.borderColor = "red";
-  } else {
-    descripcionActivo.style.borderColor = "";
-  }
+  let result = null;
+  let data = {
+    Nombre: nombreActivo,
+    Descripcion: descripcion,
+    Unidad: sedeActivo,
+    Ubicacion: ubicacionActivo,
+    CodigoUbic: genCodUbicacion(sedeActivo, ubicacionActivo),
+    Usuario: GetActiveSession().Email,
+    FechaCreacion: setDate(),
+  };
 
-  if (errores !== "") {
-    Swal.fire({
-      icon: "error",
-      title: "Error al registrar el activo",
-      text: errores,
+  result = await ProcessPOST("RegistrarActivo", data);
+
+  if (!result) {
+    PrintError("Ocurrio un error inesperado");
+  } else if (result.resultado == false) {
+    PrintError(result.err);
+  } else {
+    PrintSuccess("Activo registrado con éxito.").then((res) => {
+      location.href = "estadoDeRegistro.html";
     });
-  } else {
-    Swal.fire({
-      icon: "success",
-      title: "Activo registrado exitosamente",
-    });
-    document.querySelector("#formularioRegistro").reset();
   }
+}
+
+function genCodUbicacion(pSede, pUbic) {
+  let uni = "Unidad" + pSede;
+  let code = "ProveGuard" + "_" + uni + "_" + pUbic;
+  return code;
+}
+
+function setDate() {
+  const today = new Date();
+  const dateString = today.toISOString().substring(0, 10);
+  return dateString;
 }

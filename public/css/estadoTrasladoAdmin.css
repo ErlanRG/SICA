@@ -1,0 +1,14 @@
+.botonBuscar {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+  }
+  label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .inputs{
+    display: inline-block;
+    margin-right: 10px;
+  }

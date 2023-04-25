@@ -7,12 +7,14 @@ const Activo = require("../models/activoModel");
 router.post("/RegistrarActivo", (req, res) => {
   let body = req.body;
   let nuevoActivo = new Activo({
-    ID_activo: body.ID_activo,
     Nombre: body.Nombre,
     Descripcion: body.Descripcion,
     Unidad: body.Unidad,
     Ubicacion: body.Ubicacion,
     CodigoUbic: body.CodigoUbic,
+    Usuario: body.Usuario,
+    FechaCreacion: body.FechaCreacion,
+    Estado: 0,
   });
 
   nuevoActivo
@@ -103,6 +105,25 @@ router.put("/ModificarActivo", (req, res) => {
       res.json({
         resultado: false,
         msj: "No se pudieron actualizar los datos.",
+        err,
+      });
+    });
+});
+
+router.post("/ActivarActivo", (req, res) => {
+  let body = req.body;
+  Activo.updateOne({ _id: body._id }, { $set: { Estado: 1 } })
+    .then((info) => {
+      res.json({
+        resultado: true,
+        msj: "El activo ha sido aprobado",
+        info,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        resultado: false,
+        msj: "No se pudo activar el activo.",
         err,
       });
     });

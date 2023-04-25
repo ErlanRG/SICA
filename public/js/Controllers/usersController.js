@@ -189,35 +189,6 @@ function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
 
-function ValidateDate(pDate) {
-  if (!pDate || pDate == "") {
-    PrintError("Debe ingresar la fecha de nacimiento");
-    return false;
-  }
-
-  // Calcula la edad restando el año actual con el año ingresado
-  // También comprueba si el mes de nacimiento es mayor que el mes actual o si el
-  // mes de nacimiento es el mismo que el mes actual pero el día de nacimiento es
-  // mayor que el día actual.
-  // Si alguna de estas condiciones se cumple, significa que el usuario aún no ha
-  // cumplido años este año, por lo que su edad se reduce en 1
-  let today = new Date();
-  let birthdate = new Date(pDate);
-  let age = today.getFullYear() - birthdate.getFullYear();
-  let month = today.getMonth() - birthdate.getMonth();
-
-  if (month < 0 || (month === 0 && today.getDate() < birthdate.getDate())) {
-    age--;
-  }
-
-  if (age < 18) {
-    PrintError("La edad del usuario debe ser mayor a 18 años");
-    return false;
-  }
-
-  return true;
-}
-
 function ValidateIDNumber(pIDType, pIDNumber) {
   let regex = /^[1-9]\d{8}$/;
 
@@ -251,16 +222,6 @@ function ValidateInfo(pName, pLast1, pRol) {
   }
 
   return true;
-}
-
-function GenerateTempPass() {
-  let length = 5,
-    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-    tempPass = "";
-  for (let i = 0, n = charset.length; i < length; ++i) {
-    tempPass += charset.charAt(Math.floor(Math.random() * n));
-  }
-  return tempPass;
 }
 
 function PrintUserTable() {

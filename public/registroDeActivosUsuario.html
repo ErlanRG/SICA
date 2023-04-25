@@ -33,15 +33,11 @@
           <li><a href="transferIncome.html">Traslados</a></li>
           <li><a href="bitacora.html">Bitácora</a></li>
           <li><a href="reportes.html">Reportes</a></li>
-          <li><a href="users.html">Manejo de usuarios</a></li>
         </ul>
       </nav>
       <div class="left-nav">
         <div id="user-icon" class="logo user-icon" title="Perfil">
           <img src="img/user-icon.png" alt="user-icon" />
-        </div>
-        <div class="logo search-icon" title="Buscar">
-          <img src="img/search-interface-symbol.png" alt="user-icon" />
         </div>
         <button type="button" class="buttons" onclick="Logout()">
           Cerrar Sesión
@@ -49,66 +45,49 @@
       </div>
     </header>
     <main>
-      <div class="formularioRegistroActivos">
-        <h2 class="subtitles">Solicitud de registro de activo</h2>
-        <div class="registrarActivos">
-          <form
-            action="registrar"
-            id="formularioRegistro"
-            onsubmit="validarRegistro(event)"
+      <form class="solicitudRegActivos">
+        <div>
+          <h2 class="subtitles">Solicitud de registro de activo</h2>
+        </div>
+        <div>
+          <div class="inputs">
+            <label for="txtSede">Seleccione la sede</label>
+            <select id="txtSede">
+              <option value="">--Seleccione una opción--</option>
+              <option value="1">Central</option>
+              <option value="2">Heredia</option>
+              <option value="3">Alajuela</option>
+              <option value="4">Cartago</option>
+            </select>
+          </div>
+          <div class="inputs">
+            <label for="txtNomActivo">Nombre del activo</label>
+            <input type="text" id="txtNomActivo" />
+          </div>
+          <div class="inputs">
+            <label for="txtUbActivo">Ubicacion del activo</label>
+            <input type="text" id="txtUbActivo" />
+          </div>
+          <div class="inputs">
+            <label for="txtIdActivo">ID del activo</label>
+            <input type="text" id="txtIdActivo" maxlength="6" />
+          </div>
+          <div>
+            <label for="txtDescription">Descripción actual del activo...</label>
+            <textarea id="txtDescription"></textarea>
+          </div>
+          <button type="button" class="buttons" onclick="EnviarSolicitud()">
+            Enviar solicitud
+          </button>
+          <button
+            type="button"
+            class="buttons"
+            onclick="window.location.href='ingresoRegistroActivosUsuario.html'"
           >
-            <div class="inputNombreActivo">
-              <!-- <label for="nombreDeActivo"></label> -->
-              <input
-                type="text"
-                placeholder="Nombre del activo"
-                class="nombreDeActivo"
-              />
-            </div>
-            <div class="ubicacionActivo">
-              <!-- <label for="ubicacion"></label> -->
-              <input
-                type="text"
-                placeholder="Ubicacion del activo"
-                class="ubicacion"
-              />
-            </div>
-            <div class="inputIdActivo">
-              <!-- <label for="idActivo"></label> -->
-              <input
-                type="text"
-                maxlength="6"
-                placeholder="ID del activo"
-                name="idActivo"
-              />
-            </div>
-            <div class="selecSede">
-              <!-- <label for="seleccionarSede"></label> -->
-              <select name="seleccionarSede" id="seleccionarSede">
-                <option value="" disabled selected hidden>
-                  Seleccione la sede
-                </option>
-                <option value="sedeCentral">Sede Central</option>
-                <option value="sedeHeredia">Sede Heredia</option>
-                <option value="sedeAlajuela">Sede Alajuela</option>
-              </select>
-            </div>
-            <div class="button">
-              <button type="submit">Enviar solicitud</button>
-            </div>
-          </form>
+            Cancelar
+          </button>
         </div>
-        <div class="descripcion">
-          <!-- <label for="texto"></label> -->
-          <textarea
-            name="texto"
-            id="descripcionActivo"
-            cols="50"
-            rows="10"
-            placeholder=" Descripcion del activo que desea registrar"
-          ></textarea>
-        </div>
-      </div>
+      </form>
     </main>
     <footer class="footer">
       <div class="company-name">
@@ -116,18 +95,17 @@
       </div>
       <div class="copyright">
         <h2>SICA - Sistema de Control de Activos</h2>
-        <h2><a href="./landPageBotWeb.html">BotWeb Team</a></h2>
+        <h2><a href="landpageBotweb.html">BotWeb Team</a></h2>
       </div>
       <ul class="nav-links">
-        <li><a href="./landPageBotWeb.html">Contacto</a></li>
-        <li><a href="./sede.html">Sedes</a></li>
-        <li><a href="./landPageBotWeb.html">Ayuda</a></li>
+        <li><a href="landpageBotweb.html">Contacto</a></li>
+        <li><a href="sede.html">Sedes</a></li>
+        <li><a href="landpageBotweb.html">Ayuda</a></li>
       </ul>
     </footer>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="js/utils.js"></script>
     <script src="js/Services/generalService.js"></script>
     <script src="js/Controllers/sessionController.js"></script>

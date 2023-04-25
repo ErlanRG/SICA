@@ -1,3 +1,12 @@
+.avatar {
+  vertical-align: middle;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-image: url("../img/user-icon-black.png");
+  background-size: cover;
+}
+
 .logo img {
   height: 70px;
   width: auto;
@@ -31,6 +40,9 @@
   gap: 27px;
 }
 
+.inputs.hidden {
+  display: none;
+}
 /* BEGIN MAIN EDIT */
 
 main .logo.user-icon img {
@@ -60,6 +72,10 @@ main .logo.user-icon img {
   right: 0;
 }
 
+.disabled {
+  display: none;
+}
+
 /* ENDS MAIN EDIT */
 
 footer {
@@ -77,3 +93,17 @@ footer {
   flex-direction: column;
   gap: 10px;
 }
+.btnSubirFoto {
+  background-color: #387e37;
+  border: none;
+  color: #f4e7d5;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+

@@ -20,16 +20,16 @@
         <img
           src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
           alt="Logo ProveGuard"
-        /><span id="rol"></span>
+        /><span id="rol">Rol: Admin</span>
       </div>
       <nav>
         <ul class="nav-links">
           <li>
-            <a href="registroDeActivosAdmin.html"
+            <a href="ingresoRegistroActivosAdmin.html"
               >Registro / Edición de activos</a
             >
           </li>
-          <li><a href="transferIncome.html">Traslados</a></li>
+          <li><a href="transferIncomeAdmin.html">Traslados</a></li>
           <li><a href="bitacora.html">Bitácora</a></li>
           <li><a href="reportes.html">Reportes</a></li>
           <li><a href="users.html">Manejo de usuarios</a></li>
@@ -39,9 +39,6 @@
         <div id="user-icon" class="logo user-icon" title="Perfil">
           <img src="img/user-icon.png" alt="user-icon" />
         </div>
-        <div class="logo search-icon" title="Buscar">
-          <img src="img/search-interface-symbol.png" alt="user-icon" />
-        </div>
         <button type="button" class="buttons" onclick="Logout()">
           Cerrar Sesión
         </button>
@@ -50,7 +47,7 @@
 
     <main>
       <div class="container edit-button">
-        <button type="button" class="buttons" onclick="EditProfile()">
+        <button type="button" class="buttons" onclick="EnableButtons()">
           Editar
         </button>
       </div>
@@ -58,17 +55,21 @@
         <h2 class="subtitles">Imagen de perfil</h2>
         <div>
           <img id="imgUser" class="avatar" />
-          <button
-            type="button"
-            class="btnSubirFoto"
-            onclick="AbrirCloudinary('imgUser')"
-          >
-            Subir Foto
-          </button>
         </div>
+        <button
+          type="button"
+          class="buttons"
+          onclick="AbrirCloudinary('imgUser')"
+        >
+          Subir Foto
+        </button>
       </div>
       <div class="container info">
         <h2 class="subtitles">Informacion del usuario</h2>
+        <div class="inputs hidden">
+          <label for="mongoId">_id</label>
+          <input type="text" id="mongoId" />
+        </div>
         <div class="inputs">
           <label for="txt-id">Identificación</label>
           <input type="text" id="txt-id" />
@@ -96,14 +97,6 @@
         <div class="inputs">
           <label for="txt-new-pass">Contraseña nueva</label>
           <input type="password" id="txt-new-pass" />
-        </div>
-        <div class="inputs">
-          <label for="txt-new-pass-confim">Confirmar Contraseña</label>
-          <input type="password" id="txt-new-pass-confim" />
-        </div>
-        <div class="inputs">
-          <label for="txt-number">Telefono</label>
-          <input type="text" id="txt-number" />
         </div>
         <div class="inputs">
           <label for="txt-birthday">Fecha de nacimiento</label>
@@ -140,12 +133,12 @@
       </div>
       <div class="copyright">
         <h2>SICA - Sistema de Control de Activos</h2>
-        <h2> <a href="./landPageBotWeb.html">BotWeb Team</a></h2>
+        <h2><a href="landpageBotweb.html">BotWeb Team</a></h2>
       </div>
       <ul class="nav-links">
-        <li><a href="./landPageBotWeb.html">Contacto</a></li>
-        <li><a href="./sede.html">Sedes</a></li>
-        <li><a href="./landPageBotWeb.html">Ayuda</a></li>
+        <li><a href="landpageBotweb.html">Contacto</a></li>
+        <li><a href="sede.html">Sedes</a></li>
+        <li><a href="landpageBotweb.html">Ayuda</a></li>
       </ul>
     </footer>
 
@@ -155,6 +148,7 @@
 
     <script src="js/utils.js"></script>
     <script src="js/Services/generalService.js"></script>
+    <script src="js/Services/imgService.js"></script>
     <script src="js/Controllers/sessionController.js"></script>
     <script src="js/Controllers/editProfileController.js"></script>
   </body>

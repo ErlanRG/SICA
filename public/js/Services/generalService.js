@@ -36,6 +36,24 @@ async function ProcessPOST(pRouterName, pData) {
   return result;
 }
 
+async function ProcessPUT(pRouterName, pData) {
+  let result = await ProcessAction("put", pRouterName, pData);
+  if (pRouterName == "ModificarPersona") {
+    if (result.resultado == false) {
+      switch (result.code) {
+        case 11000:
+          result.msj =
+            "No se pudo actualizar la persona, ya existe una persona con esa identificacion ";
+          console.log("No se pudo registrar codigo 11000");
+          break;
+        default:
+          break;
+      }
+    }
+  }
+  return result;
+}
+
 async function ProcessDELETE(pRouterName, pData) {
   let result = await ProcessAction("delete", pRouterName, pData);
   return result;
