@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SICA - Reportes de Usuario</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SICA-Historial de Usuarios</title>
     <link
       rel="icon"
       type=""
       href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
     />
     <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/usuarios.css" rel="stylesheet" />
     <link href="css/general.css" rel="stylesheet" />
-    <link href="css/reportes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/historiales.css" />
   </head>
 
   <body>
@@ -26,11 +26,11 @@
       <nav>
         <ul class="nav-links">
           <li>
-            <a href="registroDeActivosAdmin.html"
+            <a href="ingresoRegistroActivosAdmin.html"
               >Registro / Edición de activos</a
             >
           </li>
-          <li><a href="transferIncome.html">Traslados</a></li>
+          <li><a href="transferIncomeAdmin.html">Traslados</a></li>
           <li><a href="bitacora.html">Bitácora</a></li>
           <li><a href="reportes.html">Reportes</a></li>
           <li><a href="users.html">Manejo de usuarios</a></li>
@@ -40,42 +40,71 @@
         <div id="user-icon" class="logo user-icon" title="Perfil">
           <img src="img/user-icon.png" alt="user-icon" />
         </div>
-        <div class="logo search-icon" title="Buscar">
-          <img src="img/search-interface-symbol.png" alt="user-icon" />
-        </div>
         <button type="button" class="buttons" onclick="Logout()">
           Cerrar Sesión
         </button>
       </div>
     </header>
-    <div id="mySidenav" class="sidenav">
-      <a href="historialBitacora.html" id="hBitacora">Historial de bitácora</a>
-      <a href="historialUsuario.html" id="hUsuario">Historial de usuario</a>
-      <a href="historialDonacion.html" id="hDonaciones"
-        >Historial de donaciones</a
-      >
-      <a href="historialBodega.html" id="hBodega">Historial de bodega</a>
-      <a href="historialUnidad.html" id="hUnidades">Historial de unidades</a>
-    </div>
-  </body>
-  <footer class="footer">
-    <div class="company-name">
-      <h2><a href="./landPageProveGuard.html">ProveGuard &copy;2023</a></h2>
-    </div>
-    <div class="copyright">
-      <h2>SICA - Sistema de Control de Activos</h2>
-      <h2><a href="landpageBotweb.html">BotWeb Team</a></h2>
-    </div>
-    <ul class="nav-links">
-      <li><a href="landpageBotweb.html">Contacto</a></li>
-      <li><a href="sede.html">Sedes</a></li>
-      <li><a href="landpageBotweb.html">Ayuda</a></li>
-    </ul>
-  </footer>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <main>
+      <br /><br />
+      <h2 class="subtitles">Historial de Usuarios</h2>
+      <br />
+      <div>
+        <div>
+          <label for="selecOpcion">Filtrar por:</label>
+          <select class="buscador" id="selecOpcion">
+            <option value="">--Selecione una opción--</option>
+            <option value="identificacion">Identificación</option>
+            <option value="nombre">Nombre</option>
+            <option value="pmerApellido">Primer Apellido</option>
+            <option value="sdoApellido">Segundo Apellido</option>
+            <option value="fechaNacimiento">Fecha de nacimiento</option>
+            <option value="sede">Sede</option>
+            <option value="rol">Rol</option>
+          </select>
+        </div>
+        <div class="inputs">
+          <label for="txtBuscar">Parámetros de búsqueda</label>
+          <input type="text" class="buscador" id="txtBuscar" />
+        </div>
+        <div class="botonBuscar">
+          <button type="button" class="buttons">Buscar</button>
+        </div>
+      </div>
+      <table id="tableHistorialUsuario">
+        <thead>
+          <tr>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Fecha de nacimiento</th>
+            <th>Sede</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </main>
+    <footer class="footer">
+      <div class="company-name">
+        <h2>ProveGuard &copy;2023</h2>
+      </div>
+      <div class="copyright">
+        <h2>SICA - Sistema de Control de Activos</h2>
+        <h2><a href="landpageBotweb.html">BotWeb Team</a></h2>
+      </div>
+      <ul class="nav-links">
+        <li><a href="landpageBotweb.html">Contacto</a></li>
+        <li><a href="sede.html">Sedes</a></li>
+        <li><a href="landpageBotweb.html">Ayuda</a></li>
+      </ul>
+    </footer>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script src="js/utils.js"></script>
-  <script src="js/Services/generalService.js"></script>
-  <script src="js/Controllers/sessionController.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/Services/generalService.js"></script>
+    <script src="js/Controllers/sessionController.js"></script>
+  </body>
 </html>
