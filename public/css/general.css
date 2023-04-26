@@ -183,3 +183,8 @@ main {
   text-transform: uppercase;
   font-weight: bold;
 }
+
+footer .company-name h2 a {
+  text-decoration: none;
+  color: white;
+}
