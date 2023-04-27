@@ -149,6 +149,8 @@ function ObtenerEstado(pEstado) {
   switch (pEstado) {
     case 1:
       return "Activo";
+    case 2:
+      return "Rechazado";
     default:
       return "Inactivo";
   }
