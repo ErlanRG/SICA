@@ -59,9 +59,15 @@
     <table id="campus">
       <thead>
         <tr>
+          <th>ID de sede</th>
           <th>Nombre de sede</th>
+          <th>Descripción</th>
+          <th>Fecha de creación</th>
+          <!--Será necesesario agregar la Foto de sede?-->
+          <th>Foto de sede</th>
           <th>Ubicación</th>
-          <th>Encargado</th>
+          <th>Código de Ubicación</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -77,17 +83,27 @@
 
         <div class="popup-body">
           <div class="inputs">
-            <!---->
+            <label for="txtIDSede">ID de Sede</label>
+            <input type="text" id="txtIDSede">
+          </div><div class="inputs">
             <label for="txtNombreSede">Nombre de Sede</label>
             <input type="text" id="txtNombreSede">
+          </div>
+          </div><div class="inputs">
+            <label for="txtDescripcionSede">Descripción</label>
+            <textarea type="text" id="txtDescripcionSede"></textarea>
+          </div>
+          <div class="inputs">
+            <label for="txtDate">Fecha de creación</label>
+            <input type="date" id="txtDate" />
           </div>
           <div class="inputs">
             <label for="txtUbicacionSede">Ubicación</label>
             <input type="text" id="txtUbicacionSede">
           </div>
-          <div class="inputs">
-            <label for="txtEncargado">Encargado</label>
-            <input type="text" id="txtEncargado">
+          <div class="inputs sede-image">
+            <label for="sedePic">Seleccionar imagen de sede:</label>
+            <input type="file" id="sedePic">
           </div>
           <!--Agregar función de agregar sede-->
           <button type="button" class="buttons" onclick="AddCampus()">Agregar</button>
@@ -120,8 +136,8 @@
   <script src="js/utils.js"></script>
   <script src="js/Services/generalService.js"></script>
   <script src="js/Controllers/sessionController.js"></script>
-    <!--Crear sedeController.js-->
-  <script src="js/Controllers/usersController.js"></script>
+  <script src="js/Controllers/sedeController.js">
+  </script>  <script src="js/Controllers/usersController.js"></script>
 
 </body>
 </html>

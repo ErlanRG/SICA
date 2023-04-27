@@ -52,7 +52,8 @@ router.get("/ListarSedes", (req, res) => {
     });
 });
 
-router.get("/BuscarSedesIdentificacion", (req, res) => {
+
+router.get("/BuscarSedeID", (req, res) => {
   let params = req.query;
   Sede.findOne({ ID_sede: params.ID_sede })
     .then((sedeDB) => {
@@ -65,26 +66,7 @@ router.get("/BuscarSedesIdentificacion", (req, res) => {
     .catch((err) => {
       res.json({
         resultado: false,
-        msj: "No se encontro una sede con ese numero de ID",
-        err,
-      });
-    });
-});
-
-router.get("/BuscarSedeID", (req, res) => {
-  let params = req.query;
-  Sede.findOne({ _id: params._id })
-    .then((sedeDB) => {
-      res.json({
-        resultado: true,
-        msj: "Sede encontrada",
-        sedeDB,
-      });
-    })
-    .catch((err) => {
-      res.json({
-        resultado: false,
-        msj: "No se encontro una sede con ese ID",
+        msj: "No se encontró una sede con ese ID",
         err,
       });
     });
@@ -92,7 +74,7 @@ router.get("/BuscarSedeID", (req, res) => {
 
 router.put("/ModificarSede", (req, res) => {
   let body = req.body;
-  Sede.updateOne({ _id: body._id }, { $set: req.body })
+  Sede.updateOne({ ID_sede: body.ID_sede }, { $set: req.body })
     .then((info) => {
       res.json({
         resultado: true,
@@ -111,7 +93,7 @@ router.put("/ModificarSede", (req, res) => {
 
 router.delete("/EliminarSede", (req, res) => {
   let body = req.body;
-  Sede.deleteOne({ _id: body._id })
+  Sede.deleteOne({ ID_sede: body.ID_sede})
     .then((result) => {
       res.json({
         resultado: true,
