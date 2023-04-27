@@ -1,106 +1,45 @@
-"use strict";
+'use strict';
 
-let txtNombreEmpleado = document.getElementById("nombre-empleado");
-let txtLocalizacion = document.getElementById("localizacion");
-let IDActivo = document.getElementById("id-activo");
-let fechaTraslado = document.getElementById("fecha-traslado");
-let txtResponsable = document.getElementById("responsable");
-let txtExtras = document.getElementById("extras");
-let radios = document.getElementsByName("radioBtn");
-let txtOrigen = document.getElementById("origen");
-var modal = document.getElementById("miModal");
-var span = document.getElementsByClassName("close")[0];
+let inputFiltrar = document.getElementById("txtFiltrar");
+inputFiltrar.addEventListener("keyup", ImprimirTabla);
 
-span.onclick = function () {
-    CerrarFormulario();
-}
+let listaGeneral = [];
+GetListaGeneral();
 
-window.onclick = function (event) {
-    if (event.target == modal) {
-        CerrarFormulario();
+async function GetListaGeneral(){
+    let resultPersona = await ProcessGet("ListarPersona", data);
+    let resultActivos = await ProcessGet("ListarActivos", data);
+    let resultSede = await ProcessGet("ListarSedes", data);
+    let resultTraslado = await ProcessGet("ListarTraslados", data);
+    if(resultPersona != null && resultPersona.resultado == true){
+        listaGeneral = resultPersona.ListaPersonaDB;
+        ImprimirTabla();
+    } else if(resultActivos != null && resultActivos.resultado == true){
+        listaGeneral = resultActivos.ListaActivosDB;
+        ImprimirTabla();
+    } else if(resultSede != null && resultSede.resultado == true){
+        listaGeneral = resultSede.ListaSedesDB;
+        ImprimirTabla();
+    } else if(resultTraslado != null && resultTraslado.resultado == true){
+        listaGeneral = resultTraslado.ListaTrasladosDB;
+        ImprimirTabla();
+    }else{
+        PrintError(resultPersona.msj
+                ||resultActivos.msj
+                ||resultSede.msj
+                ||resultTraslado.msj);
+        return;
     }
 }
-function AbrirFormulario() {
-    var labels = document.getElementsByTagName("label");
-    console.log(labels);
-    modal.style.display = "block";
+async function ImprimirTabla(){
+    let tbody = document.getElementById("table-body");
+    let filtro = inputFiltrar.value;
+    tbody.innerHTML = "";
+
+    for (let i = 0; i < listaGeneral.length; i++) {
+    listaGeneral.push(resultActivos);
+    listaGeneral.push(resultPersona);
+    listaGeneral.push(resultSede);
+    listaGeneral.push(resultTraslado);
 }
-function CerrarFormulario() {
-    modal.style.display = "none";
-}
-
-
-function Validar() {
-  let nombre = txtNombreEmpleado.value;
-  let localizacion = txtLocalizacion.value;
-  let activo = IDActivo.value;
-  let fecha = fechaTraslado.value;
-  let responsable = txtResponsable.value;
-  let extras = txtExtras.value;
-  let origen = txtOrigen.value;
-
-  let hoy = new Date();
-
-  if (!nombre || nombre == "") {
-    PrintError("Debe introducir nombre");
-    return;
-  }
-
-  if (!localizacion || localizacion == "") {
-    PrintError("Debe introducir localizacion");
-    return;
-  }
-
-  if (!activo || activo == "") {
-    PrintError("Debe introducir activo");
-    return;
-  }
-
-  if (!fecha) {
-    PrintError("Debe introducir fecha");
-    return;
-  }
-
-  if (fecha < hoy) {
-    PrintError("Fecha no puede ser menor");
-    return;
-  }
-
-  if (!responsable || responsable == "") {
-    PrintError("Debe introducir responsable");
-    return;
-  }
-
-  if (!extras || extras == "") {
-    PrintError("Debe introducir extras");
-    return;
-  }
-
-  if (ValidarRadioBtns() == false) {
-    return;
-  }
-
-  if (!origen || origen == "") {
-    PrintError("Debe introducir origen");
-    return;
-  }
-
-  PrintSuccess("Datos validados");
-}
-//crear modelo y esquema de las bitacora, hacer crud de la bitacora crear, enlistar y buscar
-function ValidarRadioBtns() {
-  let seleccion = null;
-  for (let i = 0; i < radios.length; i++) {
-    if (radios[i].checked) {
-      seleccion = radios[i].value;
-      break;
-    }
-  }
-
-  if (!seleccion) {
-    PrintError("Seleccione si quiere donar o almacenar");
-    return false;
-  }
-
-  return true;
 }
