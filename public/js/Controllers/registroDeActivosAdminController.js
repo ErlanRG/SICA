@@ -69,9 +69,3 @@ function genCodUbicacion(pSede, pUbic) {
   let code = "ProveGuard" + "_" + uni + "_" + pUbic;
   return code;
 }
-
-function setDate() {
-  const today = new Date();
-  const dateString = today.toISOString().substring(0, 10);
-  return dateString;
-}

@@ -112,6 +112,7 @@ async function Trasladar() {
     Solicitante: GetActiveSession().Email,
     Estado: 0,
     Razon: razonTraslado,
+    FechaCreacion: setDate(),
     Imagen1: img1,
     Imagen2: img2,
   };

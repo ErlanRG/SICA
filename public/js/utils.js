@@ -207,3 +207,9 @@ function GenerateTempPass() {
   }
   return tempPass;
 }
+
+function setDate() {
+  const today = new Date();
+  const dateString = today.toISOString().substring(0, 10);
+  return dateString;
+}
