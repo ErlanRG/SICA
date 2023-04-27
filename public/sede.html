@@ -9,15 +9,15 @@
   <link rel="icon" type="" href="img/proveguard-low-resolution-logo-color-on-transparent-background.png" />
   <link href="css/reset.css" rel="stylesheet" />
   <link href="css/users.css" rel="stylesheet" />
+  <link href="css/sede.css" rel="stylesheet" />
   <link href="css/general.css" rel="stylesheet" />
-  <link rel="stylesheet" href=" " />
 </head>
 
 <body>
   <header class="header">
     <div id="prove-logo" class="logo" title="Inicio">
       <img src="img/proveguard-low-resolution-logo-color-on-transparent-background.png" alt="Logo ProveGuard" /><span
-        id="rol">Rol: Usuario</span>
+        id="rol">Rol: Admin</span>
     </div>
     <nav>
       <ul class="nav-links">
@@ -34,9 +34,6 @@
       <div id="user-icon" class="logo user-icon" title="Perfil">
         <img src="img/user-icon.png" alt="user-icon" />
       </div>
-      <div class="logo search-icon" title="Buscar">
-        <img src="img/search-interface-symbol.png" alt="user-icon" />
-      </div>
       <button type="button" class="buttons" onclick="Logout()">
         Cerrar Sesión
       </button>
@@ -44,35 +41,67 @@
   </header>
 
   <main>
-    <div class="subtitles">
-      <br></br>
-      <h2> Sedes de ProveGuard</h2>
-      </br>
+    <h2 class="subtitles"> Sedes de ProveGuard</h2>
 
+    <div class="page-buttons">
       <div class="inputs">
-        <button class="buttons" onclick="window.location.href= '#'">Editar/Agregar Sedes</button>
-        <input type="text" class="buscador" placeholder="Nombre de la sede" />
-        <button type="button" class="buttons">Buscar</button>
-
+        <button type="button" id="edit" class="buttons">Editar</button>
+        <button type="button" id="add" class="buttons">Editar/Agregar Sede</button>
+      </div>
+      <div class="inputs">
+        <label for="filter">Filtrar</label>
+        <input type="text" id="filter">
+        <button type="button" id="cancel" class="buttons">Cancelar</button>
       </div>
     </div>
 
 
-    <table id="transfers">
+    <table id="campus">
       <thead>
         <tr>
-          <th>Nombre de la sede</th>
+          <th>Nombre de sede</th>
           <th>Ubicación</th>
+          <th>Encargado</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
+      <tfoot id="table-footer"></tfoot>
     </table>
+
+    <div id="popup" class="popup">
+      <form class="addCampus">
+        <div class="popup-header">
+          <h2 class="subtitles">Editar/Agregar Sede</h2>
+          <button class="close-button" onclick="closePopup()">&#10006</button>
+        </div>
+
+        <div class="popup-body">
+          <div class="inputs">
+            <!---->
+            <label for="txtNombreSede">Nombre de Sede</label>
+            <input type="text" id="txtNombreSede">
+          </div>
+          <div class="inputs">
+            <label for="txtUbicacionSede">Ubicación</label>
+            <input type="text" id="txtUbicacionSede">
+          </div>
+          <div class="inputs">
+            <label for="txtEncargado">Encargado</label>
+            <input type="text" id="txtEncargado">
+          </div>
+          <!--Agregar función de agregar sede-->
+          <button type="button" class="buttons" onclick="AddCampus()">Agregar</button>
+          <button type="button" class="buttons" onclick="closePopup()">Cancelar</button> 
+        </div>
+      </form>
+    </div>
+
 
   </main>
 
   <footer class="footer">
     <div class="company-name">
-      <h2><a href="../LandPage ProveGuard/landPageProveGuard.html">ProveGuard &copy;2023</a></h2>
+      <h2><a href="landPageProveGuard.html">ProveGuard &copy;2023</a></h2>
     </div>
     <div class="copyright">
       <h2>SICA - Sistema de Control de Activos</h2>
@@ -91,6 +120,8 @@
   <script src="js/utils.js"></script>
   <script src="js/Services/generalService.js"></script>
   <script src="js/Controllers/sessionController.js"></script>
-</body>
+    <!--Crear sedeController.js-->
+  <script src="js/Controllers/usersController.js"></script>
 
+</body>
 </html>

@@ -45,7 +45,7 @@ function ImprimirTraslados() {
       celdaID_Afectado.innerHTML = listaTraslados[i].ActivoAfectado;
       celdaRazon.innerHTML = listaTraslados[i].Razon;
       celdaImagenes.innerHTML = listaTraslados[i].Imagenes;
-      celdaFecha.innerHTML = listaTraslados[i].Fecha;
+      celdaFecha.innerHTML = listaTraslados[i].FechaCreacion;
       celdaSolicitante.innerHTML = listaTraslados[i].Solicitante;
       celdaEstado.innerHTML = getEstadoTraslado(listaTraslados[i].Estado);
 
@@ -54,7 +54,7 @@ function ImprimirTraslados() {
       btnAprobar.type = "button";
       btnAprobar.innerText = "Aprobar";
       btnAprobar.title = "Aprobar";
-      btnAprobar.classList.add("btnsTabla");
+      btnAprobar.classList.add("btnsTabla", "buttons");
       btnAprobar.onclick = async function () {
         let confirmacion = false;
         await Swal.fire({
@@ -86,7 +86,7 @@ function ImprimirTraslados() {
       btnRechazar.type = "button";
       btnRechazar.innerText = "Rechazar";
       btnRechazar.title = "Rechazar";
-      btnRechazar.classList.add("btnsTabla");
+      btnRechazar.classList.add("btnsTabla", "buttons");
       btnRechazar.onclick = async function () {
         let confirmacion = false;
         await Swal.fire({
@@ -117,7 +117,7 @@ function ImprimirTraslados() {
       let divBtns = document.createElement("div");
       if (listaTraslados[i].Estado == 0) {
         divBtns.appendChild(btnAprobar);
-        // divBtns.appendChild(btnRechazar);
+        divBtns.appendChild(btnRechazar);
       }
       celdaAcciones.appendChild(divBtns);
     }

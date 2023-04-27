@@ -11,6 +11,7 @@ router.post("/RegistrarTraslado", (req, res) => {
     Solicitante: body.Solicitante,
     Estado: body.Estado,
     Razon: body.Razon,
+    FechaCreacion: body.FechaCreacion,
     Imagen1: body.Imagen1,
     Imagen2: body.Imagen2,
   });

@@ -37,6 +37,32 @@ async function ImprimirTabla(){
     tbody.innerHTML = "";
 
     for (let i = 0; i < listaGeneral.length; i++) {
+        if(listaGeneral[i].Nombre.toLowerCase().includes(filtro) ||
+            listaGeneral[i].Apellido1.toLowerCase().includes(filtro)
+        ){
+            let fila = tbody.insertRow();
+            let celdaFecha = fila.insertCell();
+            let celdaUsuario = fila.insertCell();
+            let celdaSede = fila.insertCell();
+            let celdaEstado = fila.insertCell();
+            let celdamovimiento = fila.insertCell();
+            let celdaDescripcion = fila.insertCell();
+
+            celdaFecha.innerHTML = ObtenerFecha(
+                listaGeneral[i].fecha
+            );
+            celdaFecha.innerHTML = listaGeneral[i].fecha;
+            celdaUsuario.innerHTML =
+            listaGeneral[i].Nombre + 
+            " " + 
+            listaGeneral[i].Apellido1 + 
+            " " + 
+            listaGeneral[i].Apellido2;
+            celdaSede.innerHTML = listaGeneral[i].Sede;
+            celdaEstado.innerHTML = listaGeneral[i].Estado;
+            celdamovimiento.innerHTML = listaGeneral[i].Movimiento;
+            celdaDescripcion.innerHTML = listaGeneral[i].Descripcion;
+        }
     listaGeneral.push(resultActivos);
     listaGeneral.push(resultPersona);
     listaGeneral.push(resultSede);

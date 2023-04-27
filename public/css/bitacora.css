@@ -1,86 +1,16 @@
-.logo img {
-  height: 70px;
-  width: auto;
-  transition: all 0.3s;
-}
-
-.logo span {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.logo img:hover {
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-.logo.user-icon img {
-  height: 35px;
-}
-
-.logo.search-icon img,
-.logo.hamburguer img {
-  height: 20px;
-}
-
-.left-nav {
-  display: flex;
-  flex-wrap: wrap;
+.botonBuscar {
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  gap: 27px;
 }
-
-/* BEGIN MAIN EDIT */
-
-main {
+.inputs{
+  display: inline-block;
+  margin-right: 10px;
+}
+label{
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-
-main .logo.user-icon img {
-  height: 150px;
-}
-
-.container.edit-button {
-  background-color: var(--color-4);
-  box-shadow: none;
-  position: relative;
-}
-
-.container.edit-button button {
-  position: absolute;
-  right: 0;
-}
-
-.radioButtons {
-  display: flex;
-}
-
-.radioButtons input {
-  display: flex;
-  margin: 0 10px 20px 15px;
-}
-
-/* ENDS MAIN EDIT */
-
-footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
-
-.footer h2 {
-  align-items: center;
-  font-weight: bold;
-  text-align: center;
-}
-
-.copyright {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 table {
   border-collapse: collapse;
@@ -89,6 +19,7 @@ table {
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
   width: 80%;
 }
+
 th,
 td {
   border: 1px solid #ddd;
@@ -107,103 +38,25 @@ th {
 #table-body tr:hover {
   background-color: #ddd;
 }
-.inputLabel {
-  width: 80%;
-  border-radius: 10px;
-  background-color: #f2f2f2;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 50px;
-}
 
-.inputLabel label {
-  display: inline-block;
-  width: 200px;
-  text-align: right;
-  margin-right: 10px;
-}
-
-.inputLabel input {
-  display: inline-block;
-}
-.proveBita {
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 25px;
-}
-
-.prove {
-  position: absolute;
-  left: 0;
-}
-
-.titulos {
-  display: flex;
-  justify-content: center;
-  font-size: 19px;
-}
-
-.titulos h3 {
-  margin-right: 10px;
-}
-
-.titulo {
-  text-align: center;
-}
-.column {
-  float: left;
-  padding: 10px;
-}
-.modal {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-/* Modal content */
-.modalContent {
-  margin: auto;
-  padding: 20px;
-  width: 80%;
-  max-height: calc(100vh -200px);
-  overflow-y: auto;
-}
-
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-body form {
-  width: fit-content;
-  margin: auto;
-}
-
-div {
-  border-radius: 5px;
-}
 .page-buttons {
   width: 80%;
   display: flex;
   justify-content: space-between;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.footer h2 {
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+}
+.copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
