@@ -101,7 +101,17 @@ function ImprimirDatos() {
           confirmacion = res.isConfirmed;
         });
         if (confirmacion == true) {
-          PrintSuccess("Activo rechazado");
+          let data = {
+            _id: listaActivos[i]._id,
+            Estado: 2,
+          };
+          let result = await ProcessPUT("ModificarActivo", data);
+          if (result.resultado == true) {
+            PrintSuccess(result.msj);
+          } else {
+            PrintError(result.msj);
+          }
+          await GetListaActivos();
         }
       };
 
