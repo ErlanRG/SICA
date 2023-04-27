@@ -7,6 +7,7 @@ const schemaTraslado = mongoose.Schema({
   Solicitante: { type: String, required: true, unique: false },
   Estado: { type: String, required: true, unique: false },
   Razon: { type: String, required: true, unique: false },
+  FechaCreacion: { type: Date, required: true, unique: false },
   Imagen1: { type: String, required: true, unique: false },
   Imagen2: { type: String, required: true, unique: false },
 });

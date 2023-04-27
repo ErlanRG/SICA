@@ -45,7 +45,7 @@ function ImprimirTraslados() {
       celdaID_Afectado.innerHTML = listaTraslados[i].ActivoAfectado;
       celdaRazon.innerHTML = listaTraslados[i].Razon;
       celdaImagenes.innerHTML = listaTraslados[i].Imagenes;
-      celdaFecha.innerHTML = listaTraslados[i].Fecha;
+      celdaFecha.innerHTML = listaTraslados[i].FechaCreacion;
       celdaSolicitante.innerHTML = listaTraslados[i].Solicitante;
       celdaEstado.innerHTML = getEstadoTraslado(listaTraslados[i].Estado);
 
