@@ -21,7 +21,7 @@
       <ul class="nav-links">
         <li><a href="registroDeActivosAdmin.html">Registro / Edición de activos</a></li>
         <li><a href="transferIncomeAdmin.html">Traslados</a></li>
-        <li><a href="Bitacora.html">Bitácora</a></li>
+        <li><a href="bitacora.html">Bitácora</a></li>
         <li><a href="reportes.html">Reportes</a></li>
         <li><a href="users.html">Manejo de usuarios</a></li>
       </ul>
@@ -37,7 +37,31 @@
   </header>
 
   <main>
-    <div id="miModal" class="modal">
+
+    <div class="inputs">
+      <h1 class="subtitles">Bitácora</h1>
+    </div>
+    <div class="page-buttons">
+      <!-- <button type="button" class="buttons" id="btnActivo" onclick="AbrirFormulario()">Registrar Bitacora</button> -->
+    </div>
+    <div class="inputs">
+      <label for="filter">Filtrar</label>
+      <input type="text" id="filter">
+      <button type="button" id="cancel" class="buttons">Cancelar</button>
+    </div>
+    <table >
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Activo</th>
+          <th>Localización</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+
+    <!-- <div id="miModal" class="modal">
       <div class="modalContent">
         <span class="close">&times;</span>
         <form action="">
@@ -111,7 +135,7 @@
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
-    </table>
+    </table> -->
   </main>
 
   <footer class="footer">
