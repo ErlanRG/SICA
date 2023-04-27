@@ -57,7 +57,7 @@ function ImprimirDatos() {
       btnAprobar.type = "button";
       btnAprobar.innerText = "Aprobar";
       btnAprobar.title = "Aprobar";
-      btnAprobar.classList.add("btnsTabla");
+      btnAprobar.classList.add("btnsTabla", "buttons");
       btnAprobar.onclick = async function () {
         let confirmacion = false;
         await Swal.fire({
@@ -88,7 +88,7 @@ function ImprimirDatos() {
       btnRechazar.type = "button";
       btnRechazar.innerText = "Rechazar";
       btnRechazar.title = "Rechazar";
-      btnRechazar.classList.add("btnsTabla");
+      btnRechazar.classList.add("btnsTabla", "buttons");
       btnRechazar.onclick = async function () {
         let confirmacion = false;
         await Swal.fire({

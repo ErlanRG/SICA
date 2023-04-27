@@ -38,6 +38,15 @@ th {
   display: none;
 }
 
+.avatar {
+  vertical-align: middle;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-image: url("../img/user-icon-black.png");
+  background-size: cover;
+}
+
 .popup {
   display: none;
   position: fixed;
