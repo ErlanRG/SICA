@@ -1,138 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SICA-Bitácora</title>
+    <link
+      rel="icon"
+      type=""
+      href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+    />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/general.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bitacora.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>SICA - Bitacora</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="" href="img/proveguard-low-resolution-logo-color-on-transparent-background.png" />
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/bitacora.css">
-  <link rel="stylesheet" href="css/general.css">
-</head>
-
-<body>
-  <header class="header">
-    <div id="prove-logo" class="logo" title="Inicio">
-      <img src="img/proveguard-low-resolution-logo-color-on-transparent-background.png" alt="Logo ProveGuard" /><span
-        id="rol"></span>
-    </div>
-    <nav>
+  <body>
+    <header class="header">
+      <div id="prove-logo" class="logo" title="Inicio">
+        <img
+          src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+          alt="Logo ProveGuard"
+        /><span id="rol">Rol: Admin</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a href="ingresoRegistroActivosAdmin.html"
+              >Registro / Edición de activos</a
+            >
+          </li>
+          <li><a href="transferIncomeAdmin.html">Traslados</a></li>
+          <li><a href="bitacora.html">Bitácora</a></li>
+          <li><a href="reportes.html">Reportes</a></li>
+          <li><a href="users.html">Manejo de usuarios</a></li>
+        </ul>
+      </nav>
+      <div class="left-nav">
+        <div id="user-icon" class="logo user-icon" title="Perfil">
+          <img src="img/user-icon.png" alt="user-icon" />
+        </div>
+        <button type="button" class="buttons" onclick="Logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </header>
+    <main>
+      <br /><br />
+      <h2 class="subtitles">Bitácora</h2>
+      <br />
+      <div>
+        <div class="inputs">
+          <label for="txtFiltrar">Filtrar</label>
+          <select class="buscador" id="selecOpcion">
+            <option value="">--Seleccione una opción--</option>
+            <option value="fecha">Fecha</option>
+            <option value="usuario">Usuario</option>
+            <option value="sede">Sede</option>
+            <option value="estado">Estado</option>
+            <option value="movimiento">Movimiento</option>
+            <option value="descipcion">Descripción</option>
+          </select>
+          <label for="txtBuscar">Parámetros de búsqueda</label>
+          <input type="text" class="buscador" id="txtBuscarActivo" />
+        </div>
+        <div class="botonBuscar">
+          <button type="button" class="buttons">Buscar</button>
+        </div>
+      </div>
+      <table id="tableBitacora">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Sede</th>
+            <th>Estado</th>
+            <th>Movimiento</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </main>
+    <footer class="footer">
+      <div class="company-name">
+        <h2><a href="./landPageProveGuard.html">ProveGuard &copy;2023</a></h2>
+      </div>
+      <div class="copyright">
+        <h2>SICA - Sistema de Control de Activos</h2>
+        <h2><a href="landpageBotweb.html">BotWeb Team</a></h2>
+      </div>
       <ul class="nav-links">
-        <li><a href="registroDeActivosAdmin.html">Registro / Edición de activos</a></li>
-        <li><a href="transferIncomeAdmin.html">Traslados</a></li>
-        <li><a href="Bitacora.html">Bitácora</a></li>
-        <li><a href="reportes.html">Reportes</a></li>
-        <li><a href="users.html">Manejo de usuarios</a></li>
+        <li><a href="landpageBotweb.html">Contacto</a></li>
+        <li><a href="sede.html">Sedes</a></li>
+        <li><a href="landpageBotweb.html">Ayuda</a></li>
       </ul>
-    </nav>
-    <div class="left-nav">
-      <div id="user-icon" class="logo user-icon" title="Perfil">
-        <img src="img/user-icon.png" alt="user-icon" />
-      </div>
-      <button type="button" class="buttons" onclick="Logout()">
-        Cerrar Sesión
-      </button>
-    </div>
-  </header>
+    </footer>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <main>
-    <div id="miModal" class="modal">
-      <div class="modalContent">
-        <span class="close">&times;</span>
-        <form action="">
-          <div class="inputLabel">
-            <div class="titulo">
-              <h2 class="subtitles">Datos de Traslado</h2>
-            </div>
-            <div class="empleado">
-              <label for="txtEmpleado" id="lblNombre">Nombre Del Empleado</label>
-              <input type="text" id="txtEmpleado"> <br>
-            </div>
-            <div class="localizacion">
-              <label for="txtLocalizacion" id="lblLocalizacion">Localización</label>
-              <input type="text" id="txtLocalizacion"><br>
-            </div>
-            <div class="activo">
-              <label for="txtActivo" id="lblActivo">ID de Activo</label>
-              <input type="text" id="txtActivo"><br>
-            </div>
-            <div class="fecha">
-              <label for="txtFecha" id="lblTraslado">Fecha del traslado</label>
-              <input type="date" id="txtFecha"><br>
-            </div>
-            <div class="respon">
-              <label for="txtRespon" id="lblRespon">Responsable de aceptar o denegar el
-                traslado</label>
-              <input type="text" id="txtRespon"><br>
-            </div>
-            <div class="titulo">
-              <h2 class="subtitles">Extras del traslado</h2>
-            </div>
-            <div class="extra">
-              <label for="txtExtra" id="lblExtras">Extras del traslado</label>
-              <input type="text" id="txtExtra"><br>
-            </div>
-            <div class="donalmacen">
-              <label for="txtEstado" id="lblElec">¿Será almacenado o donado?</label>
-              <select name="" id="txtEstado">
-                <option value="1" checked>Donación</option>
-                <option value="0">almacenado</option>
-              </select>
-            </div>
-            <div class="origen">
-              <label for="txtOrigin" id="lblOrigen">lugar de origin del activo</label>
-              <input type="text" id="txtOrigin"><br>
-            </div>
-            <input type="button" id="btnRegistrar" value="Registrar" class="buttons" />
-          </div>
-      </div>
-    </div>
-    </form>
-
-
-    <div class="inputs">
-      <h1 class="subtitles">Bitacora</h1>
-    </div>
-    <div class="page-buttons">
-      <button type="button" class="buttons" id="btnActivo" onclick="AbrirFormulario()">Registrar Bitacora</button>
-    </div>
-    <div class="inputs">
-      <label for="txtFiltrar">Filtrar</label>
-      <input type="text" id="txtFiltrar">
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Activo</th>
-          <th>Localización</th>
-          <th>Fecha</th>
-        </tr>
-      </thead>
-      <tbody id="table-body"></tbody>
-    </table>
-  </main>
-
-  <footer class="footer">
-    <div class="company-name">
-      <h2><a href="landPageProveGuard.html">ProveGuard &copy;2023</a></h2>
-    </div>
-    <div class="copyright">
-      <h2>SICA - Sistema de Control de Activos</h2>
-      <h2><a href="landpageBotweb.html">BotWeb Team</a></h2>
-    </div>
-    <ul class="nav-links">
-      <li><a href="landpageBotweb.html">Contacto</a></li>
-      <li><a href="sede.html">Sedes</a></li>
-      <li><a href="landpageBotweb.html">Ayuda</a></li>
-    </ul>
-  </footer>
-
-  <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="js/Services/generalService.js"></script>
-  <script src="js/Controllers/bitacoraController.js"></script>
-  <script src="js/utils.js"></script>
-</body>
-
+    <script src="js/utils.js"></script>
+    <script src="js/Services/generalService.js"></script>
+    <script src="js/Controllers/bitacoraController.js"></script>
+    <script src="js/Controllers/sessionController.js"></script>
+  </body>
 </html>
