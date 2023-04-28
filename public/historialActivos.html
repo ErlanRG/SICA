@@ -50,34 +50,22 @@
       <h2 class="subtitles">Historial de Activos</h2>
       <br />
       <div>
-        <div>
-          <label for="selecOpcion">Filtrar por:</label>
-          <select class="buscador" id="selecOpcion">
-            <option value="">--Selecione una opción--</option>
-            <option value="idActivo">ID de Activo</option>
-            <option value="nombre">Nombre</option>
-            <option value="codigo">Código</option>
-            <option value="descripcion">Descripción</option>
-            <option value="fecha">Fecha de creación</option>
-            <option value="estado">Estado</option>
-          </select>
-        </div>
         <div class="inputs">
-          <label for="txtBuscar">Parámetros de búsqueda</label>
+          <label for="txtBuscar">Filtrar:</label>
           <input type="text" class="buscador" id="txtBuscar" />
         </div>
-        <div class="botonBuscar">
-          <button type="button" class="buttons">Buscar</button>
-        </div>
       </div>
-      <table id="tableHistorialActivo">
+      <table id="tableSolicActivos">
         <thead>
           <tr>
-            <th>ID de Activo</th>
+            <th>ID del activo</th>
             <th>Nombre</th>
+            <th>Unidad</th>
+            <th>Ubicación</th>
+            <th>Codigo Ubicación</th>
             <th>Descripción</th>
-            <th>Código</th>
-            <th>Fecha de creación</th>
+            <th>Usuario solicitante</th>
+            <th>Fecha</th>
             <th>Estado</th>
           </tr>
         </thead>
@@ -104,5 +92,6 @@
     <script src="js/utils.js"></script>
     <script src="js/Services/generalService.js"></script>
     <script src="js/Controllers/sessionController.js"></script>
+    <script src="js/Controllers/historialActivos.js"></script>
   </body>
 </html>
