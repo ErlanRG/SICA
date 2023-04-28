@@ -47,27 +47,13 @@
     </header>
     <main>
       <br /><br />
-      <h2 class="subtitles">Historial de Sede</h2>
+      <h2 class="subtitles">Historial de Unidad</h2>
       <br />
       <div>
-        <div>
-          <label for="selecOpcion">Filtrar por:</label>
-          <select class="buscador" id="selecOpcion">
-            <option value="">--Selecione una opción--</option>
-            <option value="idSede">ID de Sede</option>
-            <option value="nombre">Nombre</option>
-            <option value="descripcion">Descripción</option>
-            <option value="fechaCreacion">Fecha de creación</option>
-            <option value="sede">Sede</option>
-            <option value="codigo">Código</option>
-          </select>
-        </div>
+        <div></div>
         <div class="inputs">
-          <label for="txtBuscar">Parámetros de búsqueda</label>
+          <label for="txtBuscar">Filtrar</label>
           <input type="text" class="buscador" id="txtBuscar" />
-        </div>
-        <div class="botonBuscar">
-          <button type="button" class="buttons">Buscar</button>
         </div>
       </div>
       <table id="tableHistorialSede">
@@ -77,8 +63,8 @@
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Fecha de creación</th>
-            <th>Sede</th>
-            <th>Código</th>
+            <th>Ubicación</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody id="table-body"></tbody>
