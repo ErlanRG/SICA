@@ -45,10 +45,36 @@ function ImprimirTraslados() {
         celdaID_Solicitud.innerHTML = listaTraslados[i].ID_Traslado;
         celdaID_Afectado.innerHTML = listaTraslados[i].ActivoAfectado;
         celdaRazon.innerHTML = listaTraslados[i].Razon;
-        celdaImagenes.innerHTML = listaTraslados[i].Imagenes;
+        // celdaImagenes.innerHTML = listaTraslados[i].Imagenes;
         celdaFecha.innerHTML = listaTraslados[i].FechaCreacion;
         celdaSolicitante.innerHTML = listaTraslados[i].Solicitante;
         celdaEstado.innerHTML = getEstadoTraslado(listaTraslados[i].Estado);
+
+        //Crear botones para las imagenes
+        let btnVerImagen1 = document.createElement("button");
+        btnVerImagen1.type = "button";
+        btnVerImagen1.innerText = "1";
+        btnVerImagen1.title = "Ver Imagenes";
+        btnVerImagen1.classList.add("btnsTabla", "buttons");
+        btnVerImagen1.onclick = async function () {
+          let src = listaTraslados[i].Imagen1;
+          window.open(src);
+        };
+
+        let btnVerImagen2 = document.createElement("button");
+        btnVerImagen2.type = "button";
+        btnVerImagen2.innerText = "2";
+        btnVerImagen2.title = "Ver Imagenes";
+        btnVerImagen2.classList.add("btnsTabla", "buttons");
+        btnVerImagen2.onclick = async function () {
+          let src = listaTraslados[i].Imagen2;
+          window.open(src);
+        };
+
+        let divImgBtns = document.createElement("div");
+        divImgBtns.appendChild(btnVerImagen1);
+        divImgBtns.appendChild(btnVerImagen2);
+        celdaImagenes.appendChild(divImgBtns);
 
         // @@@ arreglar las funciones de los botones
         let btnAprobar = document.createElement("button");
