@@ -109,7 +109,7 @@ async function ImprimirDatos() {
     btnEdit.type = "button";
     btnEdit.innerText = "✎";
     btnEdit.title = "Editar";
-    btnEdit.classList.add("btnsTabla");
+    btnEdit.classList.add("btnsTabla", "buttons");
     btnEdit.onclick = async function () {
       sedeId = listaSedes[i].ID_sede;
       cargarInformation(listaSedes[i]._id);
@@ -119,7 +119,7 @@ async function ImprimirDatos() {
     btnDelete.type = "button";
     btnDelete.innerText = "🗑️";
     btnDelete.title = "Elimnar";
-    btnDelete.classList.add("btnsTabla");
+    btnDelete.classList.add("btnsTabla", "buttons");
     btnDelete.onclick = async function () {
       let confirmacion = false;
       await Swal.fire({
