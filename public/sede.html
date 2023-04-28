@@ -46,7 +46,7 @@
     <div class="page-buttons">
       <div class="inputs">
         <button type="button" id="edit" class="buttons">Editar</button>
-        <button type="button" id="add" class="buttons">Editar/Agregar Sede</button>
+        <button type="button" id="add" class="buttons">Agregar Sede</button>
       </div>
       <div class="inputs">
         <label for="filter">Filtrar</label>
@@ -59,9 +59,12 @@
     <table id="campus">
       <thead>
         <tr>
+          <th>ID de sede</th>
           <th>Nombre de sede</th>
+          <th>Descripción</th>
+          <th>Fecha de creación</th>
           <th>Ubicación</th>
-          <th>Encargado</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -71,29 +74,29 @@
     <div id="popup" class="popup">
       <form class="addCampus">
         <div class="popup-header">
-          <h2 class="subtitles">Editar/Agregar Sede</h2>
+          <h2 id="title_popup" class="subtitles">Editar/Agregar Sede</h2>
           <button class="close-button" onclick="closePopup()">&#10006</button>
         </div>
 
         <div class="popup-body">
           <div class="inputs">
-            <!---->
             <label for="txtNombreSede">Nombre de Sede</label>
             <input type="text" id="txtNombreSede">
           </div>
-          <div class="inputs">
-            <label for="txtUbicacionSede">Ubicación</label>
-            <input type="text" id="txtUbicacionSede">
-          </div>
-          <div class="inputs">
-            <label for="txtEncargado">Encargado</label>
-            <input type="text" id="txtEncargado">
-          </div>
-          <!--Agregar función de agregar sede-->
-          <button type="button" class="buttons" onclick="AddCampus()">Agregar</button>
-          <button type="button" class="buttons" onclick="closePopup()">Cancelar</button> 
         </div>
-      </form>
+        <div class="inputs">
+          <label for="txtDescripcionSede">Descripción</label>
+          <textarea type="text" id="txtDescripcionSede"></textarea>
+        </div>
+        <div class="inputs">
+          <label for="txtUbicacionSede">Ubicación</label>
+          <textarea type="text" id="txtUbicacionSede"
+            placeholder="Indicar la ubicación con provincia, cantón, distrito y seña"></textarea>
+        </div>
+        <button type="button" class="buttons" id="btnAction_popup">Agregar</button>
+        <button type="button" class="buttons" onclick="closePopup()">Cancelar</button>
+    </div>
+    </form>
     </div>
 
 
@@ -120,8 +123,9 @@
   <script src="js/utils.js"></script>
   <script src="js/Services/generalService.js"></script>
   <script src="js/Controllers/sessionController.js"></script>
-    <!--Crear sedeController.js-->
-  <script src="js/Controllers/usersController.js"></script>
+  <script src="js/Controllers/sedeController.js"></script>
+  <!-- <script src="js/Controllers/usersController.js"></script> -->
 
 </body>
+
 </html>
