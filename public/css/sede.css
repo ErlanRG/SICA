@@ -7,3 +7,24 @@
     max-width: 600px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   }
+
+
+#txtDescripcionSede, #txtUbicacionSede {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.inputs.sede-image {
+  margin: 20px 0 20px 0;
+}
+
+#sedePic {
+  margin: 5px;
+}

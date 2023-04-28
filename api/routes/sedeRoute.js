@@ -1,20 +1,18 @@
 "use strict";
 
-const express = require("express");
-const router = express.Router();
-const Sede = require("../models/sedeModel");
+const express = require("express")
+const router = express.Router()
+const Sede = require("../models/sedeModel")
 
 router.post("/RegistrarSede", (req, res) => {
   let body = req.body;
   let nuevaSede = new Sede({
-    ID_sede: body.ID_sede,
     Nombre: body.Nombre,
     Descripcion: body.Descripcion,
     FechaCreacion: body.FechaCreacion,
     FotoPerfil: body.FotoPerfil,
     Ubicacion: body.Ubicacion,
-    CodigoUbic: body.CodigoUbic,
-  });
+  })
 
   nuevaSede
     .save()
@@ -30,17 +28,17 @@ router.post("/RegistrarSede", (req, res) => {
         resultado: false,
         msj: "No se pudo registrar la sede.",
         err,
-      });
-    });
-});
+      })
+    })
+})
 
 router.get("/ListarSedes", (req, res) => {
   Sede.find()
-    .then((ListaSedesDB) => {
+    .then((listaSedes) => {
       res.json({
         resultado: true,
         msj: "Los datos se obtuvieron de manera correcta: ",
-        ListaSedesDB,
+        listaSedes,
       });
     })
     .catch((err) => {
@@ -48,9 +46,9 @@ router.get("/ListarSedes", (req, res) => {
         resultado: false,
         msj: "No se pudo obtener la lista de sedes.",
         err,
-      });
-    });
-});
+      })
+    })
+})
 
 
 router.get("/BuscarSedeID", (req, res) => {
@@ -61,35 +59,36 @@ router.get("/BuscarSedeID", (req, res) => {
         resultado: true,
         msj: "Sede encontrada",
         sedeDB,
-      });
+      })
     })
     .catch((err) => {
       res.json({
         resultado: false,
         msj: "No se encontró una sede con ese ID",
         err,
-      });
-    });
-});
+      })
+    })
+})
+
 
 router.put("/ModificarSede", (req, res) => {
-  let body = req.body;
-  Sede.updateOne({ ID_sede: body.ID_sede }, { $set: req.body })
+  let body = req.body
+  Sede.updateOne({ _id: body._id }, { $set: req.body })
     .then((info) => {
       res.json({
         resultado: true,
         msj: "Los datos han sido actualizados",
         info,
-      });
+      })
     })
     .catch((err) => {
       res.json({
         resultado: false,
         msj: "No se pudieron actualizar los datos.",
         err,
-      });
-    });
-});
+      })
+    })
+})
 
 router.delete("/EliminarSede", (req, res) => {
   let body = req.body;
@@ -97,14 +96,14 @@ router.delete("/EliminarSede", (req, res) => {
     .then((result) => {
       res.json({
         resultado: true,
-        msj: "Los datos se eliminaron de manera correcta",
+        msj: "La sede se eliminó de manera correcta",
         result,
       });
     })
     .catch((err) => {
       res.json({
         resultado: false,
-        msj: "No se pudieron eliminar los datos.",
+        msj: "No se pudo eliminar la sede.",
         err,
       });
     });

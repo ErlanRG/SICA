@@ -1,5 +1,7 @@
 "use strict";
 
+const COMPANY_NAME = "ProveGuard"
+
 let inputSede = document.getElementById("txtSede");
 let inputNomActivo = document.getElementById("txtNomActivo");
 let inputUbicActivo = document.getElementById("txtUbActivo");
@@ -46,7 +48,7 @@ async function RegistrarActivo() {
     Descripcion: descripcion,
     Unidad: sedeActivo,
     Ubicacion: ubicacionActivo,
-    CodigoUbic: genCodUbicacion(sedeActivo, ubicacionActivo),
+    CodigoUbic: genCodUbicacion(nombreActivo, sedeActivo, ubicacionActivo),
     Usuario: GetActiveSession().Email,
     FechaCreacion: setDate(),
   };
@@ -64,14 +66,30 @@ async function RegistrarActivo() {
   }
 }
 
-function genCodUbicacion(pSede, pUbic) {
-  let uni = "Unidad" + pSede;
-  let code = "ProveGuard" + "_" + uni + "_" + pUbic;
-  return code;
+function genCodUbicacion(pActivo, pSede, pUbic) {
+  let company = COMPANY_NAME.substring(0, 3)
+  let unid =  setFirstCharUpperCase(pActivo).substring(0,3)
+  let sede = setFirstCharUpperCase(pSede).substring(0,3)
+  let location = ''
+  pUbic.split(" ").forEach(function (item) {
+      if(isNaN(item)){
+        location += setFirstCharUpperCase(item).substring(0,3)
+      } else {
+        location += Number(item)
+      }
+  });
+  // ComUniSedLoc13
+  return company + unid + sede + location
 }
 
 function setDate() {
   const today = new Date();
   const dateString = today.toISOString().substring(0, 10);
   return dateString;
+}
+
+function setFirstCharUpperCase(value){
+  value = value.toLowerCase()
+  let firstChar = value.charAt(0) 
+  return value.replace(firstChar, firstChar.toUpperCase()) 
 }
