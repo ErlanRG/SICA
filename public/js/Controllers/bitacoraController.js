@@ -1,71 +1,80 @@
-'use strict';
+"use strict";
 
-let inputFiltrar = document.getElementById("txtFiltrar");
-inputFiltrar.addEventListener("keyup", ImprimirTabla);
+// Para filtrar
+let inputFiltro = document.getElementById("txtBuscarActivo");
+inputFiltro.addEventListener("keyup", ImprimirTraslados);
 
-let listaGeneral = [];
-GetListaGeneral();
+let listaTraslados = [];
 
-async function GetListaGeneral(){
-    let resultPersona = await ProcessGet("ListarPersona", data);
-    let resultActivos = await ProcessGet("ListarActivos", data);
-    let resultSede = await ProcessGet("ListarSedes", data);
-    let resultTraslado = await ProcessGet("ListarTraslados", data);
-    if(resultPersona != null && resultPersona.resultado == true){
-        listaGeneral = resultPersona.ListaPersonaDB;
-        ImprimirTabla();
-    } else if(resultActivos != null && resultActivos.resultado == true){
-        listaGeneral = resultActivos.ListaActivosDB;
-        ImprimirTabla();
-    } else if(resultSede != null && resultSede.resultado == true){
-        listaGeneral = resultSede.ListaSedesDB;
-        ImprimirTabla();
-    } else if(resultTraslado != null && resultTraslado.resultado == true){
-        listaGeneral = resultTraslado.ListaTrasladosDB;
-        ImprimirTabla();
-    }else{
-        PrintError(resultPersona.msj
-                ||resultActivos.msj
-                ||resultSede.msj
-                ||resultTraslado.msj);
-        return;
-    }
+GetListaTraslados();
+
+async function GetListaTraslados() {
+  let result = await ProcessGET("ListarTraslados", null);
+  if (result != null && result.resultado == true) {
+    listaTraslados = result.ListaTrasladosDB;
+    ImprimirTraslados();
+  } else {
+    PrintError(result.msj);
+    return;
+  }
 }
-async function ImprimirTabla(){
-    let tbody = document.getElementById("table-body");
-    let filtro = inputFiltrar.value;
-    tbody.innerHTML = "";
 
-    for (let i = 0; i < listaGeneral.length; i++) {
-        if(listaGeneral[i].Nombre.toLowerCase().includes(filtro) ||
-            listaGeneral[i].Apellido1.toLowerCase().includes(filtro)
-        ){
-            let fila = tbody.insertRow();
-            let celdaFecha = fila.insertCell();
-            let celdaUsuario = fila.insertCell();
-            let celdaSede = fila.insertCell();
-            let celdaEstado = fila.insertCell();
-            let celdamovimiento = fila.insertCell();
-            let celdaDescripcion = fila.insertCell();
+function ImprimirTraslados() {
+  let tbody = document.getElementById("table-body");
+  let filtro = inputFiltro.value;
+  tbody.innerHTML = "";
 
-            celdaFecha.innerHTML = ObtenerFecha(
-                listaGeneral[i].fecha
-            );
-            celdaFecha.innerHTML = listaGeneral[i].fecha;
-            celdaUsuario.innerHTML =
-            listaGeneral[i].Nombre + 
-            " " + 
-            listaGeneral[i].Apellido1 + 
-            " " + 
-            listaGeneral[i].Apellido2;
-            celdaSede.innerHTML = listaGeneral[i].Sede;
-            celdaEstado.innerHTML = listaGeneral[i].Estado;
-            celdamovimiento.innerHTML = listaGeneral[i].Movimiento;
-            celdaDescripcion.innerHTML = listaGeneral[i].Descripcion;
-        }
-    listaGeneral.push(resultActivos);
-    listaGeneral.push(resultPersona);
-    listaGeneral.push(resultSede);
-    listaGeneral.push(resultTraslado);
+  for (let i = 0; i < listaTraslados.length; i++) {
+    let fila = tbody.insertRow();
+    let celdaMovimientoID = fila.insertCell();
+    let celdaSolicitante = fila.insertCell();
+    let celdaFecha = fila.insertCell();
+    let celdaUbicAnt = fila.insertCell();
+    let celdaUbicNuev = fila.insertCell();
+    let celdaDesc = fila.insertCell();
+    let celdaImg = fila.insertCell();
+
+    celdaMovimientoID.innerHTML = listaTraslados[i].ID_Traslado;
+    celdaSolicitante.innerHTML = listaTraslados[i].Solicitante;
+    celdaFecha.innerHTML = listaTraslados[i].FechaCreacion;
+    celdaUbicAnt.innerHTML = listaTraslados[i].UbicacionAnterior;
+    celdaUbicNuev.innerHTML = listaTraslados[i].UbicacionNueva;
+    celdaDesc.innerHTML = listaTraslados[i].Razon;
+
+    //Crea botones para las imagenes
+    let btnVerImagen1 = document.createElement("button");
+    btnVerImagen1.type = "button";
+    btnVerImagen1.innerText = "1";
+    btnVerImagen1.title = "Ver Imagenes";
+    btnVerImagen1.classList.add("btnsTabla", "buttons");
+    btnVerImagen1.onclick = async function () {
+      let src = listaTraslados[i].Imagen1;
+      window.open(src);
+    };
+
+    let btnVerImagen2 = document.createElement("button");
+    btnVerImagen2.type = "button";
+    btnVerImagen2.innerText = "2";
+    btnVerImagen2.title = "Ver Imagenes";
+    btnVerImagen2.classList.add("btnsTabla", "buttons");
+    btnVerImagen2.onclick = async function () {
+      let src = listaTraslados[i].Imagen2;
+      window.open(src);
+    };
+
+    let divBtns = document.createElement("div");
+    divBtns.appendChild(btnVerImagen1);
+    divBtns.appendChild(btnVerImagen2);
+    celdaImg.appendChild(divBtns);
+  }
 }
+
+function getEstadoTraslado(estado) {
+  if (estado == 0) {
+    return "Pendiente";
+  } else if (estado == 1) {
+    return "Aceptado";
+  } else if (estado == 2) {
+    return "Rechazado";
+  }
 }

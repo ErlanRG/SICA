@@ -52,31 +52,19 @@
       <div>
         <div class="inputs">
           <label for="txtFiltrar">Filtrar</label>
-          <select class="buscador" id="selecOpcion">
-            <option value="">--Seleccione una opción--</option>
-            <option value="fecha">Fecha</option>
-            <option value="usuario">Usuario</option>
-            <option value="sede">Sede</option>
-            <option value="estado">Estado</option>
-            <option value="movimiento">Movimiento</option>
-            <option value="descipcion">Descripción</option>
-          </select>
-          <label for="txtBuscar">Parámetros de búsqueda</label>
           <input type="text" class="buscador" id="txtBuscarActivo" />
-        </div>
-        <div class="botonBuscar">
-          <button type="button" class="buttons">Buscar</button>
         </div>
       </div>
       <table id="tableBitacora">
         <thead>
           <tr>
+            <th>Movimiento ID</th>
+            <th>Solicitante</th>
             <th>Fecha</th>
-            <th>Usuario</th>
-            <th>Sede</th>
-            <th>Estado</th>
-            <th>Movimiento</th>
-            <th>Descripción</th>
+            <th>Ubicación anterior</th>
+            <th>Nueva ubicación</th>
+            <th>Descripción del traslado</th>
+            <th>Imágenes</th>
           </tr>
         </thead>
         <tbody id="table-body"></tbody>
