@@ -45,8 +45,11 @@ async function ImprimirDatos() {
 
   for (let i = 0; i < listaPersonas.length; i++) {
     if (
+      listaPersonas[i].Identificacion.toLowerCase().includes(filtro) ||
       listaPersonas[i].Nombre.toLowerCase().includes(filtro) ||
       listaPersonas[i].Apellido1.toLowerCase().includes(filtro) ||
+      listaPersonas[i].Apellido2.toLowerCase().includes(filtro) ||
+      listaPersonas[i].Nacimiento.toLowerCase().includes(filtro) ||
       PrintRol(listaPersonas[i].Rol).toLowerCase().includes(filtro)
     ) {
       let fila = tbody.insertRow();
