@@ -117,8 +117,11 @@
             </select>
           </div>
           <div class="inputs profile-image">
-            <label for="profilePic">Seleccionar imagen de perfil:</label>
-            <input type="file" id="profilePic">
+            <label for="profilePic">Seleccionar imágen de perfil:</label>
+            <img src="" alt="" id="inputImgProfile" class="avatar">
+            <div>
+              <button type="button" class="buttons" onclick="AbrirCloudinary('inputImgProfile')">Subir foto</button>
+            </div>
           </div>
           <button type="button" class="buttons" onclick="AddUser()">Agregar</button>
           <button type="button" class="buttons" onclick="closePopup()">Cancelar</button>
@@ -144,8 +147,10 @@
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://upload-widget.cloudinary.com/2.4.17/global/all.js"></script>
 
   <script src="js/utils.js"></script>
+  <script src="js/Services/imgService.js"></script>
   <script src="js/Services/generalService.js"></script>
   <script src="js/Controllers/sessionController.js"></script>
   <script src="js/Controllers/usersController.js"></script>

@@ -1,23 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SICA-Bitácora</title>
+    <link
+      rel="icon"
+      type=""
+      href="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+    />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/general.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bitacora.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>SICA - Bitacora</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="" href="img/proveguard-low-resolution-logo-color-on-transparent-background.png" />
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/bitacora.css">
-  <link rel="stylesheet" href="css/general.css">
-</head>
-
-<body>
-  <header class="header">
-    <div id="prove-logo" class="logo" title="Inicio">
-      <img src="img/proveguard-low-resolution-logo-color-on-transparent-background.png" alt="Logo ProveGuard" /><span
-        id="rol"></span>
-    </div>
-    <nav>
+  <body>
+    <header class="header">
+      <div id="prove-logo" class="logo" title="Inicio">
+        <img
+          src="img/proveguard-low-resolution-logo-color-on-transparent-background.png"
+          alt="Logo ProveGuard"
+        /><span id="rol">Rol: Admin</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a href="ingresoRegistroActivosAdmin.html"
+              >Registro / Edición de activos</a
+            >
+          </li>
+          <li><a href="transferIncomeAdmin.html">Traslados</a></li>
+          <li><a href="bitacora.html">Bitácora</a></li>
+          <li><a href="reportes.html">Reportes</a></li>
+          <li><a href="users.html">Manejo de usuarios</a></li>
+        </ul>
+      </nav>
+      <div class="left-nav">
+        <div id="user-icon" class="logo user-icon" title="Perfil">
+          <img src="img/user-icon.png" alt="user-icon" />
+        </div>
+        <button type="button" class="buttons" onclick="Logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </header>
+    <main>
+      <br /><br />
+      <h2 class="subtitles">Bitácora</h2>
+      <br />
+      <div>
+        <div class="inputs">
+          <label for="txtFiltrar">Filtrar</label>
+          <input type="text" class="buscador" id="txtBuscarActivo" />
+        </div>
+      </div>
+      <table id="tableBitacora">
+        <thead>
+          <tr>
+            <th>Movimiento ID</th>
+            <th>Solicitante</th>
+            <th>Fecha</th>
+            <th>Ubicación anterior</th>
+            <th>Nueva ubicación</th>
+            <th>Descripción del traslado</th>
+            <th>Imágenes</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </main>
+    <footer class="footer">
+      <div class="company-name">
+        <h2><a href="./landPageProveGuard.html">ProveGuard &copy;2023</a></h2>
+      </div>
+      <div class="copyright">
+        <h2>SICA - Sistema de Control de Activos</h2>
+        <h2><a href="landpageBotweb.html">BotWeb Team</a></h2>
+      </div>
       <ul class="nav-links">
         <li><a href="registroDeActivosAdmin.html">Registro / Edición de activos</a></li>
         <li><a href="transferIncomeAdmin.html">Traslados</a></li>
@@ -159,4 +219,9 @@
   <script src="js/utils.js"></script>
 </body>
 
+    <script src="js/utils.js"></script>
+    <script src="js/Services/generalService.js"></script>
+    <script src="js/Controllers/bitacoraController.js"></script>
+    <script src="js/Controllers/sessionController.js"></script>
+  </body>
 </html>

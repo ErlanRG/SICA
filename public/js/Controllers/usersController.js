@@ -8,7 +8,7 @@ let txtLastname2 = document.getElementById("txtLastname2");
 let txtBirthdate = document.getElementById("txtBirthdate");
 let txtEmail = document.getElementById("txtEmail");
 let rolSelect = document.getElementById("rol-dropdown");
-let inputProfileImg = document.getElementById("profilePic");
+let inputProfileImg = document.getElementById("inputImgProfile");
 
 let editBtn = document.getElementById("edit");
 let addBtn = document.getElementById("add");
@@ -45,8 +45,11 @@ async function ImprimirDatos() {
 
   for (let i = 0; i < listaPersonas.length; i++) {
     if (
+      listaPersonas[i].Identificacion.toLowerCase().includes(filtro) ||
       listaPersonas[i].Nombre.toLowerCase().includes(filtro) ||
       listaPersonas[i].Apellido1.toLowerCase().includes(filtro) ||
+      listaPersonas[i].Apellido2.toLowerCase().includes(filtro) ||
+      listaPersonas[i].Nacimiento.toLowerCase().includes(filtro) ||
       PrintRol(listaPersonas[i].Rol).toLowerCase().includes(filtro)
     ) {
       let fila = tbody.insertRow();
@@ -54,9 +57,7 @@ async function ImprimirDatos() {
       let celdaIdentificacion = fila.insertCell();
       let celdaNombre = fila.insertCell();
       let celdaEmail = fila.insertCell();
-      // let celdaSexo = fila.insertCell();
       let celdaNacimiento = fila.insertCell();
-      // let celdaEdad = fila.insertCell();
       let celdaEstado = fila.insertCell();
       let celdaRol = fila.insertCell();
       let celdaAcciones = fila.insertCell();
@@ -72,8 +73,6 @@ async function ImprimirDatos() {
         " " +
         listaPersonas[i].Apellido2;
       celdaEmail.innerHTML = listaPersonas[i].Email;
-      // celdaSexo.innerHTML = listaPersonas[i].Sexo;
-      // celdaEdad.innerHTML = listaPersonas[i].Edad;
       celdaEstado.innerHTML = ObtenerEstado(listaPersonas[i].Estado);
       celdaRol.innerHTML = ObtenerRol(listaPersonas[i].Rol);
 
@@ -89,7 +88,7 @@ async function ImprimirDatos() {
       btnEdit.type = "button";
       btnEdit.innerText = "✎";
       btnEdit.title = "Editar";
-      btnEdit.classList.add("btnsTabla");
+      btnEdit.classList.add("btnsTabla", "buttons");
       btnEdit.onclick = function () {
         location.href =
           "editProfile.html?_id=" +
@@ -104,7 +103,7 @@ async function ImprimirDatos() {
       btnDelete.type = "button";
       btnDelete.innerText = "🗑️";
       btnDelete.title = "Elimnar";
-      btnDelete.classList.add("btnsTabla");
+      btnDelete.classList.add("btnsTabla", "buttons");
       btnDelete.onclick = async function () {
         let confirmacion = false;
         await Swal.fire({
@@ -134,7 +133,7 @@ async function ImprimirDatos() {
       btnInactivar.type = "button";
       btnInactivar.innerText = "Off";
       btnInactivar.title = "Inactivar";
-      btnInactivar.classList.add("btnsTabla");
+      btnInactivar.classList.add("btnsTabla", "buttons");
       btnInactivar.onclick = async function () {
         let confirmacion = false;
         await Swal.fire({
@@ -224,10 +223,6 @@ function ValidateInfo(pName, pLast1, pRol) {
   return true;
 }
 
-function PrintUserTable() {
-  // let tbody =
-}
-
 async function AddUser() {
   let idType = txtIDType.value;
   let idNumber = txtIDNumber.value;
@@ -243,7 +238,6 @@ async function AddUser() {
     ValidateInfo(name, last1, rol) == false ||
     ValidateDate(birthdate) == false ||
     ValidateEmail(txtEmail) == false
-    //TODO: Validar imagenes subidas
   ) {
     return;
   }
@@ -260,10 +254,9 @@ async function AddUser() {
     Email: email,
     Password: GenerateTempPass(),
     Rol: rol,
-    // FotoPerfil:
+    FotoPerfil: inputProfileImg.getAttribute("src"),
   };
 
-  // @@@
   result = await ProcessPOST("RegistrarPersona", data);
 
   if (!result) {
@@ -271,7 +264,7 @@ async function AddUser() {
   } else if (result.resultado == false) {
     PrintError(result.msj);
   } else {
-    PrintSuccess("Excelente").then((res) => {
+    PrintSuccess("Usuario registrado con éxito.").then((res) => {
       closePopup();
       location.href = "users.html";
     });

@@ -149,6 +149,8 @@ function ObtenerEstado(pEstado) {
   switch (pEstado) {
     case 1:
       return "Activo";
+    case 2:
+      return "Rechazado";
     default:
       return "Inactivo";
   }
@@ -204,4 +206,10 @@ function GenerateTempPass() {
     tempPass += charset.charAt(Math.floor(Math.random() * n));
   }
   return tempPass;
+}
+
+function setDate() {
+  const today = new Date();
+  const dateString = today.toISOString().substring(0, 10);
+  return dateString;
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 // Para filtrar
-let inputFiltro = document.getElementById("txtNombreActivo");
+let inputFiltro = document.getElementById("txtBuscar");
 inputFiltro.addEventListener("keyup", ImprimirTraslados);
 
 let listaTraslados = [];
@@ -12,7 +12,6 @@ async function GetListaTraslados() {
   let result = await ProcessGET("ListarTraslados", null);
   if (result != null && result.resultado == true) {
     listaTraslados = result.ListaTrasladosDB;
-    console.log(listaTraslados);
     ImprimirTraslados();
   } else {
     PrintError(result.msj);
@@ -31,7 +30,7 @@ function ImprimirTraslados() {
       listaTraslados[i].ActivoAfectado.toLowerCase().includes(filtro) ||
       listaTraslados[i].Solicitante.toLowerCase().includes(filtro)
     ) {
-      if (listaTraslados[i].Estado == 0) {
+      if (listaTraslados[i].Estado != 0) {
         let fila = tbody.insertRow();
         let celdaID_Solicitud = fila.insertCell();
         let celdaID_Afectado = fila.insertCell();
@@ -40,17 +39,15 @@ function ImprimirTraslados() {
         let celdaFecha = fila.insertCell();
         let celdaSolicitante = fila.insertCell();
         let celdaEstado = fila.insertCell();
-        let celdaAcciones = fila.insertCell();
 
         celdaID_Solicitud.innerHTML = listaTraslados[i].ID_Traslado;
         celdaID_Afectado.innerHTML = listaTraslados[i].ActivoAfectado;
         celdaRazon.innerHTML = listaTraslados[i].Razon;
-        // celdaImagenes.innerHTML = listaTraslados[i].Imagenes;
         celdaFecha.innerHTML = listaTraslados[i].FechaCreacion;
         celdaSolicitante.innerHTML = listaTraslados[i].Solicitante;
         celdaEstado.innerHTML = getEstadoTraslado(listaTraslados[i].Estado);
 
-        //Crear botones para las imagenes
+        //Crea botones para las imagenes
         let btnVerImagen1 = document.createElement("button");
         btnVerImagen1.type = "button";
         btnVerImagen1.innerText = "1";
@@ -71,10 +68,10 @@ function ImprimirTraslados() {
           window.open(src);
         };
 
-        let divImgBtns = document.createElement("div");
-        divImgBtns.appendChild(btnVerImagen1);
-        divImgBtns.appendChild(btnVerImagen2);
-        celdaImagenes.appendChild(divImgBtns);
+        let divBtns = document.createElement("div");
+        divBtns.appendChild(btnVerImagen1);
+        divBtns.appendChild(btnVerImagen2);
+        celdaImagenes.appendChild(divBtns);
 
         // @@@ arreglar las funciones de los botones
         let btnAprobar = document.createElement("button");
@@ -142,13 +139,6 @@ function ImprimirTraslados() {
             await GetListaTraslados();
           }
         };
-
-        let divBtns = document.createElement("div");
-        if (listaTraslados[i].Estado == 0) {
-          divBtns.appendChild(btnAprobar);
-          divBtns.appendChild(btnRechazar);
-        }
-        celdaAcciones.appendChild(divBtns);
       }
     }
   }
